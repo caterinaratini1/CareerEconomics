@@ -456,4 +456,13 @@ export interface CareerSummary {
   status: (typeof CONTENT_STATUSES)[number];
   timeToEnterLabel: string | null;
   educationLabel: string | null;
+  /** null when the salary claim has no value yet (not_researched). */
+  salaryEntry: {
+    min: number;
+    max: number;
+    currency: string;
+    basis: (typeof salaryBasisSchema)['options'][number];
+  } | null;
+  /** null when the competition claim has no value yet (not_researched). */
+  competitionLevel: (typeof LEVELS)[number] | null;
 }

@@ -3,9 +3,11 @@
 Materials and process for running a classroom pilot.
 
 > **Not yet ready to run.** The pilot requires published content, and no career
-> is published — every figure is still unsourced. See the README. This document
-> exists so the pilot design is settled before content pressure starts shaping
-> it, which is the wrong order to do it in.
+> is published — every figure is still unsourced. See the README. It also now
+> requires a real class-code/teacher-auth backend (see docs/DECISIONS.md,
+> "classroom account model") — the current build only has an in-memory dev
+> version of that. This document exists so the pilot design is settled before
+> content pressure starts shaping it, which is the wrong order to do it in.
 
 ---
 
@@ -20,6 +22,7 @@ Materials and process for running a classroom pilot.
 | Methodology page published | ✓ `/methodology` |
 | Content language decision (ADR-0005) | ✓ — Italian, decided 2026-08-04 |
 | Production deployment | ✗ |
+| Class-code/teacher-auth backend (Phase B) | ✗ — dev-mode in-memory only, see docs/DECISIONS.md |
 
 The language question is settled: interface and content are in Italian, so a
 comprehension test now measures our writing rather than the students' English.
@@ -48,15 +51,22 @@ the class; the rest of this document is internal.
 > quali sono i lati negativi — con la fonte dietro ogni informazione
 > importante.
 >
-> **Cosa serve agli studenti.** Un dispositivo con un browser. Nessuna
-> registrazione, nessun accesso, nessun dato personale. Basta condividere un
-> link.
+> **Cosa serve agli studenti.** Un dispositivo con un browser e il codice
+> della classe, che lei crea e condivide. Gli studenti scrivono il codice e
+> un nome a scelta (non serve il vero nome) — nessuna email, nessuna
+> password.
 >
 > **Cosa non fa.** Non dice agli studenti che cosa devono fare. Non ci sono test
 > della personalità, classifiche o pubblicità.
 >
-> **Privacy.** Nessun account, nessun nome, nessuna email. Il sito non
-> identifica gli studenti. Informativa completa su `/privacy`.
+> **Privacy.** Gli studenti non creano un account e non danno nome vero né
+> email — solo un soprannome legato al codice della classe. Solo lei, come
+> insegnante, ha un accesso personale, per vedere i progressi della classe.
+> Informativa completa su `/privacy`.
+>
+> ⚠️ *In questa fase di sviluppo l'accesso insegnanti e la memorizzazione
+> delle classi non sono ancora attivi: vedi la nota di stato in cima a questo
+> documento.*
 >
 > **Se qualcosa non funziona.** [contatto di supporto — da inserire prima del
 > pilota]

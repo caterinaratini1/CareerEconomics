@@ -11,7 +11,7 @@ import { Fact } from '@/components/ui/primitives';
  */
 export function QuickFacts({ profile }: { profile: CountryProfile }) {
   return (
-    <dl className="border-rule bg-paper-sunk rounded border px-4">
+    <dl className="border-border bg-surface-muted rounded border px-4">
       <Fact term="Quanto tempo serve per entrarci">
         <ClaimSummary claim={profile.timeToEnter}>
           {(value) =>

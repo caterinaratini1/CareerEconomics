@@ -1,7 +1,8 @@
 /**
  * Career search.
  *
- * A plain GET form, submitting to /careers. No client JavaScript at all.
+ * A plain GET form, submitting to /student/careers. No client JavaScript at
+ * all.
  *
  * That is a deliberate choice rather than a stopgap. §8 asks for a
  * no-JavaScript fallback and keyboard operability; §19 asks for limited
@@ -22,7 +23,12 @@ export function SearchForm({
   autoFocus?: boolean;
 }) {
   return (
-    <form action="/careers" method="get" role="search" className="w-full">
+    <form
+      action="/student/careers"
+      method="get"
+      role="search"
+      className="w-full"
+    >
       <label htmlFor="career-search" className="block font-medium">
         Quale lavoro vuoi conoscere?
       </label>
@@ -46,11 +52,11 @@ export function SearchForm({
           // move the caret away from content the reader is part-way through.
           autoFocus={autoFocus}
           placeholder="es. diplomatico, medico, sviluppatore"
-          className="border-rule bg-paper text-ink focus:border-accent min-w-0 flex-1 rounded border px-3 py-2.5 text-base"
+          className="border-border bg-surface text-ink focus:border-primary rounded-control min-w-0 flex-1 border px-3 py-2.5 text-base"
         />
         <button
           type="submit"
-          className="bg-accent rounded px-5 py-2.5 font-medium text-white"
+          className="bg-primary rounded-control px-5 py-2.5 font-medium text-white"
         >
           Cerca
         </button>

@@ -78,7 +78,7 @@ export default function AboutPage() {
         <p>
           <Link
             href="/methodology"
-            className="text-accent underline underline-offset-4"
+            className="text-primary underline underline-offset-4"
           >
             Leggi come raccogliamo e verifichiamo le informazioni
           </Link>

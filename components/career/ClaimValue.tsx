@@ -97,7 +97,7 @@ function SourceCitations({
           {index > 0 && '; '}
           <a
             href={source.url}
-            className="text-accent underline underline-offset-2"
+            className="text-primary underline underline-offset-2"
             rel="noopener noreferrer nofollow"
             target="_blank"
           >

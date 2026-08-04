@@ -10,7 +10,7 @@ const LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-rule bg-paper-sunk mt-16 border-t">
+    <footer className="border-border bg-surface-muted mt-16 border-t">
       <div className="mx-auto max-w-5xl px-4 py-8 text-sm">
         <nav aria-label="Collegamenti in fondo alla pagina">
           <ul className="flex flex-wrap gap-x-6 gap-y-2">

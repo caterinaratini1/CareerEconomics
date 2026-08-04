@@ -1,43 +1,21 @@
 import type { MetadataRoute } from 'next';
-import {
-  careerRepository,
-  isPreviewMode,
-  loadAllCareers,
-} from '@/lib/content/repository';
 import { SITE } from '@/lib/site';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+/**
+ * Career pages now live under `/student/careers/*`, which requires a class
+ * session (see app/student/layout.tsx) — an anonymous crawler would just be
+ * redirected to the join screen. So, unlike the Phase 1 site, career pages
+ * are no longer listed here: a sitemap entry a visitor cannot actually reach
+ * would be misleading rather than useful. Once Phase B adds a public,
+ * ungated career-preview surface, this is the file to extend.
+ */
+export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.url.replace(/\/$/, '');
 
-  const staticRoutes = [
-    '',
-    '/careers',
-    '/about',
-    '/methodology',
-    '/privacy',
-    '/sources',
-  ].map((path) => ({
+  return ['', '/about', '/methodology', '/privacy', '/sources'].map((path) => ({
     url: `${base}${path}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: path === '' ? 1 : 0.6,
   }));
-
-  // Drafts are visible in preview mode but must never enter the sitemap: the
-  // point of preview is human review, not discovery by a search engine.
-  const published = loadAllCareers().filter((c) => c.status === 'published');
-  const listed = isPreviewMode()
-    ? published
-    : await careerRepository
-        .listSlugs()
-        .then((slugs) => published.filter((c) => slugs.includes(c.slug)));
-
-  const careerRoutes = listed.map((career) => ({
-    url: `${base}/careers/${career.slug}`,
-    lastModified: new Date(`${career.editorial.lastReviewedAt}T00:00:00Z`),
-    changeFrequency: 'yearly' as const,
-    priority: 0.8,
-  }));
-
-  return [...staticRoutes, ...careerRoutes];
 }

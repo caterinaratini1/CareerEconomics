@@ -8,7 +8,10 @@ import {
 } from '@/components/career/PathwaySteps';
 import { QuickFacts } from '@/components/career/QuickFacts';
 import { SourceList } from '@/components/career/SourceList';
+import { CareerSimulator } from '@/components/student/CareerSimulator';
+import { StepNav } from '@/components/student/StepNav';
 import { Badge, Disclosure, Prose, Section } from '@/components/ui/primitives';
+import { hasValue } from '@/lib/content/claim';
 import { evidenceLevel } from '@/lib/content/publication';
 import { estimateReading } from '@/lib/content/reading-time';
 import {
@@ -20,16 +23,11 @@ import type { CareerProfile, CountryProfile } from '@/lib/content/schema';
 import { CATEGORY_LABELS, LEVEL_LABELS, SITE } from '@/lib/site';
 
 /**
- * The career page — §10's template, rendered from structured content.
- *
- * The section order follows the doc exactly, with one structural change: the
- * secondary sections sit inside native `<details>` so the core reading path
- * stays under the ten-minute budget in §4. The partition is enforced by
- * lib/content/reading-time.ts, so page and budget cannot drift apart silently.
- *
- * This is a server component with no client bundle. §19 asks for limited
- * JavaScript on a basic phone; a page that is entirely text has no reason to
- * ship any.
+ * The career page — §10's template, rendered from structured content, plus
+ * the guide's simulator layer (§8 step 4) on top. The evidentiary sections
+ * below (pathway, requirements, sources, …) are unchanged from the original
+ * Phase 1 template: that content is the actual product, the simulator is an
+ * addition, not a replacement.
  */
 
 export const dynamicParams = false;
@@ -54,7 +52,7 @@ export async function generateMetadata({
     description: career.oneSentence,
     // Draft pages must never be indexed, whatever the site-wide default is.
     ...(isDraft ? { robots: { index: false, follow: false } } : {}),
-    alternates: { canonical: `/careers/${career.slug}` },
+    alternates: { canonical: `/student/careers/${career.slug}` },
     openGraph: {
       title: `${career.canonicalName} — ${SITE.name}`,
       description: career.oneSentence,
@@ -80,13 +78,54 @@ export default async function CareerPage({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-10">
-      <Header career={career} profile={profile} minutes={reading.coreMinutes} />
+      <StepNav current="explore" />
+
+      <div className="mt-4">
+        <Header
+          career={career}
+          profile={profile}
+          minutes={reading.coreMinutes}
+        />
+      </div>
 
       <EvidenceNotice career={career} profile={profile} />
 
       <div className="mt-8">
         <QuickFacts profile={profile} />
       </div>
+
+      <Section
+        id="simulator"
+        title="Simula il tuo percorso"
+        lead="Cambia le ipotesi qui sotto per vedere come cambiano costi e rientro. Sono stime che puoi regolare, non dati verificati su questa professione."
+      >
+        {hasValue(profile.salary) && hasValue(profile.timeToEnter) ? (
+          <CareerSimulator
+            yearsToQualify={
+              (profile.timeToEnter.value.minYears +
+                profile.timeToEnter.value.maxYears) /
+              2
+            }
+            entrySalaryMin={profile.salary.value.entry.min}
+            entrySalaryMax={profile.salary.value.entry.max}
+            currency={profile.salary.value.currency}
+          />
+        ) : (
+          <p className="text-ink-muted border-border bg-surface-muted rounded-card border p-4 text-sm">
+            Il simulatore ha bisogno dello stipendio e del tempo per entrarci, e
+            per questa professione non sono ancora stati verificati.
+          </p>
+        )}
+
+        <button
+          type="button"
+          disabled
+          title="Il confronto arriva in una prossima versione"
+          className="border-border text-ink-muted rounded-control mt-4 cursor-not-allowed border px-4 py-2 text-sm"
+        >
+          Aggiungi al confronto (in arrivo)
+        </button>
+      </Section>
 
       <Section id="what" title="Che cosa fa davvero chi svolge questo lavoro?">
         <Prose>
@@ -259,7 +298,7 @@ export default async function CareerPage({
                 </span>
                 {item.belief}
               </p>
-              <p className="border-accent mt-2 border-l-2 pl-3">
+              <p className="border-primary mt-2 border-l-2 pl-3">
                 <span className="sr-only">In realtà: </span>
                 <span aria-hidden="true" className="font-semibold">
                   In realtà:{' '}
@@ -354,8 +393,8 @@ export default async function CareerPage({
                   <h4 className="font-semibold">
                     {linkable ? (
                       <Link
-                        href={`/careers/${related.slug}`}
-                        className="text-accent underline underline-offset-4"
+                        href={`/student/careers/${related.slug}`}
+                        className="text-primary underline underline-offset-4"
                       >
                         {related.name}
                       </Link>
@@ -381,15 +420,15 @@ export default async function CareerPage({
         <SourceList career={career} />
       </Section>
 
-      <footer className="border-rule mt-12 border-t pt-6">
+      <footer className="border-border mt-12 border-t pt-6">
         <p className="text-ink-muted text-sm">
           Questa pagina riguarda l’{SITE.country.name}. In altri paesi
           requisiti, stipendi e livello di competizione sono diversi.
         </p>
         <p className="mt-4">
           <Link
-            href="/careers"
-            className="text-accent underline underline-offset-4"
+            href="/student/careers"
+            className="text-primary underline underline-offset-4"
           >
             Torna a tutte le professioni
           </Link>
@@ -414,7 +453,7 @@ function Header({
     <header>
       <p className="text-ink-muted text-sm">
         <Link
-          href="/careers"
+          href="/student/careers"
           className="hover:text-ink underline-offset-4 hover:underline"
         >
           Professioni
@@ -460,7 +499,7 @@ function EvidenceNotice({
   return (
     <aside
       aria-label="Quanto è affidabile questa pagina"
-      className="border-evidence-draft/40 bg-evidence-draft-soft mt-6 rounded border-l-4 p-4"
+      className="border-evidence-draft/40 bg-evidence-draft-soft rounded-card mt-6 border-l-4 p-4"
     >
       <p className="font-semibold">
         Questa pagina è una bozza di lavoro, non una guida verificata.
@@ -506,11 +545,11 @@ function SalaryDetail({
 
   return (
     <div className="max-w-prose">
-      <dl className="border-rule rounded border px-4">
+      <dl className="border-border rounded-card border px-4">
         {bands.map((row) => (
           <div
             key={row.label}
-            className="border-rule flex flex-wrap justify-between gap-2 border-b py-3 last:border-b-0"
+            className="border-border flex flex-wrap justify-between gap-2 border-b py-3 last:border-b-0"
           >
             <dt className="text-ink-muted">{row.label}</dt>
             <dd className="font-medium">
@@ -550,7 +589,7 @@ function TradeoffColumn({
       <ul className="space-y-2">
         {items.map((item) => (
           <li key={item.title}>
-            <details className="border-rule group rounded border px-3 py-2">
+            <details className="border-border rounded-card group border px-3 py-2">
               <summary className="flex items-start gap-2 font-medium">
                 <span
                   aria-hidden="true"

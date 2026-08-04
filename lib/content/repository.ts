@@ -26,8 +26,8 @@ export const DEFAULT_COUNTRY = 'IT';
 
 export interface ListOptions {
   /** ISO 3166-1 alpha-2. Careers without a profile for it are excluded. */
-  countryCode?: string;
-  category?: string;
+  countryCode?: string | undefined;
+  category?: string | undefined;
 }
 
 export interface CareerRepository {
@@ -170,6 +170,11 @@ export function toSummary(
   countryCode: string = DEFAULT_COUNTRY,
 ): CareerSummary {
   const profile = profileForCountry(career, countryCode);
+  const salary =
+    profile && hasValue(profile.salary) ? profile.salary.value : null;
+  const competition =
+    profile && hasValue(profile.competition) ? profile.competition.value : null;
+
   return {
     slug: career.slug,
     canonicalName: career.canonicalName,
@@ -178,6 +183,15 @@ export function toSummary(
     status: career.status,
     timeToEnterLabel: timeToEnterLabel(profile),
     educationLabel: educationLabel(profile),
+    salaryEntry: salary
+      ? {
+          min: salary.entry.min,
+          max: salary.entry.max,
+          currency: salary.currency,
+          basis: salary.basis,
+        }
+      : null,
+    competitionLevel: competition?.level ?? null,
   };
 }
 

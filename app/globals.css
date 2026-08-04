@@ -3,58 +3,55 @@
 /**
  * Design tokens.
  *
- * The palette is deliberately small and high-contrast. §18 requires sufficient
- * contrast and forbids conveying information by colour alone, and §19 targets
- * a fast first load on a basic phone — both are easier to hold with six
- * colours than with sixty.
+ * Light-only palette per the classroom-product UI/UX guide (2026-08-04
+ * pivot, see docs/DECISIONS.md). Deliberately drops the previous dark-mode
+ * variant: a projector in a classroom and a phone in direct daylight are the
+ * real environments this runs in, and a calm, consistent light surface reads
+ * better on both than a theme that shifts under different OS settings.
  *
- * `--color-evidence-*` are semantic rather than decorative: they mark how well
- * supported a claim is. Every place they appear is paired with a text label,
- * so the meaning survives for colour-blind readers and in print.
+ * `--color-risk` / `--color-warning` / `--color-success` are semantic rather
+ * than decorative: they mark competition level and claim state. Every place
+ * they appear is paired with a text label, so the meaning survives for
+ * colour-blind readers and in print.
  */
 @theme {
-  --color-ink: oklch(0.22 0.02 250);
-  --color-ink-muted: oklch(0.45 0.02 250);
-  --color-paper: oklch(1 0 0);
-  --color-paper-sunk: oklch(0.97 0.005 250);
-  --color-rule: oklch(0.9 0.01 250);
+  --color-background: #f8faf7;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef4f0;
+  --color-ink: #17201b;
+  --color-ink-muted: #5e6b63;
+  --color-border: #dde5df;
 
-  --color-accent: oklch(0.45 0.15 250);
-  --color-accent-soft: oklch(0.95 0.03 250);
+  --color-primary: #176b5d;
+  --color-primary-dark: #0e4a40;
+  --color-primary-soft: #e3f0ec;
+  --color-accent: #e6a93f;
+  --color-accent-soft: #fbf0dd;
+  --color-info: #3478a6;
+  --color-success: #2f8f5b;
+  --color-warning: #c98218;
+  --color-risk: #b94a48;
+  --color-risk-soft: #f8e9e8;
 
-  --color-evidence-verified: oklch(0.45 0.12 155);
-  --color-evidence-verified-soft: oklch(0.96 0.04 155);
-  --color-evidence-draft: oklch(0.5 0.14 70);
-  --color-evidence-draft-soft: oklch(0.96 0.05 80);
-  --color-evidence-missing: oklch(0.48 0.02 250);
-  --color-evidence-missing-soft: oklch(0.96 0.005 250);
+  --color-evidence-verified: #2f8f5b;
+  --color-evidence-verified-soft: #e7f3ec;
+  --color-evidence-draft: #c98218;
+  --color-evidence-draft-soft: #fbf0dd;
+  --color-evidence-missing: #5e6b63;
+  --color-evidence-missing-soft: #eef4f0;
 
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
+    var(--font-sans-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --radius-card: 8px;
+  --radius-control: 8px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 8px 24px rgba(23, 32, 27, 0.08);
 
   /* §18: readable line length. Prose never exceeds this. */
   --container-prose: 68ch;
-}
-
-@media (prefers-color-scheme: dark) {
-  @theme {
-    --color-ink: oklch(0.94 0.01 250);
-    --color-ink-muted: oklch(0.72 0.015 250);
-    --color-paper: oklch(0.19 0.015 250);
-    --color-paper-sunk: oklch(0.24 0.015 250);
-    --color-rule: oklch(0.34 0.015 250);
-
-    --color-accent: oklch(0.78 0.11 250);
-    --color-accent-soft: oklch(0.28 0.04 250);
-
-    --color-evidence-verified: oklch(0.8 0.13 155);
-    --color-evidence-verified-soft: oklch(0.27 0.05 155);
-    --color-evidence-draft: oklch(0.83 0.13 80);
-    --color-evidence-draft-soft: oklch(0.29 0.05 80);
-    --color-evidence-missing: oklch(0.75 0.02 250);
-    --color-evidence-missing-soft: oklch(0.26 0.008 250);
-  }
 }
 
 @layer base {
@@ -65,7 +62,7 @@
   }
 
   body {
-    background-color: var(--color-paper);
+    background-color: var(--color-background);
     color: var(--color-ink);
     font-family: var(--font-sans);
     line-height: 1.65;
@@ -81,7 +78,7 @@
 
   /* §18: visible focus states. Never remove the outline, only restyle it. */
   :focus-visible {
-    outline: 3px solid var(--color-accent);
+    outline: 3px solid var(--color-primary);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -118,7 +115,7 @@
     top: 0;
     z-index: 50;
     padding: 0.75rem 1rem;
-    background: var(--color-accent);
+    background: var(--color-primary);
     color: white;
   }
   .skip-link:focus {

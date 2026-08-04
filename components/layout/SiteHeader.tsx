@@ -2,40 +2,26 @@ import Link from 'next/link';
 import { isPreviewMode } from '@/lib/content/repository';
 import { SITE } from '@/lib/site';
 
-const NAV = [
-  { href: '/careers', label: 'Tutte le professioni' },
-  { href: '/methodology', label: 'Come lavoriamo' },
-  { href: '/about', label: 'Chi siamo' },
-];
-
+/**
+ * Deliberately minimal: no marketing nav here. `/student/*` routes render
+ * their own `StepNav` (components/student/StepNav.tsx) for in-flow
+ * navigation, and the general-interest links (Chi siamo, Come lavoriamo,
+ * Fonti, Privacy) live in `SiteFooter` only, so they don't compete with the
+ * join screen or the student flow for attention.
+ */
 export function SiteHeader() {
   return (
     <>
       {isPreviewMode() && <PreviewBanner />}
-      <header className="border-rule border-b">
-        <nav
-          aria-label="Principale"
-          className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-4"
-        >
+      <header className="border-border border-b">
+        <div className="mx-auto flex max-w-5xl items-center px-4 py-4">
           <Link
             href="/"
-            className="text-ink mr-auto text-base font-semibold no-underline"
+            className="text-ink text-base font-semibold no-underline"
           >
             {SITE.name}
           </Link>
-          <ul className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
-            {NAV.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-ink-muted hover:text-ink underline-offset-4 hover:underline"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        </div>
       </header>
     </>
   );

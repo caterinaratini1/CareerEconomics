@@ -215,3 +215,88 @@ explicit `NEXT_PUBLIC_CONTENT_PREVIEW=true`. When it is on, a non-dismissible
 banner sits above every page, per-page metadata is `noindex`, `robots.txt`
 disallows everything, and drafts are excluded from the sitemap. Four independent
 mechanisms, because any one of them can be misconfigured.
+
+---
+
+## ADR-0011 — The product adopts a classroom/account model
+
+**Status:** accepted — decided 2026-08-04
+
+Career Economics Lab moves from Phase 1's zero-account content site to a
+classroom product: students join with a class code and a nickname, teachers
+authenticate for real (magic link or a seeded pilot account) and get a
+dashboard. This supersedes `docs/PILOT_GUIDE.md`'s original "Nessun account,
+nessun nome, nessuna email" design, which `docs/PILOT_GUIDE.md` has been
+updated to reflect.
+
+This was driven by an external UI/UX guide specifying student/teacher roles,
+a career simulator, comparison, and reflection worksheets — none of which fit
+the no-account model. The tradeoff is real: the old model's whole appeal was
+that a teacher could hand out a URL and nothing else. The new model asks a
+teacher to create a class first. That cost was accepted because progress
+tracking, a teacher dashboard, and comparing saved reflections across a class
+are not buildable without *some* durable identifier per class, and a class
+code with a student nickname is the least amount of identity that still
+works — no student email, no student password, no real name required.
+
+**What shipped this pass:** the student-facing join flow, dashboard, career
+library, and career detail/simulator, all working against an in-memory
+`ClassRepository` (`lib/classes/repository.ts`) seeded with one demo code.
+**What did not:** real Supabase-backed teacher auth, persistent class
+storage, the teacher dashboard, and the comparison/reflection flows — see the
+session's plan file for the full deferred list.
+
+**Revisit when** Phase B is scoped: it needs the user to provision a real
+Supabase project (credentials cannot be created on their behalf) and extends
+`docs/DATA_MODEL.md` with `classes`/`students`/`reflections` tables and RLS
+policies alongside the existing career-content ones.
+
+---
+
+## ADR-0012 — Design system replaced with a light-only palette
+
+**Status:** accepted — decided 2026-08-04
+
+`app/globals.css` moved from a six-color oklch palette with a dark-mode
+variant to the UI/UX guide's light-only token set (`#F8FAF7` background,
+`#176B5D` primary, `#E6A93F` accent, plus `info`/`success`/`warning`/`risk`
+semantic colors), with `--radius-card`/`--radius-control`/`--radius-pill` and
+a single soft shadow token. Dark mode is dropped entirely, not just
+deprioritized: the guide explicitly lists "overly dark interfaces" as
+something to avoid for this audience (a classroom projector and a phone in
+daylight are the real environments), so the previous
+`@media (prefers-color-scheme: dark)` block was removed rather than kept
+alongside the new palette.
+
+Token names changed (`--color-paper` → `--color-surface`, `--color-rule` →
+`--color-border`, `--color-accent` now means the sparingly-used amber
+highlight rather than the primary interactive color, which is now
+`--color-primary`). Every component was swept to the new names in the same
+pass — there is no dual-token transition period.
+
+**Revisit when** real usage data says otherwise (e.g., a pilot classroom
+genuinely needs dark mode for a specific device). Until then, one calm
+light theme beats a theme that shifts under different OS settings.
+
+---
+
+## ADR-0013 — The simulator is a scoped exception to the no-JS approach
+
+**Status:** accepted — decided 2026-08-04
+
+`components/student/CareerSimulator.tsx` is a client component
+(`'use client'`) — the first one in the codebase besides the Next-mandated
+`app/error.tsx`. Every other new student-facing page (join, dashboard,
+library, detail) stays server-rendered, consistent with the site's existing
+bias (see ADR-0006 and the README's "no application client JavaScript"
+property).
+
+The exception exists because the guide's acceptance criterion — "Simulator
+updates without page reload" — cannot be met by a server round-trip without
+materially worse UX (a full page reload per slider change), and unlike
+search (ADR-0006), there is no equivalently good no-JS alternative for a
+live-recomputing calculator. This is a deliberate, narrow carve-out, not a
+reopening of the no-JS decision: if a future feature is tempted to add
+another client component "because the simulator already broke the rule,"
+that reasoning does not hold — each one needs its own justification this
+strong.

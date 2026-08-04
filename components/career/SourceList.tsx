@@ -55,11 +55,11 @@ export function SourceList({ career }: { career: CareerProfile }) {
       {career.sources.map((source) => (
         <li
           key={source.id}
-          className="border-rule border-b pb-4 last:border-b-0"
+          className="border-border border-b pb-4 last:border-b-0"
         >
           <a
             href={source.url}
-            className="text-accent font-medium underline underline-offset-2"
+            className="text-primary font-medium underline underline-offset-2"
             rel="noopener noreferrer nofollow"
             target="_blank"
           >

@@ -17,7 +17,7 @@ export function Section({
     <section aria-labelledby={`${id}-heading`} className="mt-12 scroll-mt-8">
       <h2
         id={`${id}-heading`}
-        className="border-rule border-b pb-2 text-2xl font-semibold"
+        className="border-border border-b pb-2 text-2xl font-semibold"
       >
         {title}
       </h2>
@@ -45,8 +45,8 @@ export function Disclosure({
   children: ReactNode;
 }) {
   return (
-    <details className="border-rule group mt-4 rounded border">
-      <summary className="hover:bg-paper-sunk flex items-center gap-3 px-4 py-3 font-medium">
+    <details className="border-border rounded-card group mt-4 border">
+      <summary className="hover:bg-surface-muted flex items-center gap-3 px-4 py-3 font-medium">
         <span
           aria-hidden="true"
           className="text-ink-muted inline-block transition-transform group-open:rotate-90"
@@ -60,7 +60,7 @@ export function Disclosure({
           </span>
         )}
       </summary>
-      <div className="border-rule border-t px-4 py-4">{children}</div>
+      <div className="border-border border-t px-4 py-4">{children}</div>
     </details>
   );
 }
@@ -70,18 +70,19 @@ export function Badge({
   tone = 'neutral',
 }: {
   children: ReactNode;
-  tone?: 'neutral' | 'verified' | 'draft' | 'missing';
+  tone?: 'neutral' | 'verified' | 'draft' | 'missing' | 'risk';
 }) {
   const tones = {
-    neutral: 'bg-accent-soft text-accent',
+    neutral: 'bg-primary-soft text-primary',
     verified: 'bg-evidence-verified-soft text-evidence-verified',
     draft: 'bg-evidence-draft-soft text-evidence-draft',
     missing: 'bg-evidence-missing-soft text-evidence-missing',
+    risk: 'bg-risk-soft text-risk',
   } as const;
 
   return (
     <span
-      className={`inline-block rounded px-2 py-0.5 text-xs font-medium ${tones[tone]}`}
+      className={`rounded-pill inline-block px-2 py-0.5 text-xs font-medium ${tones[tone]}`}
     >
       {children}
     </span>
@@ -97,7 +98,7 @@ export function Fact({
   children: ReactNode;
 }) {
   return (
-    <div className="border-rule border-b py-3 last:border-b-0">
+    <div className="border-border border-b py-3 last:border-b-0">
       <dt className="text-ink-muted text-sm">{term}</dt>
       <dd className="mt-0.5 font-medium">{children}</dd>
     </div>

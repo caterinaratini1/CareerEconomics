@@ -1,111 +1,115 @@
 import Link from 'next/link';
-import { CareerCard } from '@/components/career/CareerCard';
-import { SearchForm } from '@/components/search/SearchForm';
-import { careerRepository } from '@/lib/content/repository';
-import { CATEGORY_LABELS, SITE } from '@/lib/site';
+import { redirect } from 'next/navigation';
+import { classRepository } from '@/lib/classes/repository';
+import { setSession } from '@/lib/session/session';
+import { SITE } from '@/lib/site';
 
-export default async function HomePage() {
-  const careers = await careerRepository.listSummaries();
+/**
+ * Join screen — the first screen, per the UI/UX guide's §4.1: not a
+ * marketing homepage, a way to start the activity in under 30 seconds.
+ *
+ * The Server Action keeps this working with scripting off, consistent with
+ * the rest of the site's bias toward server rendering (see ADR-0006): the
+ * browser's native form submission does the validation round-trip, and
+ * errors come back as a query param the page reads server-side.
+ */
+export default async function JoinPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
 
-  const byCategory = new Map<string, typeof careers>();
-  for (const career of careers) {
-    const bucket = byCategory.get(career.category) ?? [];
-    bucket.push(career);
-    byCategory.set(career.category, bucket);
+  async function joinClass(formData: FormData): Promise<void> {
+    'use server';
+
+    const classCode = String(formData.get('classCode') ?? '').trim();
+    const nickname = String(formData.get('nickname') ?? '').trim();
+
+    if (!classCode || !nickname) {
+      redirect('/?error=missing');
+    }
+
+    const classRecord = await classRepository.getByCode(classCode);
+    if (!classRecord) {
+      redirect('/?error=code');
+    }
+
+    await setSession({ classCode: classRecord.code, nickname });
+    redirect('/student');
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
-      <section className="max-w-prose">
-        <h1 className="text-4xl font-bold tracking-tight">
-          Scopri com’è davvero un lavoro.
-        </h1>
-        <p className="text-ink-muted mt-4 text-lg">
-          Risposte chiare su che cosa si fa in una professione, come ci si
-          arriva, quanto si guadagna e quanto è difficile — con la fonte dietro
-          ogni informazione importante, così puoi controllare da te.
+    <div className="mx-auto flex min-h-[70dvh] max-w-md flex-col justify-center px-4 py-16">
+      <p className="text-primary text-sm font-semibold tracking-wide uppercase">
+        {SITE.name}
+      </p>
+      <h1 className="mt-2 text-3xl font-bold tracking-tight">
+        Entra nella tua classe
+      </h1>
+      <p className="text-ink-muted mt-2">
+        Il tuo insegnante ti ha dato un codice classe. Scrivilo qui insieme a un
+        nome con cui vuoi essere riconosciuto — non serve il tuo vero nome.
+      </p>
+
+      {error && (
+        <p
+          role="alert"
+          className="border-risk bg-risk/10 text-risk rounded-card mt-6 border px-4 py-3 text-sm"
+        >
+          {error === 'code'
+            ? 'Codice classe non trovato. Controlla il codice con il tuo insegnante e riprova.'
+            : 'Inserisci sia il codice della classe sia un nome.'}
         </p>
-        <p className="text-ink-muted mt-3">
-          Gratuito, senza registrazione. Al momento le informazioni riguardano
-          l’{SITE.country.name}.
-        </p>
-      </section>
+      )}
 
-      <section aria-label="Cerca una professione" className="mt-10 max-w-2xl">
-        <SearchForm />
-      </section>
+      <form action={joinClass} className="mt-6 space-y-4" noValidate>
+        <div>
+          <label htmlFor="classCode" className="block text-sm font-medium">
+            Codice classe
+          </label>
+          <input
+            id="classCode"
+            name="classCode"
+            type="text"
+            autoComplete="off"
+            autoCapitalize="characters"
+            placeholder="es. DEMO01"
+            className="border-border bg-surface text-ink focus:border-primary rounded-control mt-1 w-full border px-3 py-2.5 text-base"
+          />
+        </div>
 
-      <section aria-labelledby="browse-heading" className="mt-14">
-        <h2 id="browse-heading" className="text-2xl font-semibold">
-          Sfoglia le professioni
-        </h2>
+        <div>
+          <label htmlFor="nickname" className="block text-sm font-medium">
+            Come vuoi chiamarti
+          </label>
+          <input
+            id="nickname"
+            name="nickname"
+            type="text"
+            autoComplete="off"
+            placeholder="es. Sofia"
+            className="border-border bg-surface text-ink focus:border-primary rounded-control mt-1 w-full border px-3 py-2.5 text-base"
+          />
+        </div>
 
-        {careers.length === 0 ? (
-          <p className="text-ink-muted mt-4">
-            Non c’è ancora nessuna professione pubblicata. Torna presto.
-          </p>
-        ) : (
-          <div className="mt-6 space-y-10">
-            {[...byCategory.entries()].map(([category, items]) => (
-              <div key={category}>
-                <h3 className="text-ink-muted text-sm font-semibold tracking-wide uppercase">
-                  {CATEGORY_LABELS[category] ?? category}
-                </h3>
-                <ul className="mt-3 grid gap-4 sm:grid-cols-2">
-                  {items.map((career) => (
-                    <CareerCard key={career.slug} career={career} />
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}
+        <button
+          type="submit"
+          className="bg-primary rounded-control w-full px-5 py-2.5 font-medium text-white"
+        >
+          Entra nella classe
+        </button>
+      </form>
 
-        <p className="mt-8">
-          <Link
-            href="/careers"
-            className="text-accent underline underline-offset-4"
-          >
-            Vedi tutte le professioni
-          </Link>
-        </p>
-      </section>
-
-      <section aria-labelledby="trust-heading" className="mt-16 max-w-prose">
-        <h2 id="trust-heading" className="text-2xl font-semibold">
-          Perché puoi verificare quello che scriviamo
-        </h2>
-        <ul className="mt-4 space-y-3">
-          <li>
-            <strong>Ogni informazione importante ha la sua fonte.</strong>{' '}
-            Stipendi, requisiti di accesso e regole di legge vengono da
-            ministeri, istituti di statistica e ordini professionali, e ti
-            diciamo sempre quando li abbiamo controllati l’ultima volta.
-          </li>
-          <li>
-            <strong>Diciamo quando non sappiamo una cosa.</strong> Se non
-            abbiamo ancora verificato qualcosa, la pagina lo scrive invece di
-            tirare a indovinare o di far sparire la sezione.
-          </li>
-          <li>
-            <strong>Intervalli, non medie.</strong> Lo stipendio dipende da dove
-            lavori e da quanti anni di esperienza hai, quindi mostriamo la
-            forbice e che cosa la fa spostare.
-          </li>
-          <li>
-            <strong>Ci sono anche i lati negativi.</strong> Ogni professione ha
-            i suoi svantaggi. Una pagina che elenca solo i pregi è pubblicità.
-          </li>
-        </ul>
-        <p className="mt-4">
-          <Link
-            href="/methodology"
-            className="text-accent underline underline-offset-4"
-          >
-            Come raccogliamo e verifichiamo le informazioni
-          </Link>
-        </p>
-      </section>
+      <p className="text-ink-muted mt-8 text-center text-sm">
+        Sei un insegnante?{' '}
+        <Link
+          href="/teacher"
+          className="text-primary underline underline-offset-4"
+        >
+          Accesso insegnanti
+        </Link>
+      </p>
     </div>
   );
 }

@@ -20,7 +20,7 @@ export function PathwaySteps({ profile }: { profile: CountryProfile }) {
         <li key={step.stepNumber} className="flex gap-4">
           <span
             aria-hidden="true"
-            className="bg-accent-soft text-accent flex size-9 shrink-0 items-center justify-center rounded-full font-semibold"
+            className="bg-primary-soft text-primary flex size-9 shrink-0 items-center justify-center rounded-full font-semibold"
           >
             {step.stepNumber}
           </span>

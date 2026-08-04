@@ -208,7 +208,7 @@ describe('SearchForm', () => {
     const { container } = render(<SearchForm />);
     const form = container.querySelector('form');
     expect(form).toHaveAttribute('method', 'get');
-    expect(form).toHaveAttribute('action', '/careers');
+    expect(form).toHaveAttribute('action', '/student/careers');
   });
 
   it('gives the search field a real label and a described hint', () => {

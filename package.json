@@ -22,6 +22,7 @@
     "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:content && npm run test && npm run build"
   },
   "dependencies": {
+    "lucide-react": "^1.28.0",
     "next": "16.3.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -40,6 +41,7 @@
     "eslint-config-next": "16.3.0",
     "eslint-config-prettier": "10.1.8",
     "jsdom": "30.0.1",
+    "playwright": "^1.62.1",
     "prettier": "3.9.6",
     "prettier-plugin-tailwindcss": "0.8.1",
     "tailwindcss": "4.3.3",

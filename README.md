@@ -3,13 +3,22 @@
 A clear, transparent career-guidance platform for students — especially those
 without access to people who can tell them what a job is really like.
 
-A student types in a career. They get a page explaining, in plain language, what
-the work involves, how people get in, what it pays, how competitive it is, the
-real downsides, and what they could do now — with the source behind every
-important claim.
+A student joins with a class code, explores careers, and gets a page
+explaining, in plain language, what the work involves, how people get in,
+what it pays, how competitive it is, the real downsides, and what they could
+do now — with the source behind every important claim, plus a simulator for
+modelling study cost and break-even. Teachers create the class and (in a
+later phase) see progress and reflections.
 
-**Status:** Phase 1 (content prototype). Three career profiles exist as
-structural drafts. Nothing is published — see [Content integrity](#content-integrity).
+**Status:** mid-pivot. Phase 1 was a zero-account, zero-JS content
+prototype; as of 2026-08-04 the product adopted a classroom/account model
+(see [`docs/DECISIONS.md`](docs/DECISIONS.md) ADR-0011) per an external
+UI/UX guide. The student-facing flow (join → dashboard → library →
+detail/simulator) works end to end against an in-memory, dev-only class
+store. Teacher auth, persistent classes, comparison, and reflection are
+planned but not built — see ADR-0011 for the exact split. Three career
+profiles exist as structural drafts; nothing is published — see [Content
+integrity](#content-integrity).
 
 **Language:** the product is in Italian — interface and content both. See
 [`docs/DECISIONS.md`](docs/DECISIONS.md) ADR-0005.
@@ -97,15 +106,25 @@ A single Next.js application. No separate backend — see
 [`docs/DECISIONS.md`](docs/DECISIONS.md) ADR-0001.
 
 ```
-app/                    routes (App Router, server components only)
-  careers/[slug]/       the career page — §10's template
+app/                    routes (App Router)
+  page.tsx              join screen (class code + nickname) — the first screen
+  student/              session-gated: layout.tsx guards every route below it
+    page.tsx            dashboard
+    careers/[slug]/     the career page — §10's template, plus the simulator
+    compare/            placeholder — planned, not built (ADR-0011)
+    reflection/         placeholder — planned, not built (ADR-0011)
+  teacher/               placeholder — planned, not built (ADR-0011)
 components/
   career/               claim rendering, quick facts, pathway, sources
+  student/               simulator (client component), library card, step nav
   search/               the no-JavaScript search form
   ui/                   shared primitives
 content/careers/*.json  career content — the source of truth
 lib/
   content/              schema, claims, publication gate, repository
+  classes/              ClassRepository — in-memory dev impl (ADR-0011)
+  session/              dev-mode student session cookie (ADR-0011)
+  simulator/             cost/break-even assumptions + pure calculation
   search/               normalisation and ranking (pure functions)
 scripts/                content validation
 tests/                  unit + rendering
@@ -114,13 +133,14 @@ tests/                  unit + rendering
 The **repository** (`lib/content/repository.ts`) is the seam. Pages talk to a
 `CareerRepository` interface; Phase 1 implements it over JSON files, Phase 2
 implements it over Supabase. That migration should touch one file.
+`lib/classes/repository.ts` follows the same pattern for classes.
 
 ### Notable properties
 
-- **No page ships application client JavaScript.** Every route is a server
-  component; the only client component in the codebase is `app/error.tsx`,
-  which Next requires. Next still ships its React runtime for hydration — see
-  the page weight below.
+- **Almost every route still ships no application client JavaScript.** The
+  one deliberate exception is `components/student/CareerSimulator.tsx` — see
+  ADR-0013 for why that one earns it. Next still ships its React runtime for
+  hydration regardless — see the page weight below.
 - **Search works with JavaScript disabled.** It is a `GET` form, which also
   gives shareable result URLs and a working back button.
 - **Progressive disclosure is native `<details>`.** Keyboard-accessible and
@@ -133,10 +153,16 @@ implements it over Supabase. That migration should touch one file.
 - **Search is bilingual.** Content is Italian, but every career carries English
   aliases too, because students type `software engineer` as readily as
   `sviluppatore`. A test enforces both.
+- **`/student/*` requires a session.** `app/student/layout.tsx` redirects to
+  `/` (the join screen) if there's no session cookie — there's no anonymous
+  path to career content anymore, unlike Phase 1.
 
 ### Page weight
 
-Measured on `/careers/diplomat`, production build, compressed:
+Measured on `/careers/diplomat` under the old Phase 1 URL structure,
+production build, compressed — kept here as the last known baseline; it has
+not been re-measured against `/student/careers/[slug]` since the simulator
+(a real client bundle) was added:
 
 | | Size |
 | --- | --- |
@@ -184,6 +210,7 @@ Phase 1 covers **Italy** only. The schema is multi-country from the start, but
 one country done properly beats five done badly — entry routes for regulated
 professions are not portable.
 
-Deliberately excluded from the MVP: accounts, dashboards, saved careers,
-personality tests, job listings, payments, gamification, native apps, and
-open-ended AI chat.
+Accounts and a teacher dashboard are now in scope (ADR-0011) — that changed
+2026-08-04 and supersedes the line that used to be here. Still deliberately
+excluded: personality tests, job listings, payments, gamification, native
+apps, and open-ended AI chat.

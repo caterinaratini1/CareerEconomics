@@ -34,7 +34,7 @@ export default async function SourcesPage() {
           vedi{' '}
           <Link
             href="/methodology"
-            className="text-accent underline underline-offset-4"
+            className="text-primary underline underline-offset-4"
           >
             come lavoriamo
           </Link>{' '}
@@ -47,11 +47,11 @@ export default async function SourcesPage() {
           <section key={career.slug} aria-labelledby={`sources-${career.slug}`}>
             <h2
               id={`sources-${career.slug}`}
-              className="border-rule border-b pb-2 text-xl font-semibold"
+              className="border-border border-b pb-2 text-xl font-semibold"
             >
               <Link
                 href={`/careers/${career.slug}`}
-                className="text-ink hover:text-accent underline-offset-4 hover:underline"
+                className="text-ink hover:text-primary underline-offset-4 hover:underline"
               >
                 {career.canonicalName}
               </Link>

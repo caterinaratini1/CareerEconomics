@@ -1,45 +1,51 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CareerCard } from '@/components/career/CareerCard';
+import type { ReactNode } from 'react';
+import { CareerLibraryCard } from '@/components/student/CareerLibraryCard';
+import { StepNav } from '@/components/student/StepNav';
 import { SearchForm } from '@/components/search/SearchForm';
 import { careerRepository } from '@/lib/content/repository';
 import { CATEGORY_LABELS } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Tutte le professioni',
+  title: 'Esplora le professioni',
   description:
-    'Sfoglia o cerca tutte le schede. Ognuna spiega che cosa si fa in quel ' +
+    'Cerca o sfoglia le professioni. Ognuna spiega che cosa si fa in quel ' +
     'lavoro, come ci si arriva e quanto si guadagna.',
 };
 
 /**
- * Listing and search results are the same page.
- *
- * Splitting them would mean two layouts, two empty states and two places for
- * the search box to drift out of sync. One page with an optional `q` also
- * gives a URL a teacher can paste into a lesson plan.
+ * Guide §8 step 3. Listing and search results share one page (same rationale
+ * as the original app/careers/page.tsx this replaces — see ADR-0006): one
+ * layout, one empty state, one place for the search box.
  */
-export default async function CareersPage({
+export default async function CareerLibraryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; category?: string }>;
 }) {
-  const { q } = await searchParams;
+  const { q, category } = await searchParams;
   const query = q?.trim() ?? '';
   const isSearching = query.length > 0;
 
   const hits = isSearching ? await careerRepository.search(query) : [];
-  const all = isSearching ? [] : await careerRepository.listSummaries();
+  const all = isSearching
+    ? []
+    : await careerRepository.listSummaries({ category: category || undefined });
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
-      <h1 className="text-3xl font-bold tracking-tight">
-        {isSearching ? `Risultati per “${query}”` : 'Tutte le professioni'}
+    <div className="mx-auto max-w-4xl px-4 py-10">
+      <StepNav current="explore" />
+
+      <h1 className="mt-4 text-3xl font-bold tracking-tight">
+        {isSearching ? `Risultati per “${query}”` : 'Esplora le professioni'}
       </h1>
 
       <div className="mt-6 max-w-2xl">
         <SearchForm defaultValue={query} autoFocus={!isSearching} />
       </div>
+
+      {!isSearching && <CategoryFilter current={category} />}
 
       {isSearching ? (
         <SearchResults query={query} hits={hits} />
@@ -47,6 +53,48 @@ export default async function CareersPage({
         <AllCareers careers={all} />
       )}
     </div>
+  );
+}
+
+function CategoryFilter({ current }: { current?: string | undefined }) {
+  return (
+    <nav aria-label="Filtra per area" className="mt-6 flex flex-wrap gap-2">
+      <FilterPill href="/student/careers" active={!current}>
+        Tutte
+      </FilterPill>
+      {Object.entries(CATEGORY_LABELS).map(([value, label]) => (
+        <FilterPill
+          key={value}
+          href={`/student/careers?category=${value}`}
+          active={current === value}
+        >
+          {label}
+        </FilterPill>
+      ))}
+    </nav>
+  );
+}
+
+function FilterPill({
+  href,
+  active,
+  children,
+}: {
+  href: string;
+  active: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className={
+        active
+          ? 'bg-primary rounded-pill px-3 py-1.5 text-sm font-medium text-white'
+          : 'border-border text-ink-muted hover:text-ink rounded-pill border px-3 py-1.5 text-sm'
+      }
+    >
+      {children}
+    </Link>
   );
 }
 
@@ -72,7 +120,7 @@ function SearchResults({
       </p>
       <ul className="mt-4 grid gap-4 sm:grid-cols-2">
         {hits.map((hit) => (
-          <CareerCard
+          <CareerLibraryCard
             key={hit.career.slug}
             career={hit.career}
             matchedOn={hit.matchedOn}
@@ -83,17 +131,10 @@ function SearchResults({
   );
 }
 
-/**
- * §12.3 no-result state.
- *
- * Logging the missing-career request is Phase 6 work (it needs a database and
- * a rate limit). The copy already promises only what the MVP can do today —
- * nothing here claims the term was recorded, because it is not yet.
- */
 function NoResults({ query }: { query: string }) {
   return (
     <section aria-label="Nessun risultato" className="mt-10 max-w-prose">
-      <div className="border-rule bg-paper-sunk rounded border p-6">
+      <div className="border-border bg-surface-muted rounded-card border p-6">
         <h2 className="text-xl font-semibold">
           Questa professione non c’è ancora
         </h2>
@@ -107,8 +148,8 @@ function NoResults({ query }: { query: string }) {
         </p>
         <p className="mt-4">
           <Link
-            href="/careers"
-            className="text-accent underline underline-offset-4"
+            href="/student/careers"
+            className="text-primary underline underline-offset-4"
           >
             Guarda tutte quelle che abbiamo
           </Link>
@@ -126,37 +167,23 @@ function AllCareers({
   if (careers.length === 0) {
     return (
       <p className="text-ink-muted mt-10">
-        Non c’è ancora nessuna professione pubblicata.
+        Non c’è ancora nessuna professione in questa area.
       </p>
     );
   }
 
-  const byCategory = new Map<string, typeof careers>();
-  for (const career of careers) {
-    const bucket = byCategory.get(career.category) ?? [];
-    bucket.push(career);
-    byCategory.set(career.category, bucket);
-  }
-
   return (
-    <div className="mt-10 space-y-10">
+    <div className="mt-8">
       <p className="text-ink-muted">
         {careers.length === 1
-          ? '1 professione, divisa per area.'
-          : `${careers.length} professioni, divise per area.`}
+          ? '1 professione.'
+          : `${careers.length} professioni.`}
       </p>
-      {[...byCategory.entries()].map(([category, items]) => (
-        <section key={category} aria-label={CATEGORY_LABELS[category]}>
-          <h2 className="text-ink-muted text-sm font-semibold tracking-wide uppercase">
-            {CATEGORY_LABELS[category] ?? category}
-          </h2>
-          <ul className="mt-3 grid gap-4 sm:grid-cols-2">
-            {items.map((career) => (
-              <CareerCard key={career.slug} career={career} />
-            ))}
-          </ul>
-        </section>
-      ))}
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+        {careers.map((career) => (
+          <CareerLibraryCard key={career.slug} career={career} />
+        ))}
+      </ul>
     </div>
   );
 }

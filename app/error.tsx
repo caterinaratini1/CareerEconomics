@@ -24,15 +24,15 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
         <button
           type="button"
           onClick={reset}
-          className="bg-accent rounded px-5 py-2.5 font-medium text-white"
+          className="bg-primary rounded-control px-5 py-2.5 font-medium text-white"
         >
           Riprova
         </button>
         <Link
-          href="/careers"
-          className="border-rule rounded border px-5 py-2.5 font-medium"
+          href="/"
+          className="border-border rounded-control border px-5 py-2.5 font-medium"
         >
-          Sfoglia le professioni
+          Torna alla pagina iniziale
         </Link>
       </div>
     </div>

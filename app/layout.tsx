@@ -1,8 +1,15 @@
 import type { Metadata, Viewport } from 'next';
+import { Inter } from 'next/font/google';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SITE } from '@/lib/site';
 import './globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans-inter',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -38,7 +45,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={SITE.locale}>
+    <html
+      lang={SITE.locale}
+      className={inter.variable}
+      data-scroll-behavior="smooth"
+    >
       <body className="flex min-h-dvh flex-col">
         <a className="skip-link" href="#main">
           Vai al contenuto
