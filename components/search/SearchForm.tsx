@@ -24,13 +24,13 @@ export function SearchForm({
   return (
     <form action="/careers" method="get" role="search" className="w-full">
       <label htmlFor="career-search" className="block font-medium">
-        What career do you want to know about?
+        Quale lavoro vuoi conoscere?
       </label>
       <p id="career-search-hint" className="text-ink-muted mt-1 text-sm">
-        Try a job title in English or Italian — for example{' '}
-        <span className="font-medium">diplomat</span> or{' '}
-        <span className="font-medium">medico</span>. Small spelling mistakes are
-        fine.
+        Scrivi il nome di una professione, in italiano o in inglese — per
+        esempio <span className="font-medium">diplomatico</span> o{' '}
+        <span className="font-medium">sviluppatore</span>. Se sbagli qualche
+        lettera non è un problema.
       </p>
 
       <div className="mt-3 flex flex-col gap-2 sm:flex-row">
@@ -45,14 +45,14 @@ export function SearchForm({
           // sole purpose of the page; never on the homepage, where it would
           // move the caret away from content the reader is part-way through.
           autoFocus={autoFocus}
-          placeholder="e.g. diplomat, doctor, sviluppatore"
+          placeholder="es. diplomatico, medico, sviluppatore"
           className="border-rule bg-paper text-ink focus:border-accent min-w-0 flex-1 rounded border px-3 py-2.5 text-base"
         />
         <button
           type="submit"
           className="bg-accent rounded px-5 py-2.5 font-medium text-white"
         >
-          Search
+          Cerca
         </button>
       </div>
     </form>

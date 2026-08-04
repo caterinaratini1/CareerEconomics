@@ -31,7 +31,11 @@ describe('ClaimValue', () => {
 
   it('shows a verified value with its source and the date it was checked', () => {
     render(
-      <ClaimValue claim={verified} sources={SOURCES} label="qualifications">
+      <ClaimValue
+        claim={verified}
+        sources={SOURCES}
+        label="i titoli di studio richiesti"
+      >
         {(value) => <p>{value}</p>}
       </ClaimValue>,
     );
@@ -42,24 +46,28 @@ describe('ClaimValue', () => {
       'href',
       'https://example.com/navigation-aids',
     );
-    expect(screen.getByText(/Checked 1 July 2026/)).toBeInTheDocument();
+    expect(screen.getByText(/Verificata il 1 luglio 2026/)).toBeInTheDocument();
   });
 
   it('marks an unverified value as a draft in words, not only in colour', () => {
     const claim: Claim<string> = {
       state: 'unverified',
       value: 'Probably a technical qualification.',
-      note: 'Needs the authority page.',
+      note: 'Manca la pagina dell’ente.',
     };
     render(
-      <ClaimValue claim={claim} sources={SOURCES} label="qualifications">
+      <ClaimValue
+        claim={claim}
+        sources={SOURCES}
+        label="i titoli di studio richiesti"
+      >
         {(value) => <p>{value}</p>}
       </ClaimValue>,
     );
     expect(
-      screen.getByText(/not yet checked against a source/i),
+      screen.getByText(/non ancora verificata su una fonte/i),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Needs the authority page/)).toBeInTheDocument();
+    expect(screen.getByText(/Manca la pagina dell’ente/)).toBeInTheDocument();
   });
 
   it('states the gap rather than hiding the section when nothing is researched', () => {
@@ -69,13 +77,13 @@ describe('ClaimValue', () => {
       <ClaimValue
         claim={{ state: 'not_researched', note: 'Awaiting pay tables.' }}
         sources={SOURCES}
-        label="pay for this career"
+        label="gli stipendi di questa professione"
       >
         {() => <p>should never render</p>}
       </ClaimValue>,
     );
     expect(
-      screen.getByText(/have not researched pay for this career yet/i),
+      screen.getByText(/Non abbiamo ancora verificato gli stipendi/i),
     ).toBeInTheDocument();
     expect(screen.queryByText('should never render')).not.toBeInTheDocument();
   });
@@ -85,7 +93,7 @@ describe('ClaimValue', () => {
       <ClaimValue
         claim={{ state: 'not_researched', note: 'todo' }}
         sources={SOURCES}
-        label="pay"
+        label="gli stipendi"
       >
         {() => <span data-testid="value">42000</span>}
       </ClaimValue>,
@@ -98,12 +106,12 @@ describe('QuickFacts', () => {
   it('shows every fact row, including ones with no data', () => {
     render(<QuickFacts profile={PROFILE} />);
     for (const term of [
-      'Typical time to get in',
-      'Starting pay',
-      'Experienced pay',
-      'Education usually needed',
-      'How competitive',
-      'Where you work',
+      'Quanto tempo serve per entrarci',
+      'Stipendio iniziale',
+      'Stipendio con esperienza',
+      'Studi di solito necessari',
+      'Quanto è competitivo',
+      'Dove si lavora',
     ]) {
       expect(screen.getByText(term)).toBeInTheDocument();
     }
@@ -112,16 +120,16 @@ describe('QuickFacts', () => {
   it('formats pay as a range with the tax basis spelled out', () => {
     render(<QuickFacts profile={PROFILE} />);
     expect(
-      screen.getByText(/€22,000–€26,000 a year before tax/),
+      screen.getByText(/22\.000\s€–26\.000\s€ lordi all’anno/),
     ).toBeInTheDocument();
   });
 
-  it('says "Not researched" instead of leaving a blank row', () => {
+  it('says "Non verificato" instead of leaving a blank row', () => {
     const career = makeCareer((c) => {
       c.countryProfiles[0]!.salary = { state: 'not_researched', note: 'todo' };
     });
     render(<QuickFacts profile={career.countryProfiles[0]!} />);
-    expect(screen.getAllByText('Not researched').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Non verificato').length).toBeGreaterThan(0);
   });
 
   it('flags an unchecked draft value in the facts table', () => {
@@ -133,7 +141,7 @@ describe('QuickFacts', () => {
       };
     });
     render(<QuickFacts profile={career.countryProfiles[0]!} />);
-    expect(screen.getByText(/unchecked draft/i)).toBeInTheDocument();
+    expect(screen.getByText(/bozza non verificata/i)).toBeInTheDocument();
   });
 });
 
@@ -149,17 +157,19 @@ describe('PathwaySteps', () => {
 
   it('labels how compulsory each step is, in words', () => {
     render(<PathwaySteps profile={PROFILE} />);
-    expect(screen.getAllByText('Legally required').length).toBeGreaterThan(0);
     expect(
-      screen.getAllByText(/You cannot do this job without it/).length,
+      screen.getAllByText('Obbligatorio per legge').length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText(/Senza questo non puoi fare questo lavoro/).length,
     ).toBeGreaterThan(0);
   });
 
   it('distinguishes an expected step from a required one', () => {
     render(<PathwaySteps profile={PROFILE} />);
-    expect(screen.getByText('Usually expected')).toBeInTheDocument();
+    expect(screen.getByText('Di solito richiesto')).toBeInTheDocument();
     expect(
-      screen.getByText(/Not a legal rule, but almost everyone has it/),
+      screen.getByText(/Non è una regola di legge, ma ce l’hanno quasi tutti/),
     ).toBeInTheDocument();
   });
 });
@@ -172,21 +182,23 @@ describe('SourceList', () => {
         name: 'Coastal navigation aids: staffing and maintenance',
       }),
     ).toBeInTheDocument();
-    expect(screen.getAllByText(/we checked it on 1 July 2026/).length).toBe(2);
+    expect(
+      screen.getAllByText(/l’abbiamo consultata il 1 luglio 2026/).length,
+    ).toBe(2);
   });
 
   it('says plainly when a page has no sources yet', () => {
     const career = makeCareer((c) => {
       c.sources = [];
       c.status = 'draft';
-      c.editorial.openQuestions = ['Find the official pay tables.'];
+      c.editorial.openQuestions = ['Trovare le tabelle retributive ufficiali.'];
     });
     render(<SourceList career={career} />);
     expect(
-      screen.getByText(/No sources are attached to this page yet/i),
+      screen.getByText(/non è ancora collegata nessuna fonte/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Find the official pay tables/),
+      screen.getByText(/Trovare le tabelle retributive ufficiali/),
     ).toBeInTheDocument();
   });
 });
@@ -202,10 +214,10 @@ describe('SearchForm', () => {
   it('gives the search field a real label and a described hint', () => {
     render(<SearchForm />);
     const input = screen.getByRole('searchbox', {
-      name: /what career do you want to know about/i,
+      name: /quale lavoro vuoi conoscere/i,
     });
     expect(input).toHaveAttribute('name', 'q');
-    expect(input).toHaveAccessibleDescription(/diplomat/i);
+    expect(input).toHaveAccessibleDescription(/diplomatico/i);
   });
 
   it('keeps the previous query in the box after a search', () => {

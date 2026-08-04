@@ -33,7 +33,7 @@ export function CareerCard({
 
       {showMatch && (
         <p className="text-ink-muted mt-1 text-sm">
-          Also known as <span className="font-medium">{matchedOn}</span>
+          Detto anche <span className="font-medium">{matchedOn}</span>
         </p>
       )}
 
@@ -44,16 +44,14 @@ export function CareerCard({
           <Badge>{CATEGORY_LABELS[career.category] ?? career.category}</Badge>
         </li>
         {career.timeToEnterLabel && (
-          <li className="text-ink-muted">
-            · {career.timeToEnterLabel} to enter
-          </li>
+          <li className="text-ink-muted">· {career.timeToEnterLabel}</li>
         )}
         {career.educationLabel && (
           <li className="text-ink-muted">· {career.educationLabel}</li>
         )}
         {career.status !== 'published' && (
           <li>
-            <Badge tone="draft">Draft</Badge>
+            <Badge tone="draft">Bozza</Badge>
           </li>
         )}
       </ul>

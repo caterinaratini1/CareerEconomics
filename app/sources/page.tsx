@@ -5,8 +5,8 @@ import { SourceList } from '@/components/career/SourceList';
 import { careerRepository, loadAllCareers } from '@/lib/content/repository';
 
 export const metadata: Metadata = {
-  title: 'Sources',
-  description: 'Every source used across the site, grouped by career.',
+  title: 'Fonti',
+  description: 'Tutte le fonti usate nel sito, raggruppate per professione.',
 };
 
 /**
@@ -25,19 +25,20 @@ export default async function SourcesPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-3xl font-bold tracking-tight">Sources</h1>
+      <h1 className="text-3xl font-bold tracking-tight">Fonti</h1>
 
       <Prose>
         <p className="text-ink-muted mt-4 text-lg">
-          Everything we cite, in one place. {total === 0 ? 'None yet — ' : ''}
-          see{' '}
+          Tutto quello che citiamo, in un unico posto.{' '}
+          {total === 0 ? 'Per ora nessuna fonte: ' : ''}
+          vedi{' '}
           <Link
             href="/methodology"
             className="text-accent underline underline-offset-4"
           >
-            how we research careers
+            come lavoriamo
           </Link>{' '}
-          for which kinds of source we accept and why.
+          per sapere quali tipi di fonte accettiamo e perché.
         </p>
       </Prose>
 

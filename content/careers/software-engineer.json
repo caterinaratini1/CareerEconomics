@@ -1,215 +1,214 @@
 {
   "slug": "software-engineer",
-  "canonicalName": "Software engineer",
+  "canonicalName": "Sviluppatore software",
   "category": "technology-and-design",
   "status": "draft",
 
   "aliases": [
-    { "text": "software engineer", "language": "en" },
-    { "text": "software developer", "language": "en" },
-    { "text": "programmer", "language": "en" },
-    { "text": "coder", "language": "en" },
-    { "text": "web developer", "language": "en" },
-    { "text": "backend developer", "language": "en" },
-    { "text": "frontend developer", "language": "en" },
-    { "text": "full stack developer", "language": "en" },
-    { "text": "app developer", "language": "en" },
     { "text": "sviluppatore", "language": "it" },
     { "text": "sviluppatore software", "language": "it" },
     { "text": "programmatore", "language": "it" },
     { "text": "ingegnere informatico", "language": "it" },
     { "text": "informatico", "language": "it" },
     { "text": "sviluppatore web", "language": "it" },
-    { "text": "perito informatico", "language": "it" }
+    { "text": "perito informatico", "language": "it" },
+    { "text": "sviluppatore app", "language": "it" },
+    { "text": "software engineer", "language": "en" },
+    { "text": "software developer", "language": "en" },
+    { "text": "programmer", "language": "en" },
+    { "text": "web developer", "language": "en" },
+    { "text": "backend developer", "language": "en" },
+    { "text": "frontend developer", "language": "en" },
+    { "text": "full stack developer", "language": "en" }
   ],
 
-  "oneSentence": "A software engineer designs, builds and maintains the programs that run websites, apps, devices and the systems businesses depend on.",
+  "oneSentence": "Lo sviluppatore software progetta, costruisce e mantiene i programmi che fanno funzionare siti, app, dispositivi e i sistemi su cui si reggono le aziende.",
 
-  "plainLanguageSummary": "A software engineer writes and maintains the code behind the software people and organisations use. The word 'engineer' is doing real work in that title: the job is much less about typing code than about deciding how a system should be structured so it keeps working as it grows, and figuring out why it stopped working when it does. It is unusual among well-paid careers in that there is no licence and no legally required qualification — what employers assess is whether you can build things, which can be demonstrated through a degree, a technical school, an apprenticeship, or work you did yourself. That openness is real, but it cuts both ways: without a formal gate, the burden of proving competence falls entirely on you.",
+  "plainLanguageSummary": "Lo sviluppatore software scrive e mantiene il codice dietro i programmi che usano persone e organizzazioni. Il lavoro consiste molto meno nel digitare codice e molto di più nel decidere come va costruito un sistema perché continui a funzionare mentre cresce, e nel capire perché ha smesso di funzionare quando succede. È insolito, fra i lavori ben pagati, perché non richiede nessuna abilitazione né alcun titolo obbligatorio: quello che conta è saper dimostrare che sai costruire cose, con una laurea, un istituto tecnico, un apprendistato o progetti tuoi. Questa apertura è reale, ma taglia da due parti: senza un filtro formale, dimostrare di essere capace tocca tutto a te.",
 
   "whatTheyDo": {
-    "overview": "Most of the job is not writing new code. It is understanding code that already exists, often written by someone who has left, and changing it without breaking anything. Around that sit several distinct activities: working out what is actually needed, because the first description of a problem is rarely the real one; designing how a system should be structured, which is where the consequential decisions are made; reviewing colleagues' work; testing; and investigating failures in systems that are already running. Engineers usually specialise — in what users see, in the servers and data behind it, in mobile devices, in infrastructure, or in embedded software inside physical products — and those specialisations differ more than the shared title suggests.",
+    "overview": "La maggior parte del lavoro non è scrivere codice nuovo. È capire codice che esiste già, spesso scritto da qualcuno che non lavora più lì, e modificarlo senza rompere niente. Intorno a questo ci sono altre attività distinte: capire che cosa serve davvero, perché la prima descrizione di un problema quasi mai è quella vera; progettare la struttura di un sistema, dove si prendono le decisioni con conseguenze durature; rivedere il lavoro dei colleghi; testare; indagare sui guasti dei sistemi in funzione. Di solito ci si specializza — in ciò che l’utente vede, nei server e nei dati dietro, nel mobile, nelle infrastrutture o nel software dentro oggetti fisici — e queste specializzazioni differiscono più di quanto suggerisca il titolo comune.",
     "concreteExamples": [
-      "Tracing why a payment page fails for a small subset of users, which turns out to be a difference in how one browser handles a date.",
-      "Splitting a large, slow system into smaller parts so that a change to one does not require redeploying everything.",
-      "Reviewing a colleague's change and noticing it would work today but break when the number of users doubles.",
-      "Turning a vague request — 'make search better' — into a specific, testable definition of what better means.",
-      "Being on call when a production system fails at night, diagnosing it under time pressure, and writing up afterwards what would prevent a repeat."
+      "Capire perché la pagina di pagamento non funziona per una piccola parte degli utenti, e scoprire che dipende da come un solo browser gestisce le date.",
+      "Dividere un sistema grande e lento in parti più piccole, così che modificarne una non richieda di rimettere online tutto il resto.",
+      "Rivedere la modifica di un collega e accorgersi che funzionerebbe oggi ma si romperebbe quando gli utenti raddoppieranno.",
+      "Trasformare una richiesta vaga — «miglioriamo la ricerca» — in una definizione precisa e verificabile di che cosa significhi «meglio».",
+      "Essere reperibile quando un sistema in produzione si guasta di notte, diagnosticarlo sotto pressione e scrivere poi che cosa eviterebbe che riaccada."
     ]
   },
 
   "typicalDay": {
-    "overview": "A common day is a mix of a few hours of focused work, some collaboration, and some interruption. Many teams start with a short daily meeting, then people work through their current tasks — writing code, reviewing other people's, or investigating a problem. Focused blocks matter more in this job than in most, because reconstructing a complex system in your head takes time and an interruption costs more than the minutes it occupies. Afternoons tend to be more collaborative: design discussions, pairing, planning. The rhythm changes completely when something is broken in production.",
+    "overview": "Una giornata tipica mescola qualche ora di lavoro concentrato, un po’ di collaborazione e diverse interruzioni. Molti gruppi iniziano con una riunione breve, poi ciascuno lavora sui propri compiti: scrivere codice, rivedere quello degli altri o indagare su un problema. I blocchi di concentrazione contano più che in altri lavori, perché ricostruire un sistema complesso nella propria testa richiede tempo e un’interruzione costa molto più dei minuti che occupa. I pomeriggi tendono a essere più collaborativi: discussioni di progettazione, lavoro in coppia, pianificazione. Il ritmo cambia completamente quando qualcosa si rompe in produzione.",
     "commonTasks": [
-      "Reading and understanding existing code",
-      "Writing new code and tests",
-      "Reviewing colleagues' changes and responding to reviews of your own",
-      "Debugging — reproducing a problem, narrowing it down, fixing it",
-      "Design discussions about how something should be built",
-      "Writing documentation and technical notes",
-      "Deploying changes and monitoring whether they behaved as expected",
-      "Meetings with designers, product managers or clients about what to build"
+      "Leggere e capire codice già esistente",
+      "Scrivere codice nuovo e test",
+      "Rivedere le modifiche dei colleghi e rispondere a quelle sul proprio lavoro",
+      "Fare debug: riprodurre un problema, circoscriverlo, risolverlo",
+      "Discutere come va costruita una cosa",
+      "Scrivere documentazione e note tecniche",
+      "Pubblicare le modifiche e controllare che si comportino come previsto",
+      "Riunioni con designer, product manager o clienti su che cosa costruire"
     ],
-    "howMuchItVaries": "The variation is driven by employer type more than by specialty. A startup means broad responsibility, fast change, and less structure. A large company means deeper specialisation, more process, and more coordination. A consultancy means changing client and codebase every few months. Remote and hybrid work are common in this field, more so than in most, which genuinely changes daily life. On-call responsibility — being contactable outside hours when a system fails — applies in some roles and not others, and is worth asking about explicitly before accepting a job."
+    "howMuchItVaries": "Le differenze dipendono dal tipo di azienda più che dalla specializzazione. Una startup significa responsabilità ampie, cambiamenti rapidi e poca struttura. Una grande azienda significa specializzazione più profonda, più procedure, più coordinamento. Una società di consulenza significa cambiare cliente e codice ogni pochi mesi. Il lavoro da remoto e ibrido è più diffuso qui che quasi ovunque, e cambia davvero la vita quotidiana. La reperibilità fuori orario riguarda alcuni ruoli e non altri: chiedila esplicitamente prima di accettare un lavoro."
   },
 
   "suitability": {
     "suitsYouIf": [
-      "You enjoy the process of narrowing down a problem, not only the moment it is solved",
-      "You can tolerate being wrong repeatedly on the way to being right",
-      "You like building things that other people use",
-      "You are willing to keep learning, because a large part of what you know now will be outdated in ten years",
-      "You can explain a technical decision to someone who is not technical"
+      "Ti piace il percorso per circoscrivere un problema, non solo il momento in cui lo risolvi",
+      "Sopporti di sbagliare più volte prima di arrivare alla soluzione giusta",
+      "Ti piace costruire cose che altre persone useranno",
+      "Sei disposto a continuare a studiare, perché buona parte di ciò che sai oggi sarà superato fra dieci anni",
+      "Sai spiegare una scelta tecnica a chi non è tecnico"
     ],
     "mayNotSuitYouIf": [
-      "You want most of your day to involve people rather than screens",
-      "You want a fixed body of knowledge that stays valid across your career",
-      "You find long stretches of sitting and concentrating physically difficult",
-      "You want work that visibly ends, since software is maintained rather than finished",
-      "You dislike having your work critiqued in detail, which code review does routinely"
+      "Vuoi passare la maggior parte della giornata con le persone invece che davanti a uno schermo",
+      "Vuoi un insieme di conoscenze fisso che resti valido per tutta la carriera",
+      "Stare seduto e concentrato a lungo ti risulta fisicamente pesante",
+      "Vuoi un lavoro che finisca visibilmente, perché il software si mantiene e non si conclude",
+      "Non sopporti che il tuo lavoro venga criticato nel dettaglio, cosa che la revisione del codice fa di routine"
     ]
   },
 
   "advantages": [
     {
-      "title": "More than one legitimate way in",
-      "detail": "There is no licence and no mandatory degree. University, technical secondary school, apprenticeships and self-directed learning all lead into the field, which makes it unusually reachable for students without access to an expensive path."
+      "title": "Più di una strada legittima per entrare",
+      "detail": "Non serve nessuna abilitazione né una laurea obbligatoria. Università, istituto tecnico, apprendistato e studio da autodidatta portano tutti nel settore, il che lo rende insolitamente raggiungibile anche senza percorsi costosi."
     },
     {
-      "title": "Strong demand and pay relative to training length",
-      "detail": "Compared with regulated professions, the time between starting to learn and earning a full salary is short. Demand has been sustained across the sector for a long time, though it is not immune to downturns."
+      "title": "Domanda alta e retribuzione rispetto alla durata della formazione",
+      "detail": "Rispetto alle professioni regolamentate, il tempo fra l’inizio dello studio e il primo stipendio pieno è breve. La domanda è rimasta alta a lungo, anche se il settore non è immune dalle crisi."
     },
     {
-      "title": "Flexible working is genuinely common",
-      "detail": "Remote and hybrid arrangements are more available here than in most fields, which affects where you can live and how you organise your life."
+      "title": "La flessibilità è davvero diffusa",
+      "detail": "Il lavoro da remoto e ibrido è più disponibile qui che nella maggior parte dei settori, e questo incide su dove puoi vivere e su come organizzi la tua vita."
     },
     {
-      "title": "Skills transfer across industries",
-      "detail": "Software is built in healthcare, finance, gaming, agriculture and public services. You can change the domain you work in without changing profession."
+      "title": "Competenze trasferibili fra settori",
+      "detail": "Si scrive software nella sanità, nella finanza, nei videogiochi, nell’agricoltura e nella pubblica amministrazione. Puoi cambiare ambito senza cambiare professione."
     },
     {
-      "title": "You can see what you built",
-      "detail": "The feedback loop is short. Something that did not exist in the morning exists by the evening, which is rarer than it sounds."
+      "title": "Vedi quello che hai costruito",
+      "detail": "Il ciclo di riscontro è breve. Qualcosa che la mattina non esisteva la sera esiste, e non è così scontato come sembra."
     }
   ],
 
   "disadvantages": [
     {
-      "title": "Continuous obsolescence",
-      "detail": "Tools and frameworks change constantly, and staying current requires effort that often happens outside working hours. Some of what you learn deeply will be irrelevant within a few years."
+      "title": "Tutto invecchia in fretta",
+      "detail": "Strumenti e tecnologie cambiano di continuo, e restare aggiornati richiede un impegno che spesso finisce fuori orario. Parte di quello che avrai imparato bene sarà irrilevante nel giro di pochi anni."
     },
     {
-      "title": "No formal gate means no formal proof",
-      "detail": "The absence of a licence cuts both ways. Nobody can stop you entering, but nobody certifies you either, so early hiring leans on interviews and portfolios that are inconsistent and often unfair."
+      "title": "Nessun filtro formale significa nessuna prova formale",
+      "detail": "L’assenza di un albo taglia da due parti. Nessuno può impedirti di entrare, ma nessuno ti certifica, quindi le prime assunzioni si basano su colloqui e portfolio che sono incoerenti fra loro e spesso poco equi."
     },
     {
-      "title": "Sedentary and screen-heavy",
-      "detail": "Long periods of sitting and concentrated screen use carry well-documented physical costs — back, wrist and eye problems are common and worth taking seriously early."
+      "title": "Sedentario e davanti allo schermo",
+      "detail": "Lunghi periodi seduti e un uso intenso dello schermo hanno costi fisici documentati: problemi a schiena, polsi e vista sono comuni e vanno presi sul serio fin da subito."
     },
     {
-      "title": "On-call and production pressure",
-      "detail": "In many roles you are responsible for systems that must keep running, which can mean being contactable outside working hours and handling failures at bad times."
+      "title": "Reperibilità e pressione della produzione",
+      "detail": "In molti ruoli sei responsabile di sistemi che devono restare in funzione, il che può significare essere raggiungibile fuori orario e gestire guasti nei momenti peggiori."
     },
     {
-      "title": "The market is cyclical",
-      "detail": "Demand has been strong for years but is not guaranteed. Hiring in the sector contracts during downturns, and entry-level roles are usually the first to thin out."
+      "title": "Il mercato è ciclico",
+      "detail": "La domanda è forte da anni ma non è garantita. Nelle fasi di crisi le assunzioni nel settore si riducono, e i ruoli per chi è alle prime armi sono di solito i primi a diminuire."
     },
     {
-      "title": "Much of the work is invisible",
-      "detail": "A large share of effort goes into maintenance, migration and preventing problems, none of which is visible to anyone outside the team when it succeeds."
+      "title": "Gran parte del lavoro è invisibile",
+      "detail": "Una quota consistente dell’impegno va in manutenzione, migrazioni e prevenzione dei problemi: quando funziona, nessuno fuori dal gruppo se ne accorge."
     }
   ],
 
   "misconceptions": [
     {
-      "belief": "You need to be exceptional at mathematics.",
-      "reality": "Most software work needs solid logical reasoning rather than advanced mathematics. Some specialisations — graphics, cryptography, machine learning, scientific computing — are genuinely mathematical, but a great deal of professional software engineering is not. Confusing the two puts off students who would do well."
+      "belief": "Bisogna essere bravissimi in matematica.",
+      "reality": "La maggior parte del lavoro richiede solido ragionamento logico più che matematica avanzata. Alcune specializzazioni — grafica, crittografia, intelligenza artificiale, calcolo scientifico — sono davvero matematiche, ma gran parte dello sviluppo software professionale non lo è. Confondere le due cose scoraggia ragazzi e ragazze che se la caverebbero benissimo."
     },
     {
-      "belief": "Software engineers work alone.",
-      "reality": "Almost all professional software is built by teams. Code review, design discussion, and explaining technical constraints to non-technical colleagues are daily activities. Engineers who cannot communicate hit a ceiling early, regardless of technical ability."
+      "belief": "Gli sviluppatori lavorano da soli.",
+      "reality": "Quasi tutto il software professionale è costruito da gruppi. La revisione del codice, le discussioni di progettazione e lo spiegare i vincoli tecnici a colleghi non tecnici sono attività quotidiane. Chi non sa comunicare trova presto un tetto, per quanto sia bravo tecnicamente."
     },
     {
-      "belief": "You must start coding as a child to be any good.",
-      "reality": "Starting early helps, as it does anywhere, but people enter this field successfully from other degrees and other careers in their twenties and thirties. What matters is sustained practice building real things, not the age at which it started."
+      "belief": "Bisogna aver iniziato a programmare da bambini per essere bravi.",
+      "reality": "Iniziare presto aiuta, come ovunque, ma si entra in questo settore con successo anche a venti o trent’anni, da altri studi o da altri lavori. Quello che conta è la pratica costante nel costruire cose vere, non l’età in cui è cominciata."
     },
     {
-      "belief": "AI tools mean the career is disappearing.",
-      "reality": "These tools change what the day-to-day work looks like and raise the value of judgement — deciding what to build, whether a solution is correct, and how a system should be structured — relative to producing code by hand. That is a genuine shift and it is reasonable to weigh it. But it is a change in the work rather than an established disappearance of it, and anyone claiming to know the ten-year outcome, in either direction, is guessing."
+      "belief": "Con l’intelligenza artificiale questo lavoro sta sparendo.",
+      "reality": "Questi strumenti cambiano l’aspetto del lavoro quotidiano e aumentano il valore del giudizio — decidere che cosa costruire, capire se una soluzione è corretta, scegliere come strutturare un sistema — rispetto allo scrivere codice a mano. È un cambiamento reale ed è legittimo tenerne conto. Ma è un cambiamento del lavoro, non una sua scomparsa accertata, e chiunque dica di sapere come andrà fra dieci anni, in un senso o nell’altro, sta tirando a indovinare."
     },
     {
-      "belief": "A computer science degree is required.",
-      "reality": "It is a common and useful route, and some employers do filter on it, but it is not legally required and many working engineers do not have one. Technical secondary schools, apprenticeships and demonstrated project work are all real routes in."
+      "belief": "Serve una laurea in informatica.",
+      "reality": "È un percorso comune e utile, e alcune aziende filtrano davvero su questo, ma non è obbligatorio per legge e molti sviluppatori che lavorano non ce l’hanno. Istituti tecnici, ITS, apprendistati e progetti dimostrabili sono tutte strade reali per entrare."
     }
   ],
 
   "skills": [
     {
-      "name": "Problem decomposition",
+      "name": "Scomporre i problemi",
       "importance": "very-high",
-      "why": "Breaking a large, vague problem into small solvable pieces is the skill that separates engineers who can handle scale from those who cannot."
+      "why": "Dividere un problema grande e vago in pezzi piccoli e risolvibili è ciò che distingue chi regge la complessità da chi non la regge."
     },
     {
-      "name": "Debugging",
+      "name": "Debug",
       "importance": "very-high",
-      "why": "Finding out why something does not work occupies more professional time than writing new code does."
+      "why": "Scoprire perché una cosa non funziona occupa più tempo professionale dello scrivere codice nuovo."
     },
     {
-      "name": "Reading other people's code",
+      "name": "Leggere il codice degli altri",
       "importance": "very-high",
-      "why": "You spend far more time understanding existing systems than writing new ones, and this is the skill least practised at school."
+      "why": "Passi molto più tempo a capire sistemi esistenti che a scriverne di nuovi, ed è la capacità meno allenata a scuola."
     },
     {
-      "name": "Communication",
+      "name": "Comunicazione",
       "importance": "high",
-      "why": "You must explain technical trade-offs to non-technical colleagues and write things down clearly enough for someone else to maintain."
+      "why": "Devi spiegare compromessi tecnici a colleghi non tecnici e scrivere in modo abbastanza chiaro perché qualcun altro possa mantenere il tuo lavoro."
     },
     {
-      "name": "Version control and collaboration tools",
+      "name": "Controllo di versione e strumenti di collaborazione",
       "importance": "high",
-      "why": "Working in a team on shared code is impossible without them and they are assumed knowledge from the first day of any job."
+      "why": "Lavorare in gruppo sullo stesso codice senza è impossibile, e si danno per scontati dal primo giorno di lavoro."
     },
     {
-      "name": "Testing",
+      "name": "Test",
       "importance": "high",
-      "why": "Knowing how to prove your code does what you think it does is what makes changing it later safe."
+      "why": "Saper dimostrare che il tuo codice fa quello che pensi è ciò che rende sicuro modificarlo in futuro."
     },
     {
-      "name": "System design",
+      "name": "Progettazione dei sistemi",
       "importance": "moderate",
-      "why": "Becomes central as you become more senior: choosing how the parts fit together determines what is easy or impossible later."
+      "why": "Diventa centrale con l’esperienza: scegliere come si incastrano le parti determina che cosa sarà facile o impossibile più avanti."
     },
     {
-      "name": "English",
+      "name": "Inglese",
       "importance": "high",
-      "why": "Documentation, error messages and most technical discussion are in English, and international teams are common in this field."
+      "why": "Documentazione, messaggi di errore e quasi tutta la discussione tecnica sono in inglese, e i gruppi internazionali sono comuni in questo settore."
     }
   ],
 
   "relatedCareers": [
     {
       "name": "Data scientist",
-      "howItDiffers": "Uses code to answer questions from data rather than to build systems. More statistics, more experiment design, and usually a stronger mathematical requirement."
+      "howItDiffers": "Usa il codice per rispondere a domande a partire dai dati, non per costruire sistemi. Più statistica, più progettazione di esperimenti e di solito una base matematica più forte."
     },
     {
-      "name": "Cybersecurity analyst",
-      "howItDiffers": "Focuses on finding and defending against weaknesses in systems rather than building features. Shares the technical base but the mindset is adversarial."
+      "name": "Analista di cybersicurezza",
+      "howItDiffers": "Si concentra sul trovare e difendere i punti deboli dei sistemi invece che sul costruire funzionalità. Base tecnica simile, ma la mentalità è quella di chi attacca."
     },
     {
-      "name": "UX/UI designer",
-      "howItDiffers": "Decides how software should look and behave for the person using it. Works closely with engineers but the craft is design research and interaction, not code."
+      "name": "Designer UX/UI",
+      "howItDiffers": "Decide come deve apparire e comportarsi il software per chi lo usa. Lavora a stretto contatto con gli sviluppatori, ma il mestiere è ricerca e progettazione dell’interazione, non codice."
     },
     {
-      "name": "IT systems administrator",
-      "howItDiffers": "Keeps existing infrastructure and services running rather than building new software. Often entered through certifications rather than a degree."
+      "name": "Sistemista",
+      "howItDiffers": "Tiene in funzione infrastrutture e servizi esistenti invece di costruire software nuovo. Spesso ci si arriva con certificazioni più che con una laurea."
     },
     {
       "name": "Product manager",
-      "howItDiffers": "Decides what should be built and why, coordinating engineering, design and business. Frequently entered from engineering after some years."
+      "howItDiffers": "Decide che cosa va costruito e perché, coordinando sviluppo, design e parte commerciale. Spesso ci si arriva dopo qualche anno da sviluppatore."
     },
     {
-      "name": "Electronic engineer",
-      "howItDiffers": "Works on physical hardware. Overlaps with software in embedded systems, but is a regulated engineering path with its own qualification route."
+      "name": "Ingegnere elettronico",
+      "howItDiffers": "Lavora sull’hardware fisico. Si sovrappone al software nei sistemi embedded, ma è un percorso di ingegneria regolamentato con il proprio iter di abilitazione."
     }
   ],
 
@@ -220,86 +219,86 @@
       "pathway": [
         {
           "stepNumber": 1,
-          "stage": "Upper secondary school",
-          "stageLabel": "Ages 14–19",
-          "title": "Finish upper secondary school",
-          "description": "A technical institute specialising in IT gives the most direct preparation and can lead straight to employment or to further study. A scientific upper secondary school is also a common route, particularly for students heading to university. Neither is required, and students from other schools do enter the field.",
+          "stage": "Scuola superiore",
+          "stageLabel": "14–19 anni",
+          "title": "Finire le superiori",
+          "description": "Un istituto tecnico a indirizzo informatico è la preparazione più diretta e può portare sia al lavoro sia agli studi successivi. Il liceo scientifico è un’altra strada comune, soprattutto per chi punta all’università. Nessuna delle due è obbligatoria, e ci si entra anche da altre scuole.",
           "requirement": "usually-expected",
-          "estimatedDuration": "5 years"
+          "estimatedDuration": "5 anni"
         },
         {
           "stepNumber": 2,
-          "stage": "Building evidence",
-          "stageLabel": "From around age 15",
-          "title": "Build things and keep them where they can be seen",
-          "description": "Because there is no licence, employers assess what you can demonstrate. A handful of finished projects that solve a real problem — published publicly with the code readable — is the closest thing this field has to a qualification, and it can be started years before any formal training ends.",
+          "stage": "Costruirsi delle prove",
+          "stageLabel": "Da circa 15 anni",
+          "title": "Costruire cose e tenerle dove si possano vedere",
+          "description": "Poiché non esiste un’abilitazione, i datori di lavoro valutano quello che sai dimostrare. Qualche progetto finito che risolve un problema vero, pubblicato con il codice leggibile, è la cosa più vicina a un titolo che questo settore abbia — e si può iniziare anni prima di finire qualsiasi percorso di studi.",
           "requirement": "usually-expected",
-          "estimatedDuration": "Ongoing"
+          "estimatedDuration": "Continuativo"
         },
         {
           "stepNumber": 3,
-          "stage": "Post-secondary training",
-          "stageLabel": "Ages 19–22",
-          "title": "Choose a route: university, higher technical institute, or apprenticeship",
-          "description": "A university degree in computer science or computer engineering is the most common route and the one most likely to satisfy employer filters and to be recognised abroad. A higher technical institute offers a shorter, more practical alternative aimed directly at employment. Apprenticeships combine paid work with training. All three lead into the profession; they differ in length, cost, and how much theory they cover.",
+          "stage": "Dopo le superiori",
+          "stageLabel": "19–22 anni",
+          "title": "Scegliere una strada: università, ITS o apprendistato",
+          "description": "Una laurea in informatica o ingegneria informatica è il percorso più comune e quello che più facilmente supera i filtri delle aziende e viene riconosciuto all’estero. Un ITS offre un’alternativa più breve e pratica, pensata direttamente per il lavoro. L’apprendistato unisce lavoro retribuito e formazione. Tutte e tre portano nella professione: cambiano durata, costo e quanta teoria coprono.",
           "requirement": "usually-expected",
-          "estimatedDuration": "2–5 years"
+          "estimatedDuration": "2–5 anni"
         },
         {
           "stepNumber": 4,
-          "stage": "First role",
-          "title": "Take a junior position or an internship",
-          "description": "Early roles are where you learn how professional software is actually built: working in a team, reviewing code, and maintaining systems you did not write. Selection typically involves technical interviews and practical exercises rather than credential checks.",
+          "stage": "Primo impiego",
+          "title": "Trovare una posizione junior o un tirocinio",
+          "description": "I primi ruoli sono dove impari come si costruisce davvero il software professionale: lavorare in gruppo, rivedere il codice e mantenere sistemi che non hai scritto tu. La selezione avviene di solito con colloqui tecnici ed esercizi pratici più che con il controllo dei titoli.",
           "requirement": "usually-expected",
-          "estimatedDuration": "1–3 years in the first role"
+          "estimatedDuration": "1–3 anni nel primo ruolo"
         },
         {
           "stepNumber": 5,
-          "stage": "Specialisation",
-          "title": "Specialise and take on more responsibility",
-          "description": "After a few years most engineers develop a focus — backend, frontend, mobile, infrastructure, data, embedded — and take on design decisions and mentoring. Progression from here splits between deeper technical work and management, and both are normal.",
+          "stage": "Specializzazione",
+          "title": "Specializzarsi e prendersi più responsabilità",
+          "description": "Dopo qualche anno quasi tutti sviluppano un ambito: backend, frontend, mobile, infrastrutture, dati, embedded. E si iniziano a prendere decisioni di progettazione e a seguire i più giovani. Da qui la crescita si divide fra approfondimento tecnico e ruoli di gestione: entrambe sono strade normali.",
           "requirement": "useful-but-optional",
-          "estimatedDuration": "Ongoing"
+          "estimatedDuration": "Continuativo"
         }
       ],
 
       "educationRoutes": [
         {
-          "name": "University degree in computer science or computer engineering",
+          "name": "Laurea in informatica o ingegneria informatica",
           "requirement": "usually-expected",
-          "description": "The most common route. Covers the theory behind the practice, is the qualification most likely to pass employer screening and to be recognised in other countries, and is the usual prerequisite for research or specialised technical fields.",
-          "notes": "Computer engineering sits within the regulated engineering framework, which has its own professional register. That register is not needed to work as a software engineer, but it matters for some employers and for certain public-sector roles."
+          "description": "Il percorso più comune. Copre la teoria dietro la pratica, è il titolo che più facilmente supera le selezioni e viene riconosciuto in altri Paesi, ed è il prerequisito abituale per la ricerca o per gli ambiti tecnici più specialistici.",
+          "notes": "L’ingegneria informatica rientra nella professione di ingegnere, che è regolamentata e ha un proprio albo. Quell’albo non serve per lavorare come sviluppatore software, ma conta per alcuni datori di lavoro e per certi ruoli nella pubblica amministrazione."
         },
         {
-          "name": "Technical secondary school specialising in IT",
+          "name": "Istituto tecnico a indirizzo informatico",
           "requirement": "alternative-route",
-          "description": "A five-year technical route that can lead directly into employment at nineteen or on to further study. Graduates enter the field with practical skills earlier than university graduates, and can add a degree later if they choose."
+          "description": "Un percorso di cinque anni che può portare direttamente al lavoro a diciannove anni oppure agli studi successivi. Chi esce da qui entra nel settore con competenze pratiche prima dei laureati, e può aggiungere una laurea più avanti se lo desidera."
         },
         {
-          "name": "Higher technical institute programme",
+          "name": "Percorso ITS",
           "requirement": "alternative-route",
-          "description": "A short, employment-focused post-secondary programme run in partnership with companies. Cheaper and faster than a degree, with a strong practical emphasis, though it covers less theory."
+          "description": "Un percorso post-diploma breve e orientato al lavoro, svolto in collaborazione con le aziende. Più economico e rapido di una laurea, con forte impronta pratica, anche se copre meno teoria."
         },
         {
-          "name": "Apprenticeship",
+          "name": "Apprendistato",
           "requirement": "alternative-route",
-          "description": "Combines paid employment with structured training. Suits students who want to earn while learning and who learn better on real work than in classrooms."
+          "description": "Unisce lavoro retribuito e formazione strutturata. Adatto a chi vuole guadagnare mentre impara e impara meglio sul lavoro vero che in aula."
         },
         {
-          "name": "Self-directed learning and a public portfolio",
+          "name": "Studio da autodidatta e portfolio pubblico",
           "requirement": "alternative-route",
-          "description": "A genuine route into the profession, and one people do use successfully. It is harder than it is often portrayed: without a course you must supply your own structure, and without a degree the first job is the difficult one — after that, experience is what employers assess."
+          "description": "È una strada reale, e c’è chi la percorre con successo. È più difficile di come viene raccontata: senza un corso devi darti da solo la struttura, e senza laurea il primo impiego è quello complicato — dopo, quello che i datori di lavoro valutano è l’esperienza."
         },
         {
-          "name": "Vendor and cloud certifications",
+          "name": "Certificazioni cloud e di prodotto",
           "requirement": "useful-but-optional",
-          "description": "Certifications from cloud and software vendors can help demonstrate specific skills, particularly for infrastructure roles. They complement demonstrated work rather than replacing it, and they expire."
+          "description": "Le certificazioni dei fornitori cloud e software possono aiutare a dimostrare competenze specifiche, soprattutto per i ruoli infrastrutturali. Integrano il lavoro dimostrabile invece di sostituirlo, e scadono."
         }
       ],
 
       "salary": {
         "state": "not_researched",
-        "note": "Needs entry, mid and senior gross annual pay (RAL) for Italy specifically, from a source that separates them by region — the difference between the north and the south, and between an Italian employer and a remote contract with a foreign one, is large enough that a single national range would be actively misleading. If a salary-aggregator dataset is used, its limitations must be recorded on the source and shown to the student, and it should be corroborated against the national collective agreement for the sector."
+        "note": "Servono le retribuzioni annue lorde (RAL) iniziali, intermedie e senior specifiche per l’Italia, da una fonte che le distingua per area geografica: la differenza fra Nord e Sud, e fra un datore di lavoro italiano e un contratto da remoto con uno estero, è abbastanza grande da rendere una singola forbice nazionale davvero fuorviante. Se si usa una banca dati aggregata sugli stipendi, i suoi limiti vanno registrati sulla fonte e mostrati allo studente, e il dato va confrontato con il contratto collettivo nazionale del settore."
       },
 
       "timeToEnter": {
@@ -307,71 +306,71 @@
         "value": {
           "minYears": 0,
           "maxYears": 5,
-          "notes": "The widest range of any career in this set, and the spread is the point rather than a defect. A technical institute graduate can be employed at nineteen, straight out of school. A university graduate typically starts at twenty-two or twenty-three. Someone entering through self-directed learning may take one to three years to reach a first job, depending heavily on what they can demonstrate."
+          "notes": "È l’intervallo più ampio fra le professioni di questa raccolta, e l’ampiezza è il dato, non un difetto. Un diplomato di istituto tecnico può essere assunto a diciannove anni, appena finita la scuola. Un laureato di solito inizia a ventidue o ventitré. Chi arriva da autodidatta può metterci da uno a tre anni per il primo impiego, a seconda soprattutto di che cosa riesce a dimostrare."
         },
-        "note": "Drafted from the structure of the available routes. Needs employment-outcome data for technical institute and university graduates in this field before publication, so the range rests on outcomes rather than on route lengths."
+        "note": "Ricavato dalla struttura dei percorsi disponibili. Prima della pubblicazione servono i dati sugli esiti occupazionali dei diplomati di istituto tecnico e dei laureati del settore, così che l’intervallo si basi sugli sbocchi reali e non sulla durata dei percorsi."
       },
 
       "educationSummary": {
         "state": "unverified",
-        "value": "No qualification is legally required. A university degree in computer science or computer engineering is the most common and most portable route, but technical secondary schools, higher technical institute programmes and apprenticeships all lead into the profession, and demonstrated project work carries real weight with employers.",
-        "note": "The claim that employers accept non-degree routes is well supported anecdotally but needs a labour-market source showing the actual qualification mix of people working in the field in Italy."
+        "value": "Non è richiesto per legge nessun titolo. Una laurea in informatica o ingegneria informatica è il percorso più comune e più spendibile all’estero, ma istituti tecnici, ITS e apprendistati portano tutti nella professione, e i progetti dimostrabili hanno un peso reale per i datori di lavoro.",
+        "note": "L’affermazione che i datori di lavoro accettino percorsi senza laurea è ben sostenuta dall’esperienza comune ma richiede una fonte sul mercato del lavoro che mostri la reale distribuzione dei titoli fra chi lavora nel settore in Italia."
       },
 
       "regulation": {
         "state": "unverified",
-        "value": "Software engineering is not a regulated profession. There is no licence, no protected title, and no register you must join to write software professionally. This is a genuine difference from careers such as medicine or law, and it is why employers assess demonstrated skill directly. Note that 'engineer' in the formal, regulated sense is a protected professional title in Italy with its own register and state examination; that regulated status applies to the engineering profession, not to working as a software developer.",
-        "note": "The distinction between the regulated engineering profession and unregulated software work is the single most confusing point on this page for Italian students and must be verified with the professional engineering body before publication."
+        "value": "Lo sviluppo software non è una professione regolamentata. Non esiste un’abilitazione, il titolo non è protetto e non c’è nessun albo a cui iscriversi per scrivere software professionalmente. È una differenza sostanziale rispetto a professioni come medicina o avvocatura, ed è il motivo per cui i datori di lavoro valutano direttamente le competenze dimostrate. Attenzione però: «ingegnere», in senso formale, è in Italia un titolo professionale protetto, con un proprio albo ed esame di Stato; quella regolamentazione riguarda la professione di ingegnere, non il lavoro di sviluppatore software.",
+        "note": "La distinzione fra la professione regolamentata di ingegnere e il lavoro non regolamentato di sviluppatore è il punto più confuso di questa pagina per gli studenti italiani e va verificato con l’ordine degli ingegneri prima della pubblicazione."
       },
 
       "competition": {
         "state": "unverified",
         "value": {
           "level": "moderate",
-          "whatThisMeans": "Unlike medicine or the diplomatic service there is no fixed number of places, so this is not a ranked competition — you are assessed against a standard, not against other candidates for a set quota. Demand for experienced engineers has been consistently strong. Entry-level roles are the competitive part: there are more first-time candidates than junior positions, and this is where hiring contracts first in a downturn. Candidates who can show finished work tend to have a substantially easier time at that first step."
+          "whatThisMeans": "A differenza di medicina o della carriera diplomatica non c’è un numero chiuso di posti: vieni valutato rispetto a uno standard, non contro altri candidati per una quota fissa. La domanda di sviluppatori con esperienza è costantemente alta. La parte competitiva è l’ingresso: ci sono più persone alle prime armi che posizioni junior, ed è qui che le assunzioni calano per prime nelle fasi di crisi. Chi mostra lavori finiti ha molta più facilità in quel primo passaggio."
         },
-        "note": "Needs labour-market data on vacancy rates and time-to-hire in the Italian IT sector, and specifically on entry-level competition, before the 'moderate' level is published as a finding rather than an impression."
+        "note": "Servono dati di mercato del lavoro su posti vacanti e tempi di assunzione nel settore IT italiano, e in particolare sulla competizione per i ruoli d’ingresso, prima di pubblicare il livello «media» come dato e non come impressione."
       },
 
       "outlook": {
         "state": "unverified",
-        "value": "Demand for software skills has been strong and is widely projected to remain so, with digitalisation continuing across sectors. The sector is cyclical, and AI coding tools are actively changing what junior work looks like — a real uncertainty that this page should state plainly rather than resolve.",
-        "note": "Needs a labour-market forecasting source. Any claim about the effect of AI on entry-level hiring must be sourced or removed entirely; it is the question students ask most and the one where an unsourced answer would do the most damage."
+        "value": "La domanda di competenze informatiche è forte e viene generalmente prevista in crescita, con la digitalizzazione che avanza in tutti i settori. Il settore è ciclico, e gli strumenti di intelligenza artificiale stanno cambiando l’aspetto del lavoro dei più giovani: è un’incertezza reale che questa pagina deve dichiarare apertamente invece di risolvere.",
+        "note": "Serve una fonte di previsione sul mercato del lavoro. Qualsiasi affermazione sull’effetto dell’intelligenza artificiale sulle assunzioni d’ingresso va documentata o rimossa del tutto: è la domanda che gli studenti fanno più spesso e quella in cui una risposta senza fonte farebbe più danno."
       },
 
       "workEnvironment": [
-        "Offices and co-working spaces",
-        "Remote and hybrid work, more common than in most fields",
-        "Startups, large companies, consultancies and public bodies",
-        "Occasional on-call responsibility outside working hours"
+        "Uffici e spazi di coworking",
+        "Lavoro da remoto e ibrido, più diffuso che nella maggior parte dei settori",
+        "Startup, grandi aziende, società di consulenza ed enti pubblici",
+        "A volte reperibilità fuori dall’orario di lavoro"
       ],
 
       "whatYouCanDoNow": [
         {
-          "action": "Build and finish one small project, then publish the code publicly",
-          "why": "Finishing matters more than ambition. One completed, working thing that someone else can run tells an employer more than three abandoned ambitious ones, and it is the closest thing this field has to a credential.",
-          "whenApplicable": "From age 14"
+          "action": "Costruisci e finisci un piccolo progetto, poi pubblica il codice",
+          "why": "Finire conta più dell’ambizione. Una cosa completata e funzionante che qualcun altro può usare dice a un datore di lavoro molto più di tre progetti ambiziosi abbandonati, ed è la cosa più simile a un titolo che questo settore abbia.",
+          "whenApplicable": "Da 14 anni in poi"
         },
         {
-          "action": "Learn one language properly rather than five superficially",
-          "why": "The concepts transfer between languages; the confidence does not. Depth in one makes the second one quick and the third one trivial."
+          "action": "Impara bene un linguaggio invece di cinque in superficie",
+          "why": "I concetti si trasferiscono da un linguaggio all’altro; la sicurezza no. La profondità in uno rende rapido il secondo e banale il terzo."
         },
         {
-          "action": "Learn version control early",
-          "why": "It is assumed knowledge from the first day of any job, it is rarely taught well at school, and it takes a weekend to learn the basics."
+          "action": "Impara presto il controllo di versione",
+          "why": "Si dà per scontato dal primo giorno di qualsiasi lavoro, a scuola si insegna raramente bene, e per le basi basta un fine settimana."
         },
         {
-          "action": "Try to fix a bug in someone else's open-source project",
-          "why": "It forces the skill the job is actually built on — understanding code you did not write — and it is the single most realistic simulation of professional work available to a student."
+          "action": "Prova a correggere un bug in un progetto open source di qualcun altro",
+          "why": "Ti costringe a usare la capacità su cui il lavoro si regge davvero — capire codice che non hai scritto — ed è la simulazione più realistica del lavoro professionale accessibile a uno studente."
         },
         {
-          "action": "Work on your English",
-          "why": "Documentation, error messages and technical discussion are overwhelmingly in English, and it widens the range of employers open to you.",
-          "whenApplicable": "From age 14"
+          "action": "Lavora sul tuo inglese",
+          "why": "Documentazione, messaggi di errore e discussioni tecniche sono in larghissima parte in inglese, e questo allarga la gamma di datori di lavoro a cui puoi rivolgerti.",
+          "whenApplicable": "Da 14 anni in poi"
         },
         {
-          "action": "Explain something you built to someone who is not technical",
-          "why": "Communication is what determines how far a technically competent engineer gets, and it is the part students most often assume does not matter."
+          "action": "Spiega qualcosa che hai costruito a una persona non tecnica",
+          "why": "La comunicazione determina fin dove arriva uno sviluppatore tecnicamente capace, ed è la parte che gli studenti danno più spesso per irrilevante."
         }
       ],
 
@@ -384,15 +383,15 @@
 
   "editorial": {
     "lastReviewedAt": "2026-08-04",
-    "reviewedBy": "unreviewed — initial structural draft",
+    "reviewedBy": "non ancora rivista — prima bozza strutturale",
     "openQuestions": [
-      "Verify with the professional engineering body how the protected title of 'engineer' relates to working as a software developer — this is the most confusing point on the page for Italian students.",
-      "Find a salary source that separates Italian IT pay by region and by seniority; a single national range would be misleading given north/south variation.",
-      "Attach the relevant national collective agreement for the IT sector as a corroborating salary source.",
-      "Find employment-outcome data for technical institute and university IT graduates to replace the estimated time-to-enter range.",
-      "Find labour-market data on entry-level competition in the Italian IT sector before publishing the 'moderate' competition level.",
-      "Source or remove the statement about AI tools affecting entry-level hiring — it is the question students ask most and the one most damaging to answer unsourced.",
-      "Confirm current higher technical institute programmes in IT and whether they should be named individually on the page."
+      "Verificare con l’ordine degli ingegneri come il titolo protetto di «ingegnere» si rapporti al lavoro di sviluppatore software: è il punto più confuso della pagina per gli studenti italiani.",
+      "Trovare una fonte sugli stipendi IT italiani che li distingua per area geografica e per anzianità; una singola forbice nazionale sarebbe fuorviante vista la differenza Nord-Sud.",
+      "Allegare il contratto collettivo nazionale del settore come fonte di riscontro sugli stipendi.",
+      "Trovare dati sugli esiti occupazionali dei diplomati di istituto tecnico informatico e dei laureati per sostituire la stima sui tempi di ingresso.",
+      "Trovare dati di mercato del lavoro sulla competizione per i ruoli d’ingresso nel settore IT italiano prima di pubblicare il livello «media».",
+      "Documentare o rimuovere l’affermazione sugli strumenti di intelligenza artificiale e le assunzioni d’ingresso: è la domanda più frequente e la più dannosa da lasciare senza fonte.",
+      "Verificare i percorsi ITS in ambito informatico attualmente attivi e decidere se citarli singolarmente nella pagina."
     ]
   }
 }

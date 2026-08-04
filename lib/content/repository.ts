@@ -148,10 +148,13 @@ export function profileForCountry(
 function timeToEnterLabel(profile: CountryProfile | null): string | null {
   if (!profile || !hasValue(profile.timeToEnter)) return null;
   const { minYears, maxYears } = profile.timeToEnter.value;
-  const format = (n: number) => (Number.isInteger(n) ? `${n}` : n.toFixed(1));
-  return minYears === maxYears
-    ? `${format(minYears)} years`
-    : `${format(minYears)}–${format(maxYears)} years`;
+  const format = (n: number) =>
+    Number.isInteger(n) ? `${n}` : n.toLocaleString('it-IT');
+  const years =
+    minYears === maxYears
+      ? format(minYears)
+      : `${format(minYears)}–${format(maxYears)}`;
+  return `${years} anni per entrarci`;
 }
 
 function educationLabel(profile: CountryProfile | null): string | null {

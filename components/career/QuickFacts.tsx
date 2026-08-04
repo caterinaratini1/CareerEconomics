@@ -1,6 +1,6 @@
 import { hasValue, type Claim } from '@/lib/content/claim';
 import type { CountryProfile, Salary } from '@/lib/content/schema';
-import { LEVEL_LABELS } from '@/lib/site';
+import { LEVEL_LABELS, SITE } from '@/lib/site';
 import { Fact } from '@/components/ui/primitives';
 
 /**
@@ -12,41 +12,41 @@ import { Fact } from '@/components/ui/primitives';
 export function QuickFacts({ profile }: { profile: CountryProfile }) {
   return (
     <dl className="border-rule bg-paper-sunk rounded border px-4">
-      <Fact term="Typical time to get in">
+      <Fact term="Quanto tempo serve per entrarci">
         <ClaimSummary claim={profile.timeToEnter}>
           {(value) =>
             value.minYears === value.maxYears
-              ? `About ${value.minYears} years after school`
-              : `About ${value.minYears}–${value.maxYears} years after school`
+              ? `Circa ${value.minYears} anni dopo la scuola`
+              : `Circa ${value.minYears}–${value.maxYears} anni dopo la scuola`
           }
         </ClaimSummary>
       </Fact>
 
-      <Fact term="Starting pay">
+      <Fact term="Stipendio iniziale">
         <ClaimSummary claim={profile.salary}>
           {(value) => formatBand(value, 'entry')}
         </ClaimSummary>
       </Fact>
 
-      <Fact term="Experienced pay">
+      <Fact term="Stipendio con esperienza">
         <ClaimSummary claim={profile.salary}>
           {(value) => formatBand(value, 'senior')}
         </ClaimSummary>
       </Fact>
 
-      <Fact term="Education usually needed">
+      <Fact term="Studi di solito necessari">
         <ClaimSummary claim={profile.educationSummary}>
           {(value) => truncate(value, 120)}
         </ClaimSummary>
       </Fact>
 
-      <Fact term="How competitive">
+      <Fact term="Quanto è competitivo">
         <ClaimSummary claim={profile.competition}>
           {(value) => LEVEL_LABELS[value.level] ?? value.level}
         </ClaimSummary>
       </Fact>
 
-      <Fact term="Where you work">{profile.workEnvironment.join(' · ')}</Fact>
+      <Fact term="Dove si lavora">{profile.workEnvironment.join(' · ')}</Fact>
     </dl>
   );
 }
@@ -67,7 +67,7 @@ function ClaimSummary<T>({
 }) {
   if (!hasValue(claim)) {
     return (
-      <span className="text-ink-muted font-normal italic">Not researched</span>
+      <span className="text-ink-muted font-normal italic">Non verificato</span>
     );
   }
   return (
@@ -75,7 +75,7 @@ function ClaimSummary<T>({
       {children(claim.value)}
       {claim.state === 'unverified' && (
         <span className="text-evidence-draft ml-2 text-xs font-normal">
-          (unchecked draft)
+          (bozza non verificata)
         </span>
       )}
     </>
@@ -83,18 +83,18 @@ function ClaimSummary<T>({
 }
 
 const BASIS_LABELS: Record<Salary['basis'], string> = {
-  'gross-annual': 'a year before tax',
-  'net-annual': 'a year after tax',
-  'gross-monthly': 'a month before tax',
-  'net-monthly': 'a month after tax',
+  'gross-annual': 'lordi all’anno',
+  'net-annual': 'netti all’anno',
+  'gross-monthly': 'lordi al mese',
+  'net-monthly': 'netti al mese',
 };
 
 export function formatBand(salary: Salary, which: 'entry' | 'senior'): string {
   const band = which === 'entry' ? salary.entry : (salary.senior ?? null);
-  if (!band) return 'Not researched';
+  if (!band) return 'Non verificato';
 
   const money = (n: number) =>
-    new Intl.NumberFormat('en-GB', {
+    new Intl.NumberFormat(SITE.intlLocale, {
       style: 'currency',
       currency: salary.currency,
       maximumFractionDigits: 0,

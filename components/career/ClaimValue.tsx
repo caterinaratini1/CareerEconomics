@@ -1,5 +1,6 @@
 import type { Claim } from '@/lib/content/claim';
 import type { Source } from '@/lib/content/schema';
+import { SITE } from '@/lib/site';
 
 /**
  * Renders a claim in a way that makes its evidence state impossible to miss.
@@ -25,7 +26,7 @@ interface ClaimValueProps<T> {
   sources: Source[];
   /** Renders the value once we know it exists. */
   children: (value: T) => React.ReactNode;
-  /** Used in the gap message, e.g. "salary information". */
+  /** Used in the gap message, e.g. "gli stipendi di questa professione". */
   label: string;
 }
 
@@ -39,11 +40,12 @@ export function ClaimValue<T>({
     return (
       <div className="border-evidence-missing/30 bg-evidence-missing-soft rounded border border-dashed p-4">
         <p className="text-ink font-medium">
-          We have not researched {label} yet.
+          Non abbiamo ancora verificato {label}.
         </p>
         <p className="text-ink-muted mt-1 text-sm">
-          We would rather leave this blank than guess. Until we have an official
-          source, this section stays empty on purpose.
+          Preferiamo lasciare vuoto piuttosto che tirare a indovinare. Finché
+          non troviamo una fonte ufficiale, questa sezione resta vuota di
+          proposito.
         </p>
       </div>
     );
@@ -53,12 +55,12 @@ export function ClaimValue<T>({
     return (
       <div className="border-evidence-draft/40 bg-evidence-draft-soft rounded border-l-4 p-4">
         <p className="text-evidence-draft mb-2 text-xs font-semibold tracking-wide uppercase">
-          Draft — not yet checked against a source
+          Bozza — non ancora verificata su una fonte
         </p>
         <div className="text-ink">{children(claim.value)}</div>
         <p className="text-ink-muted mt-3 text-sm">
-          Treat this as a working note rather than a fact. What is still needed:{' '}
-          {claim.note}
+          Consideralo un appunto di lavoro, non un dato certo. Cosa manca
+          ancora: {claim.note}
         </p>
       </div>
     );
@@ -89,7 +91,7 @@ function SourceCitations({
   if (sources.length === 0) return null;
   return (
     <p className="text-ink-muted mt-3 text-sm">
-      <span className="text-evidence-verified font-medium">Source: </span>
+      <span className="text-evidence-verified font-medium">Fonte: </span>
       {sources.map((source, index) => (
         <span key={source.id}>
           {index > 0 && '; '}
@@ -103,13 +105,13 @@ function SourceCitations({
           </a>
         </span>
       ))}
-      . Checked {formatDate(verifiedAt)}.
+      . Verificata il {formatDate(verifiedAt)}.
     </p>
   );
 }
 
 export function formatDate(iso: string): string {
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString(SITE.intlLocale, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',

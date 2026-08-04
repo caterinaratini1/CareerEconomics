@@ -33,6 +33,20 @@ this: a `regulation` claim citing only a statistics office is rejected.
 
 ## 2. Writing standards
 
+### Language
+
+Write in Italian. Interface and content are both Italian — see
+`docs/DECISIONS.md` ADR-0005. Use the informal *tu*: the reader is 14–19.
+
+Give every career **both Italian and English aliases**. Students type
+`software engineer` as readily as `sviluppatore`, especially in tech where the
+English title is what appears on job adverts. A test enforces that both exist.
+
+Italian prose runs longer than the English equivalent, and the ten-minute
+reading budget is already close to full on all three careers. Assume any new
+paragraph needs a cut somewhere else, and run `npm run validate:content` before
+you get attached to the wording.
+
 ### Plain language
 
 Written for a fifteen-year-old with no insider knowledge. If a term is

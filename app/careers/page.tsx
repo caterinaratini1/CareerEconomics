@@ -6,10 +6,10 @@ import { careerRepository } from '@/lib/content/repository';
 import { CATEGORY_LABELS } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'All careers',
+  title: 'Tutte le professioni',
   description:
-    'Browse or search every career profile. Each one explains what the job ' +
-    'involves, how to get into it, and what it pays.',
+    'Sfoglia o cerca tutte le schede. Ognuna spiega che cosa si fa in quel ' +
+    'lavoro, come ci si arriva e quanto si guadagna.',
 };
 
 /**
@@ -34,7 +34,7 @@ export default async function CareersPage({
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <h1 className="text-3xl font-bold tracking-tight">
-        {isSearching ? `Results for “${query}”` : 'All careers'}
+        {isSearching ? `Risultati per “${query}”` : 'Tutte le professioni'}
       </h1>
 
       <div className="mt-6 max-w-2xl">
@@ -62,11 +62,13 @@ function SearchResults({
   }
 
   return (
-    <section aria-label="Search results" className="mt-10">
+    <section aria-label="Risultati della ricerca" className="mt-10">
       {/* Announced politely so screen-reader users get the count without the
           page having to steal focus. */}
       <p role="status" className="text-ink-muted">
-        {hits.length} {hits.length === 1 ? 'career' : 'careers'} found.
+        {hits.length === 1
+          ? '1 professione trovata.'
+          : `${hits.length} professioni trovate.`}
       </p>
       <ul className="mt-4 grid gap-4 sm:grid-cols-2">
         {hits.map((hit) => (
@@ -90,25 +92,25 @@ function SearchResults({
  */
 function NoResults({ query }: { query: string }) {
   return (
-    <section aria-label="No results" className="mt-10 max-w-prose">
+    <section aria-label="Nessun risultato" className="mt-10 max-w-prose">
       <div className="border-rule bg-paper-sunk rounded border p-6">
         <h2 className="text-xl font-semibold">
-          We do not have this career yet
+          Questa professione non c’è ancora
         </h2>
         <p className="text-ink-muted mt-3">
-          Nothing matched “{query}”. We are building this up one carefully
-          checked career at a time, so the list is still short.
+          Non abbiamo trovato niente per “{query}”. Stiamo aggiungendo le schede
+          una alla volta, verificandole bene, quindi l’elenco è ancora corto.
         </p>
         <p className="text-ink-muted mt-3">
-          It is also worth trying a different word for the same job — many
-          careers have several names, and we may list it under another one.
+          Prova anche con un altro nome per lo stesso lavoro: molte professioni
+          si chiamano in più modi e potremmo averla messa sotto un altro nome.
         </p>
         <p className="mt-4">
           <Link
             href="/careers"
             className="text-accent underline underline-offset-4"
           >
-            See everything we do have
+            Guarda tutte quelle che abbiamo
           </Link>
         </p>
       </div>
@@ -123,7 +125,9 @@ function AllCareers({
 }) {
   if (careers.length === 0) {
     return (
-      <p className="text-ink-muted mt-10">No careers are published yet.</p>
+      <p className="text-ink-muted mt-10">
+        Non c’è ancora nessuna professione pubblicata.
+      </p>
     );
   }
 
@@ -137,8 +141,9 @@ function AllCareers({
   return (
     <div className="mt-10 space-y-10">
       <p className="text-ink-muted">
-        {careers.length} {careers.length === 1 ? 'career' : 'careers'}, grouped
-        by area.
+        {careers.length === 1
+          ? '1 professione, divisa per area.'
+          : `${careers.length} professioni, divise per area.`}
       </p>
       {[...byCategory.entries()].map(([category, items]) => (
         <section key={category} aria-label={CATEGORY_LABELS[category]}>

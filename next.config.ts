@@ -31,6 +31,11 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  // Next writes AGENTS.md / CLAUDE.md into the repo root on dev start. This
+  // project documents itself in README.md and docs/, so the generated files are
+  // duplicated guidance that will drift.
+  agentRules: false,
+
   // Career pages are pure content: no client bundle should ever be needed to
   // read one. Keeping this on surfaces accidental `use client` regressions in
   // the build output.

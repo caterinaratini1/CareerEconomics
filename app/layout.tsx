@@ -41,7 +41,7 @@ export default function RootLayout({
     <html lang={SITE.locale}>
       <body className="flex min-h-dvh flex-col">
         <a className="skip-link" href="#main">
-          Skip to content
+          Vai al contenuto
         </a>
         <SiteHeader />
         <main id="main" className="flex-1">

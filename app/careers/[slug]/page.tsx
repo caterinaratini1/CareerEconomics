@@ -46,7 +46,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const career = await careerRepository.getBySlug(slug);
-  if (!career) return { title: 'Career not found' };
+  if (!career) return { title: 'Professione non trovata' };
 
   const isDraft = career.status !== 'published';
   return {
@@ -88,11 +88,11 @@ export default async function CareerPage({
         <QuickFacts profile={profile} />
       </div>
 
-      <Section id="what" title="What does this person actually do?">
+      <Section id="what" title="Che cosa fa davvero chi svolge questo lavoro?">
         <Prose>
           <p>{career.plainLanguageSummary}</p>
           <p>{career.whatTheyDo.overview}</p>
-          <h3 className="pt-2 font-semibold">For example</h3>
+          <h3 className="pt-2 font-semibold">Per esempio</h3>
           <ul className="list-disc space-y-2 pl-5">
             {career.whatTheyDo.concreteExamples.map((example) => (
               <li key={example}>{example}</li>
@@ -101,30 +101,30 @@ export default async function CareerPage({
         </Prose>
       </Section>
 
-      <Section id="day" title="What does a typical day look like?">
+      <Section id="day" title="Com’è una giornata tipo?">
         <Prose>
           <p>{career.typicalDay.overview}</p>
-          <h3 className="pt-2 font-semibold">Common tasks</h3>
+          <h3 className="pt-2 font-semibold">Cosa si fa più spesso</h3>
           <ul className="list-disc space-y-1 pl-5">
             {career.typicalDay.commonTasks.map((task) => (
               <li key={task}>{task}</li>
             ))}
           </ul>
-          <h3 className="pt-2 font-semibold">How much this varies</h3>
+          <h3 className="pt-2 font-semibold">Quanto cambia da caso a caso</h3>
           <p>{career.typicalDay.howMuchItVaries}</p>
         </Prose>
       </Section>
 
       <Section
         id="how"
-        title="How do you become one?"
-        lead={`The usual route in ${SITE.country.name}. Each step is marked with how compulsory it really is.`}
+        title="Come si diventa?"
+        lead={`Il percorso più comune in ${SITE.country.name}. Per ogni passo trovi scritto quanto è davvero obbligatorio.`}
       >
         <PathwaySteps profile={profile} />
 
         <Disclosure
-          summary="Routes in, and which ones are actually required"
-          hint={`${profile.educationRoutes.length} routes`}
+          summary="I percorsi di studio, e quali servono davvero"
+          hint={`${profile.educationRoutes.length} percorsi`}
         >
           <ul className="space-y-5">
             {profile.educationRoutes.map((route) => (
@@ -145,44 +145,46 @@ export default async function CareerPage({
         </Disclosure>
       </Section>
 
-      <Section id="requirements" title="Education and legal requirements">
+      <Section id="requirements" title="Studi e requisiti di legge">
         <div className="space-y-6">
           <div>
-            <h3 className="mb-2 font-semibold">Qualifications</h3>
+            <h3 className="mb-2 font-semibold">Titoli di studio</h3>
             <ClaimValue
               claim={profile.educationSummary}
               sources={career.sources}
-              label="the qualifications needed"
+              label="i titoli di studio richiesti"
             >
               {(value) => <p className="max-w-prose">{value}</p>}
             </ClaimValue>
           </div>
 
           <div>
-            <h3 className="mb-2 font-semibold">Licensing and legal rules</h3>
+            <h3 className="mb-2 font-semibold">
+              Abilitazioni e regole di legge
+            </h3>
             <ClaimValue
               claim={profile.regulation}
               sources={career.sources}
-              label="the legal rules for this career"
+              label="le regole di legge di questa professione"
             >
               {(value) => <p className="max-w-prose">{value}</p>}
             </ClaimValue>
           </div>
 
           <div>
-            <h3 className="mb-2 font-semibold">How long it takes</h3>
+            <h3 className="mb-2 font-semibold">Quanto tempo ci vuole</h3>
             <ClaimValue
               claim={profile.timeToEnter}
               sources={career.sources}
-              label="how long this takes"
+              label="quanto tempo ci vuole"
             >
               {(value) => (
                 <div className="max-w-prose">
                   <p className="font-medium">
                     {value.minYears === value.maxYears
-                      ? `About ${value.minYears} years`
-                      : `About ${value.minYears}–${value.maxYears} years`}{' '}
-                    from the end of school
+                      ? `Circa ${value.minYears} anni`
+                      : `Circa ${value.minYears}–${value.maxYears} anni`}{' '}
+                    dalla fine della scuola superiore
                   </p>
                   <p className="mt-1">{value.notes}</p>
                 </div>
@@ -194,28 +196,28 @@ export default async function CareerPage({
 
       <Section
         id="pay"
-        title="What does it pay?"
-        lead="Pay is shown as a range, because it depends on where you work, who you work for, and how long you have been doing it."
+        title="Quanto si guadagna?"
+        lead="Lo stipendio è indicato come intervallo, perché dipende da dove lavori, per chi lavori e da quanti anni fai questo mestiere."
       >
         <ClaimValue
           claim={profile.salary}
           sources={career.sources}
-          label="pay for this career"
+          label="gli stipendi di questa professione"
         >
           {(salary) => <SalaryDetail salary={salary} />}
         </ClaimValue>
       </Section>
 
-      <Section id="competition" title="How competitive is it?">
+      <Section id="competition" title="Quanto è competitivo?">
         <ClaimValue
           claim={profile.competition}
           sources={career.sources}
-          label="how competitive this career is"
+          label="quanto è competitiva questa professione"
         >
           {(value) => (
             <div className="max-w-prose">
               <p className="font-medium">
-                Competition: {LEVEL_LABELS[value.level] ?? value.level}
+                Competizione: {LEVEL_LABELS[value.level] ?? value.level}
               </p>
               <p className="mt-2">{value.whatThisMeans}</p>
             </div>
@@ -225,17 +227,17 @@ export default async function CareerPage({
 
       <Section
         id="tradeoffs"
-        title="Advantages and disadvantages"
-        lead="The headlines are below. Open any one for the detail."
+        title="Vantaggi e svantaggi"
+        lead="Qui sotto trovi i titoli. Apri quelli che ti interessano per leggere i dettagli."
       >
         <div className="grid gap-8 md:grid-cols-2">
           <TradeoffColumn
-            heading="Advantages"
+            heading="Vantaggi"
             items={career.advantages}
             tone="verified"
           />
           <TradeoffColumn
-            heading="Disadvantages"
+            heading="Svantaggi"
             items={career.disadvantages}
             tone="draft"
           />
@@ -244,23 +246,23 @@ export default async function CareerPage({
 
       <Section
         id="misconceptions"
-        title="Common misconceptions"
-        lead="Things students often believe about this career that are not quite right."
+        title="Idee sbagliate più diffuse"
+        lead="Cose che si danno per scontate su questa professione e che invece non sono proprio così."
       >
         <ul className="space-y-6">
           {career.misconceptions.map((item) => (
             <li key={item.belief} className="max-w-prose">
               <p className="text-ink-muted">
-                <span className="sr-only">Common belief: </span>
+                <span className="sr-only">Idea diffusa: </span>
                 <span aria-hidden="true" className="font-semibold">
-                  Belief:{' '}
+                  Si dice che:{' '}
                 </span>
                 {item.belief}
               </p>
               <p className="border-accent mt-2 border-l-2 pl-3">
-                <span className="sr-only">In reality: </span>
+                <span className="sr-only">In realtà: </span>
                 <span aria-hidden="true" className="font-semibold">
-                  Actually:{' '}
+                  In realtà:{' '}
                 </span>
                 {item.reality}
               </p>
@@ -271,8 +273,8 @@ export default async function CareerPage({
 
       <Section
         id="now"
-        title="What can I do now?"
-        lead="Practical things that help. None of these is compulsory, and nobody is turned away for not having done them."
+        title="Cosa puoi fare fin da ora"
+        lead="Cose concrete che aiutano. Nessuna è obbligatoria e nessuno viene escluso per non averle fatte."
       >
         <ul className="space-y-5">
           {profile.whatYouCanDoNow.map((item) => (
@@ -289,11 +291,11 @@ export default async function CareerPage({
         </ul>
       </Section>
 
-      <Section id="more" title="More about this career">
-        <Disclosure summary="Who this career suits, and who it may not">
+      <Section id="more" title="Altro su questa professione">
+        <Disclosure summary="A chi può piacere questo lavoro, e a chi no">
           <div className="grid gap-6 md:grid-cols-2">
             <div>
-              <h4 className="font-semibold">It may suit you if</h4>
+              <h4 className="font-semibold">Potrebbe fare per te se</h4>
               <ul className="mt-2 list-disc space-y-1 pl-5">
                 {career.suitability.suitsYouIf.map((item) => (
                   <li key={item}>{item}</li>
@@ -301,7 +303,7 @@ export default async function CareerPage({
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold">It may not suit you if</h4>
+              <h4 className="font-semibold">Potrebbe non fare per te se</h4>
               <ul className="mt-2 list-disc space-y-1 pl-5">
                 {career.suitability.mayNotSuitYouIf.map((item) => (
                   <li key={item}>{item}</li>
@@ -312,8 +314,8 @@ export default async function CareerPage({
         </Disclosure>
 
         <Disclosure
-          summary="Skills that matter"
-          hint={`${career.skills.length} skills`}
+          summary="Le capacità che contano"
+          hint={`${career.skills.length} capacità`}
         >
           <ul className="space-y-3">
             {career.skills.map((skill) => (
@@ -329,11 +331,11 @@ export default async function CareerPage({
         </Disclosure>
 
         {profile.outlook && (
-          <Disclosure summary="What the future looks like">
+          <Disclosure summary="Come sono le prospettive">
             <ClaimValue
               claim={profile.outlook}
               sources={career.sources}
-              label="the outlook for this career"
+              label="le prospettive di questa professione"
             >
               {(value) => <p className="max-w-prose">{value}</p>}
             </ClaimValue>
@@ -341,8 +343,8 @@ export default async function CareerPage({
         )}
 
         <Disclosure
-          summary="Related careers"
-          hint={`${career.relatedCareers.length} careers`}
+          summary="Professioni simili"
+          hint={`${career.relatedCareers.length} professioni`}
         >
           <ul className="space-y-4">
             {career.relatedCareers.map((related) => {
@@ -373,23 +375,23 @@ export default async function CareerPage({
 
       <Section
         id="sources"
-        title="Sources"
-        lead="Where the facts on this page come from, and when we last checked them."
+        title="Fonti"
+        lead="Da dove vengono le informazioni di questa pagina e quando le abbiamo controllate l’ultima volta."
       >
         <SourceList career={career} />
       </Section>
 
       <footer className="border-rule mt-12 border-t pt-6">
         <p className="text-ink-muted text-sm">
-          This page covers {SITE.country.name}. Requirements, pay and
-          competition differ in other countries.
+          Questa pagina riguarda l’{SITE.country.name}. In altri paesi
+          requisiti, stipendi e livello di competizione sono diversi.
         </p>
         <p className="mt-4">
           <Link
             href="/careers"
             className="text-accent underline underline-offset-4"
           >
-            Back to all careers
+            Torna a tutte le professioni
           </Link>
         </p>
       </footer>
@@ -415,7 +417,7 @@ function Header({
           href="/careers"
           className="hover:text-ink underline-offset-4 hover:underline"
         >
-          Careers
+          Professioni
         </Link>{' '}
         <span aria-hidden="true">/</span>{' '}
         {CATEGORY_LABELS[career.category] ?? career.category}
@@ -431,9 +433,9 @@ function Header({
       <p className="text-ink-muted mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
         <span>{SITE.country.name}</span>
         <span aria-hidden="true">·</span>
-        <span>Last reviewed {formatDate(profile.lastReviewedAt)}</span>
+        <span>Aggiornata il {formatDate(profile.lastReviewedAt)}</span>
         <span aria-hidden="true">·</span>
-        <span>About {minutes} minutes to read</span>
+        <span>{minutes} minuti di lettura circa</span>
       </p>
     </header>
   );
@@ -457,18 +459,18 @@ function EvidenceNotice({
 
   return (
     <aside
-      aria-label="How reliable this page is"
+      aria-label="Quanto è affidabile questa pagina"
       className="border-evidence-draft/40 bg-evidence-draft-soft mt-6 rounded border-l-4 p-4"
     >
       <p className="font-semibold">
-        This page is a working draft, not a checked guide.
+        Questa pagina è una bozza di lavoro, non una guida verificata.
       </p>
       <p className="text-ink-muted mt-2 max-w-prose text-sm">
-        The description of the work, the route in and the trade-offs are written
-        by hand and are a fair picture of the career. The specific numbers —
-        pay, how long it takes, how competitive it is — have not yet been
-        confirmed against official sources, and some are missing entirely.
-        Anything unchecked is marked where it appears.
+        La descrizione del lavoro, il percorso per arrivarci e i pro e contro
+        sono scritti a mano e danno un quadro corretto della professione. I
+        numeri precisi — stipendi, tempi, quanto è competitiva — non sono ancora
+        stati confermati su fonti ufficiali e alcuni mancano del tutto. Tutto
+        ciò che non è verificato è segnalato dove compare.
       </p>
     </aside>
   );
@@ -482,25 +484,25 @@ function SalaryDetail({
   >['value'];
 }) {
   const money = (n: number) =>
-    new Intl.NumberFormat('en-GB', {
+    new Intl.NumberFormat(SITE.intlLocale, {
       style: 'currency',
       currency: salary.currency,
       maximumFractionDigits: 0,
     }).format(n);
 
   const bands = [
-    { label: 'Starting out', band: salary.entry },
-    { label: 'Experienced', band: salary.experienced },
-    { label: 'Senior', band: salary.senior },
+    { label: 'All’inizio', band: salary.entry },
+    { label: 'Con esperienza', band: salary.experienced },
+    { label: 'Ai livelli alti', band: salary.senior },
   ].filter(
     (row): row is { label: string; band: { min: number; max: number } } =>
       Boolean(row.band),
   );
 
   const basisLabel = salary.basis.startsWith('gross')
-    ? 'before tax'
-    : 'after tax';
-  const periodLabel = salary.basis.endsWith('annual') ? 'a year' : 'a month';
+    ? 'al lordo delle tasse'
+    : 'al netto delle tasse';
+  const periodLabel = salary.basis.endsWith('annual') ? 'all’anno' : 'al mese';
 
   return (
     <div className="max-w-prose">
@@ -518,10 +520,10 @@ function SalaryDetail({
         ))}
       </dl>
       <p className="text-ink-muted mt-2 text-sm">
-        Figures are {basisLabel}, {periodLabel}.
+        Le cifre sono {basisLabel}, {periodLabel}.
       </p>
 
-      <h3 className="mt-5 font-semibold">What moves these numbers</h3>
+      <h3 className="mt-5 font-semibold">Cosa fa cambiare queste cifre</h3>
       <ul className="mt-2 list-disc space-y-1 pl-5">
         {salary.factorsAffectingPay.map((factor) => (
           <li key={factor}>{factor}</li>

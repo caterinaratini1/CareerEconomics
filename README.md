@@ -11,6 +11,9 @@ important claim.
 **Status:** Phase 1 (content prototype). Three career profiles exist as
 structural drafts. Nothing is published — see [Content integrity](#content-integrity).
 
+**Language:** the product is in Italian — interface and content both. See
+[`docs/DECISIONS.md`](docs/DECISIONS.md) ADR-0005.
+
 ---
 
 ## Quick start
@@ -124,7 +127,12 @@ implements it over Supabase. That migration should touch one file.
   find-in-page-friendly for free, unlike a JS accordion — and it works with
   scripting off.
 - **The ten-minute reading budget is enforced in CI**
-  (`lib/content/reading-time.ts`), measured over the core reading path.
+  (`lib/content/reading-time.ts`), measured over the core reading path. All
+  three careers currently sit within 1–3% of the limit in Italian, so a new
+  paragraph needs a matching cut.
+- **Search is bilingual.** Content is Italian, but every career carries English
+  aliases too, because students type `software engineer` as readily as
+  `sviluppatore`. A test enforces both.
 
 ### Page weight
 
@@ -153,6 +161,9 @@ than trimming application code, because there is no application code to trim.
 3. Add the import to `lib/content/registry.ts` (validation checks parity).
 4. `npm run validate:content` and resolve what it reports.
 5. Open a pull request. Review is the publication mechanism — there is no CMS.
+
+Write content in Italian, and give every career both Italian and English
+aliases.
 
 ---
 

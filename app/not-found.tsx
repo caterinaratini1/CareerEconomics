@@ -10,12 +10,12 @@ export default function NotFound() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
       <h1 className="text-3xl font-bold tracking-tight">
-        We could not find that page
+        Non abbiamo trovato questa pagina
       </h1>
       <p className="text-ink-muted mt-4 max-w-prose text-lg">
-        If you were looking for a career, we may not have written it up yet — we
-        add them one at a time so each one is properly checked. Try searching
-        for it, or browse what we do have.
+        Se cercavi una professione, forse non l’abbiamo ancora scritta: le
+        aggiungiamo una alla volta, per verificarle bene. Prova a cercarla, o
+        guarda quelle che ci sono.
       </p>
 
       <div className="mt-8 max-w-xl">
@@ -27,7 +27,7 @@ export default function NotFound() {
           href="/careers"
           className="text-accent underline underline-offset-4"
         >
-          Browse all careers
+          Sfoglia tutte le professioni
         </Link>
       </p>
     </div>

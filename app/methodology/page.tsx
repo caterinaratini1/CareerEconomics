@@ -3,135 +3,139 @@ import { Prose } from '@/components/ui/primitives';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'How we research careers',
+  title: 'Come lavoriamo',
   description:
-    'Where our information comes from, how we check it, and what we do when ' +
-    'we do not know something.',
+    'Da dove vengono le nostre informazioni, come le verifichiamo e cosa ' +
+    'facciamo quando una cosa non la sappiamo.',
 };
 
 export default function MethodologyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-3xl font-bold tracking-tight">
-        How we research careers
-      </h1>
+      <h1 className="text-3xl font-bold tracking-tight">Come lavoriamo</h1>
 
       <Prose>
         <p className="text-ink-muted mt-4 text-lg">
-          You should not have to take our word for anything. This page explains
-          where our information comes from and how to tell how much to trust a
-          given claim.
+          Non devi crederci sulla parola. Questa pagina spiega da dove vengono
+          le nostre informazioni e come capire quanto fidarti di ciascuna.
         </p>
 
-        <h2 className="pt-6 text-2xl font-semibold">Which sources we use</h2>
+        <h2 className="pt-6 text-2xl font-semibold">Che fonti usiamo</h2>
         <p>
-          For facts that matter — pay, entry requirements, legal rules — we use
-          official sources, in roughly this order of preference:
+          Per le informazioni che contano — stipendi, requisiti di accesso,
+          regole di legge — usiamo fonti ufficiali, più o meno in quest’ordine
+          di preferenza:
         </p>
         <ol className="list-decimal space-y-1 pl-5">
-          <li>Government ministries and official portals</li>
-          <li>National statistical agencies</li>
-          <li>Professional regulators and professional bodies</li>
-          <li>Official university and examination authorities</li>
-          <li>Public-sector careers services</li>
-          <li>Reputable labour-market research</li>
+          <li>Ministeri e portali ufficiali dello Stato</li>
+          <li>Istituti nazionali di statistica</li>
+          <li>Ordini e albi professionali</li>
+          <li>Università ed enti che gestiscono gli esami</li>
+          <li>Servizi pubblici per l’orientamento e il lavoro</li>
+          <li>Ricerche serie sul mercato del lavoro</li>
           <li>
-            Large salary datasets — used last, and only with their limitations
-            stated on the page
+            Grandi banche dati sugli stipendi — per ultime, e solo dichiarando
+            in pagina quali sono i loro limiti
           </li>
         </ol>
         <p>
-          We do not use blogs, social media posts or content marketing for core
-          facts. For a career whose entry rules are set by law, we cite the law
-          or the official notice, not somebody&rsquo;s summary of it.
+          Non usiamo blog, post sui social o articoli promozionali per le
+          informazioni principali. Per una professione le cui regole di accesso
+          sono fissate per legge, citiamo la legge o il bando ufficiale, non il
+          riassunto che ne ha fatto qualcuno.
         </p>
 
         <h2 className="pt-6 text-2xl font-semibold">
-          How to tell what has been checked
+          Come capire che cosa è stato verificato
         </h2>
         <p>
-          Every important claim on a career page is in one of three states, and
-          the page always tells you which:
+          Ogni informazione importante si trova in uno di tre stati, e la pagina
+          ti dice sempre quale:
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong>Checked.</strong> The claim links to the source it came from
-            and the date we last opened it.
+            <strong>Verificata.</strong> C’è il collegamento alla fonte da cui
+            viene e la data in cui l’abbiamo aperta l’ultima volta.
           </li>
           <li>
-            <strong>Unchecked draft.</strong> We have written something, but not
-            yet confirmed it against a source. It is marked in place, and the
-            page says what evidence is still needed.
+            <strong>Bozza non verificata.</strong> Abbiamo scritto qualcosa ma
+            non l’abbiamo ancora confermato su una fonte. È segnalato lì dove
+            compare, e la pagina dice quali prove mancano.
           </li>
           <li>
-            <strong>Not researched.</strong> We have not looked into it. The
-            section stays on the page and says so, rather than disappearing —
-            otherwise you could not tell the difference between a question with
-            no answer and a question nobody asked.
+            <strong>Non verificata.</strong> Non ce ne siamo ancora occupati. La
+            sezione resta comunque nella pagina e lo dichiara, invece di sparire
+            — altrimenti non potresti distinguere una domanda senza risposta da
+            una domanda che nessuno si è posto.
           </li>
         </ul>
         <p>
-          A career is only published once its pay, entry requirements, legal
-          rules, timescale and competition are all in the first state, with at
-          least two credible sources behind the page. This is checked
-          automatically before anything goes live, not just by someone
-          remembering.
-        </p>
-
-        <h2 className="pt-6 text-2xl font-semibold">How we write about pay</h2>
-        <p>
-          We show ranges, never a single average. An average hides the thing you
-          actually want to know, which is how wide the spread is and what moves
-          you along it. We also always say whether a figure is before or after
-          tax, and over what period, because in {SITE.country.name} those are
-          reported inconsistently and the difference is large.
+          Una professione viene pubblicata solo quando stipendi, requisiti di
+          accesso, regole di legge, tempi e livello di competizione sono tutti
+          nel primo stato, con almeno due fonti credibili dietro la pagina.
+          Questo controllo è automatico prima della pubblicazione, non affidato
+          alla memoria di qualcuno.
         </p>
 
         <h2 className="pt-6 text-2xl font-semibold">
-          How we write about competition
+          Come parliamo di stipendi
         </h2>
         <p>
-          We avoid invented percentages. Where an official body publishes the
-          number of places and the number of applicants, we show those. Where it
-          does not, we explain what the competition is like in practice and say
-          that the figures are not available.
+          Mostriamo intervalli, mai una media secca. Una media nasconde proprio
+          quello che ti serve sapere, cioè quanto è ampia la forbice e che cosa
+          ti sposta al suo interno. Diciamo anche sempre se una cifra è lorda o
+          netta e su quale periodo, perché in {SITE.country.name} questi dati
+          vengono riportati in modi diversi e la differenza è grossa.
         </p>
 
         <h2 className="pt-6 text-2xl font-semibold">
-          Where AI is and is not used
+          Come parliamo di competizione
         </h2>
         <p>
-          AI is not a source. It is not used to establish any fact on this site
-          — no salary, no requirement, no probability comes from a language
-          model. Career pages are written and reviewed by people working from
-          the sources listed on each page.
+          Evitiamo le percentuali inventate. Dove un ente ufficiale pubblica il
+          numero di posti e il numero di candidati, riportiamo quelli. Dove non
+          lo fa, spieghiamo com’è la competizione nella pratica e diciamo che i
+          numeri non sono disponibili.
         </p>
 
         <h2 className="pt-6 text-2xl font-semibold">
-          What we deliberately do not do
+          Dove usiamo l’intelligenza artificiale e dove no
+        </h2>
+        <p>
+          L’intelligenza artificiale non è una fonte. Non viene usata per
+          stabilire nessuna informazione di questo sito: nessuno stipendio,
+          nessun requisito, nessuna probabilità viene da un modello linguistico.
+          Le schede sono scritte e riviste da persone, a partire dalle fonti
+          elencate in ogni pagina.
+        </p>
+
+        <h2 className="pt-6 text-2xl font-semibold">
+          Cosa non facciamo di proposito
         </h2>
         <ul className="list-disc space-y-1 pl-5">
           <li>
-            We do not tell you which career to choose. We describe careers; the
-            decision is yours.
+            Non ti diciamo che lavoro scegliere. Descriviamo le professioni; la
+            decisione è tua.
           </li>
           <li>
-            We do not run personality or aptitude tests. There is no good
-            evidence they predict what you will be good at.
+            Non facciamo test della personalità o attitudinali. Non ci sono
+            prove solide che prevedano in cosa sarai bravo.
           </li>
-          <li>We do not guarantee admission, employment or earnings.</li>
+          <li>Non garantiamo ammissioni, assunzioni o guadagni.</li>
           <li>
-            We do not present optional activities as requirements. If something
-            is genuinely optional, the page says so.
+            Non presentiamo come obbligatorie attività che sono facoltative. Se
+            una cosa è davvero facoltativa, la pagina lo dice.
           </li>
         </ul>
 
-        <h2 className="pt-6 text-2xl font-semibold">When something is wrong</h2>
+        <h2 className="pt-6 text-2xl font-semibold">
+          Quando qualcosa è sbagliato
+        </h2>
         <p>
-          Career rules change, and pages go stale. Every page carries the date
-          it was last reviewed, and we re-check pages at least once a year. If
-          you find something wrong, especially if you work in the field, we want
-          to know.
+          Le regole delle professioni cambiano e le pagine invecchiano. Ogni
+          pagina riporta la data dell’ultimo aggiornamento e le rivediamo almeno
+          una volta all’anno. Se trovi un errore, soprattutto se lavori nel
+          settore, vogliamo saperlo.
         </p>
       </Prose>
     </div>

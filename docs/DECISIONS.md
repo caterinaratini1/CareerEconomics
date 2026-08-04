@@ -86,29 +86,40 @@ in `docs/CONTENT_GUIDE.md`, and `reviewStatus` records that someone did it.
 
 ---
 
-## ADR-0005 — Content is authored in English for now (open question)
+## ADR-0005 — The product is in Italian
 
-**Status:** accepted with reservations — **needs a decision before the pilot**
+**Status:** accepted — decided 2026-08-04, superseding the initial English draft
 
-The build plan lists Italian/English language support under "optional, only
-after the core is stable", and writes all its own content examples in English.
-This implementation follows that: prose is English, with Italian aliases so
-search works for terms students actually type (`funzionario diplomatico`,
-`sviluppatore`, `medico chirurgo`).
+Interface and career content are both authored in Italian. `<html lang="it">`,
+and dates and currency are formatted with `it-IT`.
 
-**The reservation is real.** The pilot is with Italian schools and 14–19 year
-olds, and the §4 success criteria are about comprehension. English prose
-confounds that measurement: a student who does not understand a page may be
-failing at the language rather than at the explanation, and we would not be able
-to tell which.
+The build plan lists Italian/English support under "optional, only after the
+core is stable", and writes its own examples in English, so the first
+implementation followed that. That was wrong for this product. The pilot is with
+Italian schools and 14–19 year olds, and the §4 success criteria measure
+comprehension — English prose confounds the measurement outright, because a
+student who does not understand a page might be failing at the language rather
+than at the explanation, and the feedback form cannot tell you which.
 
-**Recommendation:** author the pilot content in Italian, and treat English as
-the later addition. The schema is already language-neutral per record, and the
-`aliases` array carries a `language` field, so nothing structural blocks it —
-this is an editorial cost, not an engineering one.
+**Aliases stay bilingual.** Every career carries both Italian and English
+aliases, and a test enforces it. Italian students genuinely type `software
+engineer` as well as `sviluppatore` — in tech the English title is the one on
+job adverts — so dropping English would narrow search silently.
 
-**Revisit:** before Milestone 3 (content-complete MVP), and certainly before any
-classroom session.
+**Consequences observed:**
+
+- Italian prose runs longer. Two records tripped schema length limits on
+  translation, and the software-engineer core reading path landed 25 words over
+  the ten-minute budget and had to be tightened. All three now sit within about
+  1–3% of the limit, so **the next content addition to any career will need a
+  matching cut.** That is the gate working, not a defect — but it is worth
+  knowing before someone adds a paragraph and is surprised by a red build.
+- `WORDS_PER_MINUTE` was deliberately *not* raised to create headroom. Tuning
+  the measuring stick to make the number pass would defeat the point of having
+  one.
+
+**English is not planned.** If it is ever added, it belongs as a second locale
+per record, not as a fork of the content set.
 
 ---
 

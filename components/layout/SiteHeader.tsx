@@ -3,9 +3,9 @@ import { isPreviewMode } from '@/lib/content/repository';
 import { SITE } from '@/lib/site';
 
 const NAV = [
-  { href: '/careers', label: 'All careers' },
-  { href: '/methodology', label: 'How we research' },
-  { href: '/about', label: 'About' },
+  { href: '/careers', label: 'Tutte le professioni' },
+  { href: '/methodology', label: 'Come lavoriamo' },
+  { href: '/about', label: 'Chi siamo' },
 ];
 
 export function SiteHeader() {
@@ -14,7 +14,7 @@ export function SiteHeader() {
       {isPreviewMode() && <PreviewBanner />}
       <header className="border-rule border-b">
         <nav
-          aria-label="Main"
+          aria-label="Principale"
           className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-4"
         >
           <Link
@@ -55,9 +55,10 @@ function PreviewBanner() {
       role="status"
       className="bg-evidence-draft-soft text-ink border-evidence-draft/40 border-b px-4 py-2 text-center text-sm"
     >
-      <strong className="font-semibold">Preview mode.</strong> This site is
-      showing unpublished draft content for review. Facts on these pages have
-      not been checked against official sources yet — do not rely on them.
+      <strong className="font-semibold">Versione di prova.</strong> Questo sito
+      sta mostrando bozze non ancora pubblicate. Le informazioni di queste
+      pagine non sono state verificate su fonti ufficiali: non usarle per
+      decidere.
     </div>
   );
 }

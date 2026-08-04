@@ -18,12 +18,13 @@ Materials and process for running a classroom pilot.
 | Feedback capture (Phase 6) | ✗ |
 | Privacy notice published | ✓ `/privacy` |
 | Methodology page published | ✓ `/methodology` |
-| Content language decision (ADR-0005) | ✗ — **decide before booking a session** |
+| Content language decision (ADR-0005) | ✓ — Italian, decided 2026-08-04 |
 | Production deployment | ✗ |
 
-The language decision is the one that would waste a session. Running a
-comprehension test on English pages with Italian 15-year-olds measures their
-English, not our writing.
+The language question is settled: interface and content are in Italian, so a
+comprehension test now measures our writing rather than the students' English.
+What still blocks a session is content — no career is publishable until its
+figures are sourced.
 
 ---
 
@@ -37,34 +38,42 @@ something.
 
 ## Teacher one-pager
 
-**What this is.** A free website explaining what careers actually involve — the
-work, the route in, the pay, the competition, the downsides — with a source
-behind every important claim.
+Hand this to the teacher as-is. It is in Italian because they will read it to
+the class; the rest of this document is internal.
 
-**What students need.** A device with a browser. No account, no login, no
-personal data. A shared link is enough.
-
-**What it does not do.** It does not tell a student what to be. There are no
-personality tests, no rankings, no advertising.
-
-**Privacy.** No account, no names, no emails. The site does not identify
-students. Full notice at `/privacy`.
-
-**If something goes wrong.** [support contact — fill in before the pilot]
+> ### Career Economics Lab — guida per docenti
+>
+> **Che cos'è.** Un sito gratuito che spiega com'è davvero una professione: che
+> cosa si fa, come ci si arriva, quanto si guadagna, quanto è competitiva e
+> quali sono i lati negativi — con la fonte dietro ogni informazione
+> importante.
+>
+> **Cosa serve agli studenti.** Un dispositivo con un browser. Nessuna
+> registrazione, nessun accesso, nessun dato personale. Basta condividere un
+> link.
+>
+> **Cosa non fa.** Non dice agli studenti che cosa devono fare. Non ci sono test
+> della personalità, classifiche o pubblicità.
+>
+> **Privacy.** Nessun account, nessun nome, nessuna email. Il sito non
+> identifica gli studenti. Informativa completa su `/privacy`.
+>
+> **Se qualcosa non funziona.** [contatto di supporto — da inserire prima del
+> pilota]
 
 ---
 
 ## 30-minute classroom activity
 
-| Time | Activity |
-| --- | --- |
-| 0–3 min | Introduce: "this explains what jobs are really like, and shows you where the facts come from" |
-| 3–5 min | Each student picks or searches for one career |
-| 5–15 min | Read the page |
-| 15–22 min | Find and write down: one requirement · one pay fact · one disadvantage · one thing they could do now |
-| 22–25 min | Open one source and see where the fact came from |
-| 25–28 min | Submit clarity feedback |
-| 28–30 min | Search for a career that is not listed |
+| Time | Activity | What the teacher says |
+| --- | --- | --- |
+| 0–3 min | Introduce | «Questo sito spiega com'è davvero un lavoro, e vi fa vedere da dove vengono le informazioni» |
+| 3–5 min | Each student picks or searches for one career | «Cercate una professione che vi incuriosisce» |
+| 5–15 min | Read the page | — |
+| 15–22 min | Find and write down four things | «Scrivete: un requisito · un dato sullo stipendio · uno svantaggio · una cosa che potreste fare da subito» |
+| 22–25 min | Open one source | «Aprite una fonte e guardate da dove viene quell'informazione» |
+| 25–28 min | Submit clarity feedback | «Diteci se la pagina era chiara» |
+| 28–30 min | Search for a career that is not listed | «Cercate un lavoro che secondo voi manca» |
 
 The source-checking step is not filler. Whether students grasp that claims are
 traceable is a core thing the pilot is testing — it is the product's whole
@@ -74,12 +83,14 @@ differentiator, and if it does not land, the differentiator does not exist.
 
 ## Student questions
 
-- Was the page easy to understand?
-- Did you learn something you did not know?
-- Was anything missing?
-- Did anything feel misleading or too good to be true?
-- Which career did you expect to find but could not?
-- Would you use this again?
+Ask these in Italian:
+
+- La pagina era facile da capire?
+- Hai imparato qualcosa che non sapevi?
+- Mancava qualcosa?
+- C'è stato qualcosa che ti è sembrato fuorviante o troppo bello per essere vero?
+- Quale professione ti aspettavi di trovare e non c'era?
+- Useresti di nuovo questo sito?
 
 Deliberately not asked: name, class, age, grades, or which school. §17 — the
 product does not need them, so it does not collect them.
@@ -88,12 +99,14 @@ product does not need them, so it does not collect them.
 
 ## Teacher questions
 
-- Did the tool need explaining, or did students just use it?
-- Did they stay engaged for the full activity?
-- Were the career paths trustworthy enough for classroom use?
-- Which content generated questions you could not answer?
-- Would you use it again?
-- What would the school need before adopting it formally?
+Ask these in Italian:
+
+- Ha dovuto spiegare come si usa, o gli studenti hanno fatto da soli?
+- Sono rimasti coinvolti per tutta l'attività?
+- I percorsi descritti le sono sembrati abbastanza affidabili per l'uso in classe?
+- Quali contenuti hanno generato domande a cui non sapeva rispondere?
+- Lo userebbe di nuovo?
+- Di che cosa avrebbe bisogno la scuola per adottarlo formalmente?
 
 ---
 

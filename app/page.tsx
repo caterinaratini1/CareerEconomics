@@ -18,31 +18,31 @@ export default async function HomePage() {
     <div className="mx-auto max-w-5xl px-4 py-10">
       <section className="max-w-prose">
         <h1 className="text-4xl font-bold tracking-tight">
-          Find out what a career actually involves.
+          Scopri com’è davvero un lavoro.
         </h1>
         <p className="text-ink-muted mt-4 text-lg">
-          Straight answers about what a job is really like, how you get into it,
-          what it pays, and how hard it is to reach — with the source behind
-          every claim, so you can check it yourself.
+          Risposte chiare su che cosa si fa in una professione, come ci si
+          arriva, quanto si guadagna e quanto è difficile — con la fonte dietro
+          ogni informazione importante, così puoi controllare da te.
         </p>
         <p className="text-ink-muted mt-3">
-          Free, no account needed. Career information currently covers{' '}
-          {SITE.country.name}.
+          Gratuito, senza registrazione. Al momento le informazioni riguardano
+          l’{SITE.country.name}.
         </p>
       </section>
 
-      <section aria-label="Search careers" className="mt-10 max-w-2xl">
+      <section aria-label="Cerca una professione" className="mt-10 max-w-2xl">
         <SearchForm />
       </section>
 
       <section aria-labelledby="browse-heading" className="mt-14">
         <h2 id="browse-heading" className="text-2xl font-semibold">
-          Browse careers
+          Sfoglia le professioni
         </h2>
 
         {careers.length === 0 ? (
           <p className="text-ink-muted mt-4">
-            No careers are published yet. Check back soon.
+            Non c’è ancora nessuna professione pubblicata. Torna presto.
           </p>
         ) : (
           <div className="mt-6 space-y-10">
@@ -66,34 +66,35 @@ export default async function HomePage() {
             href="/careers"
             className="text-accent underline underline-offset-4"
           >
-            See all careers
+            Vedi tutte le professioni
           </Link>
         </p>
       </section>
 
       <section aria-labelledby="trust-heading" className="mt-16 max-w-prose">
         <h2 id="trust-heading" className="text-2xl font-semibold">
-          Why you can check what we say
+          Perché puoi verificare quello che scriviamo
         </h2>
         <ul className="mt-4 space-y-3">
           <li>
-            <strong>Every important fact links to its source.</strong> Pay,
-            entry requirements and legal rules come from government, statistical
-            and professional bodies, and we show you when we last checked.
+            <strong>Ogni informazione importante ha la sua fonte.</strong>{' '}
+            Stipendi, requisiti di accesso e regole di legge vengono da
+            ministeri, istituti di statistica e ordini professionali, e ti
+            diciamo sempre quando li abbiamo controllati l’ultima volta.
           </li>
           <li>
-            <strong>We say when we do not know.</strong> If we have not
-            researched something, the page says so rather than guessing or
-            quietly leaving the section out.
+            <strong>Diciamo quando non sappiamo una cosa.</strong> Se non
+            abbiamo ancora verificato qualcosa, la pagina lo scrive invece di
+            tirare a indovinare o di far sparire la sezione.
           </li>
           <li>
-            <strong>Ranges, not averages.</strong> Pay depends on where you work
-            and how long you have been doing it, so we show the spread and what
-            moves it.
+            <strong>Intervalli, non medie.</strong> Lo stipendio dipende da dove
+            lavori e da quanti anni di esperienza hai, quindi mostriamo la
+            forbice e che cosa la fa spostare.
           </li>
           <li>
-            <strong>Downsides are on the page too.</strong> Every career has
-            trade-offs. A page that only lists advantages is advertising.
+            <strong>Ci sono anche i lati negativi.</strong> Ogni professione ha
+            i suoi svantaggi. Una pagina che elenca solo i pregi è pubblicità.
           </li>
         </ul>
         <p className="mt-4">
@@ -101,7 +102,7 @@ export default async function HomePage() {
             href="/methodology"
             className="text-accent underline underline-offset-4"
           >
-            How we research careers
+            Come raccogliamo e verifichiamo le informazioni
           </Link>
         </p>
       </section>

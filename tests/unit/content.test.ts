@@ -60,6 +60,20 @@ describe('shipped career content', () => {
     }
   });
 
+  it('keeps English aliases too, since students type both languages', () => {
+    // Content is authored in Italian (ADR-0005), but "software engineer" and
+    // "doctor" are terms Italian students genuinely type — especially in tech,
+    // where the English title is the one used on job adverts. Dropping them
+    // would silently narrow search without anything failing.
+    for (const career of careers) {
+      const english = career.aliases.filter((a) => a.language === 'en');
+      expect(
+        english.length,
+        `${career.slug} has no English alias`,
+      ).toBeGreaterThan(0);
+    }
+  });
+
   it('never publishes a career whose figures are unsourced', () => {
     // The guarantee the whole content layer exists to provide.
     for (const career of careers) {

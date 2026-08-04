@@ -5,7 +5,7 @@ import { SITE } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Privacy',
   description:
-    'What data this site collects, which is almost none, explained in plain language.',
+    'Quali dati raccoglie questo sito — quasi nessuno — spiegato in parole semplici.',
 };
 
 /**
@@ -20,63 +20,69 @@ export default function PrivacyPage() {
 
       <Prose>
         <p className="text-ink-muted mt-4 text-lg">
-          This site is used by young people, so it collects as little as
-          possible. In plain language: we do not know who you are, and we are
-          not trying to find out.
+          Questo sito è usato da ragazze e ragazzi, quindi raccoglie il meno
+          possibile. In parole semplici: non sappiamo chi sei e non stiamo
+          cercando di scoprirlo.
         </p>
 
-        <h2 className="pt-6 text-2xl font-semibold">What we do not collect</h2>
+        <h2 className="pt-6 text-2xl font-semibold">Cosa non raccogliamo</h2>
         <ul className="list-disc space-y-1 pl-5">
-          <li>No account, so no name, email address or password</li>
-          <li>No date of birth, school name, grades or family information</li>
-          <li>No advertising or tracking cookies</li>
-          <li>No precise location</li>
-          <li>No selling or sharing of data with anyone</li>
+          <li>Nessun account, quindi né nome, né email, né password</li>
+          <li>
+            Nessuna data di nascita, nome della scuola, voti o informazioni
+            sulla famiglia
+          </li>
+          <li>Nessun cookie pubblicitario o di tracciamento</li>
+          <li>Nessuna posizione precisa</li>
+          <li>Nessuna vendita o condivisione di dati con nessuno</li>
         </ul>
 
         <h2 className="pt-6 text-2xl font-semibold">
-          What happens when you use the site right now
+          Cosa succede quando usi il sito adesso
         </h2>
         <p>
-          At this stage the site is a set of static pages. Searching uses the
-          address bar — your search term appears in the page URL, which is how
-          you can share a result with someone — and it is not stored by us.
+          In questa fase il sito è un insieme di pagine statiche. La ricerca
+          passa dalla barra degli indirizzi — quello che cerchi compare
+          nell’indirizzo della pagina, ed è così che puoi condividere un
+          risultato con qualcuno — e non viene conservato da noi.
         </p>
         <p>
-          Our hosting provider keeps standard server logs for a short period for
-          security and reliability, as any website host does. We do not use
-          those logs to build a profile of anyone.
+          Il nostro fornitore di hosting conserva per un breve periodo i normali
+          log del server, per sicurezza e affidabilità, come fa qualsiasi
+          servizio di hosting. Non usiamo quei log per costruire il profilo di
+          nessuno.
+        </p>
+
+        <h2 className="pt-6 text-2xl font-semibold">Cosa cambierà, e quando</h2>
+        <p>
+          Abbiamo in programma due cose: un semplice conteggio di quali pagine
+          vengono visitate e quali ricerche non trovano nulla, per capire cosa
+          scrivere dopo; e un pulsante per dirci che una pagina non era chiara.
+          Entrambe funzioneranno senza registrazione e senza identificarti.
+          Questa pagina sarà aggiornata prima che vengano attivate, non dopo.
         </p>
 
         <h2 className="pt-6 text-2xl font-semibold">
-          What will change, and when
+          Collegamenti ad altri siti
         </h2>
         <p>
-          We plan to add two things: a simple count of which pages get visited
-          and which searches find nothing, so we know what to write next; and a
-          feedback button so you can tell us a page was unclear. Both will work
-          without an account and without identifying you. This page will be
-          updated before either is switched on, not after.
+          Le schede rimandano a fonti ufficiali — ministeri, istituti di
+          statistica, ordini professionali. Quei siti hanno una propria politica
+          sulla privacy e non dipendono da noi.
         </p>
 
-        <h2 className="pt-6 text-2xl font-semibold">Links to other sites</h2>
+        <h2 className="pt-6 text-2xl font-semibold">Contatti</h2>
         <p>
-          Career pages link to official sources — ministries, statistics
-          agencies, professional bodies. Those sites have their own privacy
-          policies and we do not control them.
-        </p>
-
-        <h2 className="pt-6 text-2xl font-semibold">Contact</h2>
-        <p>
-          If you have a question about privacy, or you want something removed,
-          get in touch. Because we do not collect personal data, there is in
-          normal use nothing of yours for us to hold or delete.
+          Se hai una domanda sulla privacy, o vuoi che qualcosa venga rimosso,
+          scrivici. Poiché non raccogliamo dati personali, nell’uso normale del
+          sito non c’è nulla di tuo che possiamo conservare o cancellare.
         </p>
 
         <p className="text-ink-muted pt-6 text-sm">
-          {SITE.name} is based in {SITE.country.name}. Before any wider rollout
-          to schools, this notice will be reviewed by someone qualified in
-          Italian and EU data-protection law, particularly regarding minors.
+          {SITE.name} ha sede in {SITE.country.name}. Prima di una diffusione
+          più ampia nelle scuole, questa informativa sarà rivista da una persona
+          qualificata in materia di protezione dei dati, con particolare
+          attenzione alla normativa italiana ed europea sui minori.
         </p>
       </Prose>
     </div>
