@@ -1,0 +1,388 @@
+{
+  "slug": "doctor",
+  "canonicalName": "Doctor",
+  "category": "healthcare",
+  "status": "draft",
+
+  "aliases": [
+    { "text": "doctor", "language": "en" },
+    { "text": "physician", "language": "en" },
+    { "text": "medical doctor", "language": "en" },
+    { "text": "gp", "language": "en" },
+    { "text": "general practitioner", "language": "en" },
+    { "text": "surgeon", "language": "en" },
+    { "text": "medic", "language": "en" },
+    { "text": "medico", "language": "it" },
+    { "text": "medico chirurgo", "language": "it" },
+    { "text": "dottore", "language": "it" },
+    { "text": "medicina", "language": "it" },
+    { "text": "medico di base", "language": "it" },
+    { "text": "medico di famiglia", "language": "it" },
+    { "text": "specializzando", "language": "it" },
+    { "text": "chirurgo", "language": "it" }
+  ],
+
+  "oneSentence": "A doctor diagnoses and treats illness and injury, working either as a generalist who sees everything or as a specialist in one area of medicine.",
+
+  "plainLanguageSummary": "A doctor is a licensed medical professional who examines patients, works out what is wrong, and decides how to treat it. Becoming one is a long, structured process: a university degree in medicine, then a national licensing step, then several more years of paid specialist training that determines what kind of doctor you actually become. That last choice matters more than most students realise — a family doctor, a surgeon, an anaesthetist and a pathologist all follow the same first six years and then have almost nothing in common day to day. It is one of the most tightly regulated careers there is, and one of the few where the training route is essentially the only route.",
+
+  "whatTheyDo": {
+    "overview": "The core of the job is a repeating loop: gather information, form a judgement about what is wrong, decide what to do, and check whether it worked. Gathering information means talking to the patient, examining them, and ordering tests. Forming a judgement means reasoning from incomplete evidence, because most patients do not present the way a textbook describes. Deciding means weighing treatments that all have costs as well as benefits, and explaining that trade-off to someone who is frightened. Around this sits a large amount of documentation, coordination with nurses and other specialists, and — in hospitals — teaching the doctors more junior than you. How much of each depends almost entirely on the specialty.",
+    "concreteExamples": [
+      "Seeing a patient with chest pain and deciding, within minutes and on limited information, whether this is a heart attack or something less urgent.",
+      "Managing a long-term condition such as diabetes over years: adjusting treatment, spotting complications early, and persuading someone to change habits they do not want to change.",
+      "Performing an operation, which is a small fraction of a surgeon's week compared with the assessment, planning and follow-up around it.",
+      "Explaining a serious diagnosis to a patient and their family clearly enough that they can make a real decision about treatment.",
+      "Reviewing a ward of hospital patients each morning and deciding for each one what changes today."
+    ]
+  },
+
+  "typicalDay": {
+    "overview": "There is no single medical day, and any page that describes one is describing a specialty rather than the career. A hospital doctor's day is structured around ward rounds, scheduled lists and admissions, often with shifts covering nights and weekends. A family doctor's day is a sequence of short appointments, mostly to time, with administration afterwards. An emergency doctor's day is entirely determined by who arrives. What is common across all of them is a high volume of decisions, constant interruption, and documentation that extends past the clinical work.",
+    "commonTasks": [
+      "Assessing patients: history, examination, and deciding what to investigate",
+      "Interpreting test results and imaging",
+      "Prescribing and adjusting treatment",
+      "Explaining diagnoses and options to patients and families",
+      "Writing clinical notes, referrals and discharge summaries",
+      "Handing over to the next shift or team",
+      "Discussing complex cases with colleagues and other specialties",
+      "Teaching and supervising junior colleagues and students"
+    ],
+    "howMuchItVaries": "The variation between specialties is larger than between many separate careers. A dermatologist and an intensive care doctor share a qualification and almost nothing else: different hours, different pressure, different relationship with patients, different amount of on-call. Training grade matters too — a doctor in specialist training generally works more nights and has less control over their schedule than a fully qualified consultant. Whether you work in the public health service or privately changes the pace and the volume again."
+  },
+
+  "suitability": {
+    "suitsYouIf": [
+      "You can make a decision on incomplete information and then revise it when new information arrives",
+      "You are genuinely interested in people, not only in the science",
+      "You can carry the knowledge that some of your decisions will turn out to have been wrong",
+      "You can sustain study over many years, because the learning does not stop at qualification",
+      "You can stay methodical when you are tired and being interrupted"
+    ],
+    "mayNotSuitYouIf": [
+      "You want a predictable schedule with no nights, weekends or on-call, at least during training",
+      "You want to be earning a full salary in your early twenties",
+      "You find distressing situations hard to put down at the end of a shift",
+      "You dislike documentation and process, which are a large and non-negotiable part of the job",
+      "You want to change career direction easily, since the training is long and specific"
+    ]
+  },
+
+  "advantages": [
+    {
+      "title": "The work has obvious value",
+      "detail": "The connection between what you do and whether someone is better off is more direct than in almost any other career. That matters on difficult days in a way that is hard to appreciate from outside."
+    },
+    {
+      "title": "Strong and portable employment",
+      "detail": "Demand for doctors is high and durable, and the qualification is recognised well beyond the place you trained, though recognition procedures differ between countries."
+    },
+    {
+      "title": "A very wide choice of specialties",
+      "detail": "The same degree leads to work as different as general practice, surgery, psychiatry, radiology, public health and research. You choose the direction after you have seen the options rather than at eighteen."
+    },
+    {
+      "title": "Intellectually demanding for the long term",
+      "detail": "Diagnosis is genuine problem-solving under uncertainty, and medicine changes fast enough that the learning stays interesting rather than becoming routine."
+    },
+    {
+      "title": "Trust and standing",
+      "detail": "Patients tell doctors things they tell almost nobody else. That access is a real privilege of the job as well as a responsibility."
+    }
+  ],
+
+  "disadvantages": [
+    {
+      "title": "A very long route with a delayed start",
+      "detail": "Between the degree, licensing and specialist training, full qualification takes well over a decade from leaving school. Peers in other fields will be established, and earning, considerably earlier."
+    },
+    {
+      "title": "Two competitive bottlenecks, not one",
+      "detail": "Entry to the degree is competitive, and entry to specialist training is competitive again several years later. Passing the first does not guarantee the second, and the specialty you want may not be the one available to you."
+    },
+    {
+      "title": "Emotional weight",
+      "detail": "You will deliver bad news, lose patients, and make decisions whose consequences you have to live with. Burnout and mental-health difficulty are well documented in the profession, particularly during training."
+    },
+    {
+      "title": "Hours and shift work",
+      "detail": "Nights, weekends and on-call are standard in most hospital specialties, especially during training. This affects sleep, relationships and everything scheduled around a normal week."
+    },
+    {
+      "title": "Administrative load",
+      "detail": "A substantial share of the working day is documentation, coding and coordination rather than patient contact. Most doctors report this share increasing over their careers."
+    },
+    {
+      "title": "Limited control over location during training",
+      "detail": "Training posts are allocated, so where you live for several years may depend on where a place is available rather than where you want to be."
+    }
+  ],
+
+  "misconceptions": [
+    {
+      "belief": "Doctors are very well paid from the start.",
+      "reality": "Pay during specialist training is modest relative to the length of study and the hours worked, and it arrives years later than in most careers. Earnings rise substantially after full qualification, and vary widely by specialty and by whether the work is public, private, or both. Anyone comparing medicine with another career on money should compare total earnings across a working life, not starting salaries."
+    },
+    {
+      "belief": "Being a doctor mostly means treating emergencies.",
+      "reality": "Most medicine is unglamorous and long-term: managing chronic conditions, following up, adjusting treatment, and preventing deterioration. Emergency work is one specialty among many, and even within it most presentations are not dramatic."
+    },
+    {
+      "belief": "You must decide your specialty before you start.",
+      "reality": "The specialty decision comes years later, after clinical exposure. Many students arrive certain they want one specialty and choose a different one once they have seen both. Being undecided at eighteen is the normal state, not a problem."
+    },
+    {
+      "belief": "You need to be brilliant at everything to get in.",
+      "reality": "Entry selection tests a defined range of knowledge and reasoning, not general brilliance. Sustained, structured preparation matters more than raw talent, and candidates who are strong in science but weak at communication struggle later in ways the entry test does not measure."
+    }
+  ],
+
+  "skills": [
+    {
+      "name": "Clinical reasoning",
+      "importance": "very-high",
+      "why": "Working from ambiguous symptoms to a decision is the central skill, and it is what separates a safe doctor from a knowledgeable one."
+    },
+    {
+      "name": "Communication with patients",
+      "importance": "very-high",
+      "why": "A correct diagnosis is worthless if the patient does not understand or follow the plan, and much diagnostic information comes from how well you take a history."
+    },
+    {
+      "name": "Sustained study",
+      "importance": "very-high",
+      "why": "The volume of material during the degree is large, and continuing professional development is a legal requirement afterwards."
+    },
+    {
+      "name": "Working in a team",
+      "importance": "high",
+      "why": "Care is delivered by nurses, technicians and multiple specialties together; doctors who cannot work with that team make worse decisions."
+    },
+    {
+      "name": "Emotional regulation",
+      "importance": "high",
+      "why": "You need to function during a distressing situation and process it afterwards rather than during it."
+    },
+    {
+      "name": "Attention to detail",
+      "importance": "high",
+      "why": "Dosages, allergies and interactions are unforgiving, and most serious errors trace back to a small missed detail."
+    },
+    {
+      "name": "Practical and manual skill",
+      "importance": "moderate",
+      "why": "Essential in surgical and procedural specialties, much less so in others — which is one of the things the specialty choice turns on."
+    }
+  ],
+
+  "relatedCareers": [
+    {
+      "name": "Nurse",
+      "slug": "nurse",
+      "howItDiffers": "Shorter route to qualification and more continuous contact with patients. Increasingly includes advanced clinical roles with prescribing responsibility, but diagnosis and overall treatment decisions sit differently."
+    },
+    {
+      "name": "Pharmacist",
+      "howItDiffers": "Expert in medicines rather than diagnosis. Shorter training, more regular hours, and work split between community pharmacy, hospital and industry."
+    },
+    {
+      "name": "Psychologist",
+      "howItDiffers": "Treats mental health through assessment and therapy rather than medicine. A psychiatrist, by contrast, is a doctor who specialised in mental health and can prescribe."
+    },
+    {
+      "name": "Physiotherapist",
+      "howItDiffers": "Focuses on movement, rehabilitation and pain through physical treatment. Shorter route, more hands-on time per patient, and no prescribing."
+    },
+    {
+      "name": "Biomedical researcher",
+      "howItDiffers": "Works on the science behind treatment rather than treating patients. Entered through a science degree and a doctorate; some doctors combine both."
+    },
+    {
+      "name": "Paramedic",
+      "howItDiffers": "Emergency assessment and treatment outside hospital, with a much shorter training route and a working life built around shifts and callouts."
+    }
+  ],
+
+  "countryProfiles": [
+    {
+      "countryCode": "IT",
+
+      "pathway": [
+        {
+          "stepNumber": 1,
+          "stage": "Upper secondary school",
+          "stageLabel": "Ages 14–19",
+          "title": "Finish upper secondary school with strong science",
+          "description": "Biology, chemistry, physics and mathematics all appear in the entry selection and in the first years of the degree. A scientific upper secondary school is the common route because it covers more of this, but it is not a formal requirement and students from other schools do get in — they usually have more to cover independently.",
+          "requirement": "legally-required",
+          "estimatedDuration": "5 years"
+        },
+        {
+          "stepNumber": 2,
+          "stage": "Selection",
+          "title": "Pass the national selection for entry to medicine",
+          "description": "Places on medicine degrees are limited nationally and allocated through a national selection process. This is the first major bottleneck: the number of places is set centrally each year, so admission depends on your rank relative to other candidates, not only on your absolute score. The format and timing of this selection have been changed by the ministry more than once in recent years, so verify the current arrangement before planning around it.",
+          "requirement": "legally-required"
+        },
+        {
+          "stepNumber": 3,
+          "stage": "University",
+          "stageLabel": "Ages 19–25",
+          "title": "Complete the single-cycle degree in medicine and surgery",
+          "description": "A long single-cycle degree combining preclinical science with clinical placements in hospitals, ending in a final examination. The later years are largely spent in clinical settings rather than lecture theatres.",
+          "requirement": "legally-required",
+          "estimatedDuration": "6 years"
+        },
+        {
+          "stepNumber": 4,
+          "stage": "Licensing",
+          "title": "Qualify to practise and register with the professional body",
+          "description": "Graduation alone does not permit practice. You must obtain professional qualification and register with the medical professional register before working as a doctor. The relationship between the degree's final examination and professional qualification has been reformed recently, so confirm the current sequence.",
+          "requirement": "legally-required"
+        },
+        {
+          "stepNumber": 5,
+          "stage": "Specialist training",
+          "stageLabel": "Typically mid-to-late twenties",
+          "title": "Win a place in specialist training and complete it",
+          "description": "A second national competitive process allocates places in specialist training programmes. This is the second bottleneck, and it determines which kind of doctor you become. Training is paid and takes several years, with the length depending on the specialty. General practice has its own separate training route rather than being one of these programmes.",
+          "requirement": "usually-expected",
+          "estimatedDuration": "3–6 years depending on specialty"
+        },
+        {
+          "stepNumber": 6,
+          "stage": "Practice",
+          "title": "Work as a qualified specialist and keep training",
+          "description": "After completing specialist training you can work independently in that specialty in the public health service, privately, or both. Continuing professional development is a legal obligation, not an optional extra, and must be maintained throughout the career.",
+          "requirement": "legally-required",
+          "estimatedDuration": "Ongoing"
+        }
+      ],
+
+      "educationRoutes": [
+        {
+          "name": "Single-cycle degree in medicine and surgery",
+          "requirement": "legally-required",
+          "description": "The six-year single-cycle university degree is the only route to becoming a doctor. There is no shorter or alternative qualification, and no route from another healthcare profession that bypasses it.",
+          "notes": "Entry is capped nationally and allocated by a selection process whose format has changed recently. Confirm the current rules with the ministry before relying on any description of it, including this one."
+        },
+        {
+          "name": "Specialist training programme",
+          "requirement": "usually-expected",
+          "description": "Several further years of paid training in a chosen specialty, allocated by national competition. Required to work as a specialist in the public health service, and in practice the normal destination for graduates."
+        },
+        {
+          "name": "General practice training",
+          "requirement": "alternative-route",
+          "description": "A separate training route for doctors who want to work as family doctors rather than hospital specialists. Different in structure and length from hospital specialist training, and worth understanding as a distinct option rather than a fallback."
+        },
+        {
+          "name": "Studying medicine abroad",
+          "requirement": "alternative-route",
+          "description": "Some students who do not gain a place take a medicine degree in another country. This is a genuine route, but recognition of the qualification on return is a separate legal process with its own conditions, and costs differ substantially between countries.",
+          "notes": "Recognition rules differ inside and outside the EU. Anyone considering this should check the specific recognition procedure for the country and qualification before enrolling, not afterwards."
+        },
+        {
+          "name": "Research doctorate alongside or after clinical training",
+          "requirement": "useful-but-optional",
+          "description": "A doctorate is common among doctors who want an academic or research career and is not needed for clinical practice."
+        }
+      ],
+
+      "salary": {
+        "state": "not_researched",
+        "note": "Needs three separate figures, because collapsing them is exactly the misleading average §10.7 warns against: pay during specialist training (a training grant, not a normal salary), pay as a qualified specialist in the national health service, and the range in private practice. All must be stated as gross annual pay (RAL) with the year of the source, taken from the national health service collective agreement and official sources rather than from salary-aggregator sites."
+      },
+
+      "timeToEnter": {
+        "state": "unverified",
+        "value": {
+          "minYears": 10,
+          "maxYears": 14,
+          "notes": "Counted from the end of upper secondary school to independent practice as a specialist: six years of degree, then professional qualification, then three to six years of specialist training. The lower end assumes gaining a university place at the first attempt and a specialist training place immediately after qualifying; neither is guaranteed, and repeating the entry selection is common."
+        },
+        "note": "Arithmetic from the pathway structure. Needs verification of current specialist training durations by specialty, and of the current timing of professional qualification following the recent reform."
+      },
+
+      "educationSummary": {
+        "state": "unverified",
+        "value": "A six-year single-cycle university degree in medicine and surgery, entered through a capped national selection, followed by professional qualification and registration, and then several further years of specialist training allocated by a second national competition.",
+        "note": "Each stage needs sourcing to the ministry and the professional body, particularly the entry selection format, which has been reformed recently and is described inconsistently across secondary sources."
+      },
+
+      "regulation": {
+        "state": "unverified",
+        "value": "Medicine is a regulated profession. Practising requires professional qualification and registration with the medical professional register, and the title is legally protected. Continuing professional development is a legal obligation. University places are capped nationally and allocated by a centrally run selection process.",
+        "note": "Must be sourced to the professional body and the relevant ministry before publication. The recent reform of the qualification route makes older secondary descriptions unreliable."
+      },
+
+      "competition": {
+        "state": "unverified",
+        "value": {
+          "level": "very-high",
+          "whatThisMeans": "There are two separate bottlenecks. The first is entry to the degree, where the number of places is capped nationally and candidates are ranked against each other. The second comes years later, when places in specialist training are allocated by a further national competition — so passing the first does not secure the second, and the specialty you get may not be the one you wanted. Both are ranked competitions rather than pass marks, which means the same performance can succeed one year and not the next."
+        },
+        "note": "Needs the actual number of places and applicants for both the degree selection and specialist training allocation, for the most recent years available, so students see figures rather than an adjective."
+      },
+
+      "outlook": {
+        "state": "unverified",
+        "value": "Demand for doctors is expected to stay high, with an ageing population increasing need. Shortages are reported in some specialties and some regions rather than uniformly, which affects how easy it is to get the specialty and location you want.",
+        "note": "Needs a national workforce planning source. Claims about specific shortage specialties should not be published without one, because they change and they influence major decisions."
+      },
+
+      "workEnvironment": [
+        "Public hospitals",
+        "Community and family medicine practices",
+        "Private clinics",
+        "Universities and research institutes",
+        "Shift work including nights and weekends in most hospital specialties"
+      ],
+
+      "whatYouCanDoNow": [
+        {
+          "action": "Build a genuinely solid base in biology, chemistry and physics",
+          "why": "These are tested at entry and assumed from day one of the degree. Depth here saves you from spending the first university year catching up.",
+          "whenApplicable": "From age 14"
+        },
+        {
+          "action": "Practise the entry selection format under timed conditions",
+          "why": "The selection tests speed and accuracy under pressure as much as knowledge. Practising the format is a different skill from knowing the material, and it is one students consistently underestimate.",
+          "whenApplicable": "Final two years of school"
+        },
+        {
+          "action": "Spend time around healthcare — volunteering, first aid, or talking to people who work in it",
+          "why": "It tells you whether you can be near illness and distress for a working lifetime. That is the question the entry test does not ask and the one most likely to change your mind."
+        },
+        {
+          "action": "Ask three doctors in different specialties what their week actually looks like",
+          "why": "It is the fastest way to see how little specialties have in common, and it makes the eventual specialty choice concrete rather than abstract."
+        },
+        {
+          "action": "Work on explaining something complicated to someone who is worried",
+          "why": "Communication is assessed in medical practice and is a large part of whether patients do well. It is also the part of the job that cannot be learned from a textbook."
+        }
+      ],
+
+      "lastReviewedAt": "2026-08-04",
+      "reviewStatus": "in-progress"
+    }
+  ],
+
+  "sources": [],
+
+  "editorial": {
+    "lastReviewedAt": "2026-08-04",
+    "reviewedBy": "unreviewed — initial structural draft",
+    "openQuestions": [
+      "Confirm the current format, timing and legal basis of the national selection for entry to medicine — this has been reformed recently and secondary sources disagree.",
+      "Confirm the current sequence for professional qualification and registration following the reform that linked it to the degree.",
+      "Attach the national health service collective agreement as the source for specialist pay, and the official source for the specialist training grant.",
+      "Record the number of places versus applicants for both the degree selection and specialist training allocation for the last three years.",
+      "Verify current specialist training durations by specialty from an official source, since the 3–6 year range is currently an estimate.",
+      "Attach a national workforce planning source before publishing anything about shortage specialties.",
+      "Confirm whether general practice training should be presented as a separate route or as a peer of specialist training — the current framing needs a domain reviewer."
+    ]
+  }
+}

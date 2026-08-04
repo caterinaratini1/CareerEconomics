@@ -1,0 +1,398 @@
+{
+  "slug": "software-engineer",
+  "canonicalName": "Software engineer",
+  "category": "technology-and-design",
+  "status": "draft",
+
+  "aliases": [
+    { "text": "software engineer", "language": "en" },
+    { "text": "software developer", "language": "en" },
+    { "text": "programmer", "language": "en" },
+    { "text": "coder", "language": "en" },
+    { "text": "web developer", "language": "en" },
+    { "text": "backend developer", "language": "en" },
+    { "text": "frontend developer", "language": "en" },
+    { "text": "full stack developer", "language": "en" },
+    { "text": "app developer", "language": "en" },
+    { "text": "sviluppatore", "language": "it" },
+    { "text": "sviluppatore software", "language": "it" },
+    { "text": "programmatore", "language": "it" },
+    { "text": "ingegnere informatico", "language": "it" },
+    { "text": "informatico", "language": "it" },
+    { "text": "sviluppatore web", "language": "it" },
+    { "text": "perito informatico", "language": "it" }
+  ],
+
+  "oneSentence": "A software engineer designs, builds and maintains the programs that run websites, apps, devices and the systems businesses depend on.",
+
+  "plainLanguageSummary": "A software engineer writes and maintains the code behind the software people and organisations use. The word 'engineer' is doing real work in that title: the job is much less about typing code than about deciding how a system should be structured so it keeps working as it grows, and figuring out why it stopped working when it does. It is unusual among well-paid careers in that there is no licence and no legally required qualification — what employers assess is whether you can build things, which can be demonstrated through a degree, a technical school, an apprenticeship, or work you did yourself. That openness is real, but it cuts both ways: without a formal gate, the burden of proving competence falls entirely on you.",
+
+  "whatTheyDo": {
+    "overview": "Most of the job is not writing new code. It is understanding code that already exists, often written by someone who has left, and changing it without breaking anything. Around that sit several distinct activities: working out what is actually needed, because the first description of a problem is rarely the real one; designing how a system should be structured, which is where the consequential decisions are made; reviewing colleagues' work; testing; and investigating failures in systems that are already running. Engineers usually specialise — in what users see, in the servers and data behind it, in mobile devices, in infrastructure, or in embedded software inside physical products — and those specialisations differ more than the shared title suggests.",
+    "concreteExamples": [
+      "Tracing why a payment page fails for a small subset of users, which turns out to be a difference in how one browser handles a date.",
+      "Splitting a large, slow system into smaller parts so that a change to one does not require redeploying everything.",
+      "Reviewing a colleague's change and noticing it would work today but break when the number of users doubles.",
+      "Turning a vague request — 'make search better' — into a specific, testable definition of what better means.",
+      "Being on call when a production system fails at night, diagnosing it under time pressure, and writing up afterwards what would prevent a repeat."
+    ]
+  },
+
+  "typicalDay": {
+    "overview": "A common day is a mix of a few hours of focused work, some collaboration, and some interruption. Many teams start with a short daily meeting, then people work through their current tasks — writing code, reviewing other people's, or investigating a problem. Focused blocks matter more in this job than in most, because reconstructing a complex system in your head takes time and an interruption costs more than the minutes it occupies. Afternoons tend to be more collaborative: design discussions, pairing, planning. The rhythm changes completely when something is broken in production.",
+    "commonTasks": [
+      "Reading and understanding existing code",
+      "Writing new code and tests",
+      "Reviewing colleagues' changes and responding to reviews of your own",
+      "Debugging — reproducing a problem, narrowing it down, fixing it",
+      "Design discussions about how something should be built",
+      "Writing documentation and technical notes",
+      "Deploying changes and monitoring whether they behaved as expected",
+      "Meetings with designers, product managers or clients about what to build"
+    ],
+    "howMuchItVaries": "The variation is driven by employer type more than by specialty. A startup means broad responsibility, fast change, and less structure. A large company means deeper specialisation, more process, and more coordination. A consultancy means changing client and codebase every few months. Remote and hybrid work are common in this field, more so than in most, which genuinely changes daily life. On-call responsibility — being contactable outside hours when a system fails — applies in some roles and not others, and is worth asking about explicitly before accepting a job."
+  },
+
+  "suitability": {
+    "suitsYouIf": [
+      "You enjoy the process of narrowing down a problem, not only the moment it is solved",
+      "You can tolerate being wrong repeatedly on the way to being right",
+      "You like building things that other people use",
+      "You are willing to keep learning, because a large part of what you know now will be outdated in ten years",
+      "You can explain a technical decision to someone who is not technical"
+    ],
+    "mayNotSuitYouIf": [
+      "You want most of your day to involve people rather than screens",
+      "You want a fixed body of knowledge that stays valid across your career",
+      "You find long stretches of sitting and concentrating physically difficult",
+      "You want work that visibly ends, since software is maintained rather than finished",
+      "You dislike having your work critiqued in detail, which code review does routinely"
+    ]
+  },
+
+  "advantages": [
+    {
+      "title": "More than one legitimate way in",
+      "detail": "There is no licence and no mandatory degree. University, technical secondary school, apprenticeships and self-directed learning all lead into the field, which makes it unusually reachable for students without access to an expensive path."
+    },
+    {
+      "title": "Strong demand and pay relative to training length",
+      "detail": "Compared with regulated professions, the time between starting to learn and earning a full salary is short. Demand has been sustained across the sector for a long time, though it is not immune to downturns."
+    },
+    {
+      "title": "Flexible working is genuinely common",
+      "detail": "Remote and hybrid arrangements are more available here than in most fields, which affects where you can live and how you organise your life."
+    },
+    {
+      "title": "Skills transfer across industries",
+      "detail": "Software is built in healthcare, finance, gaming, agriculture and public services. You can change the domain you work in without changing profession."
+    },
+    {
+      "title": "You can see what you built",
+      "detail": "The feedback loop is short. Something that did not exist in the morning exists by the evening, which is rarer than it sounds."
+    }
+  ],
+
+  "disadvantages": [
+    {
+      "title": "Continuous obsolescence",
+      "detail": "Tools and frameworks change constantly, and staying current requires effort that often happens outside working hours. Some of what you learn deeply will be irrelevant within a few years."
+    },
+    {
+      "title": "No formal gate means no formal proof",
+      "detail": "The absence of a licence cuts both ways. Nobody can stop you entering, but nobody certifies you either, so early hiring leans on interviews and portfolios that are inconsistent and often unfair."
+    },
+    {
+      "title": "Sedentary and screen-heavy",
+      "detail": "Long periods of sitting and concentrated screen use carry well-documented physical costs — back, wrist and eye problems are common and worth taking seriously early."
+    },
+    {
+      "title": "On-call and production pressure",
+      "detail": "In many roles you are responsible for systems that must keep running, which can mean being contactable outside working hours and handling failures at bad times."
+    },
+    {
+      "title": "The market is cyclical",
+      "detail": "Demand has been strong for years but is not guaranteed. Hiring in the sector contracts during downturns, and entry-level roles are usually the first to thin out."
+    },
+    {
+      "title": "Much of the work is invisible",
+      "detail": "A large share of effort goes into maintenance, migration and preventing problems, none of which is visible to anyone outside the team when it succeeds."
+    }
+  ],
+
+  "misconceptions": [
+    {
+      "belief": "You need to be exceptional at mathematics.",
+      "reality": "Most software work needs solid logical reasoning rather than advanced mathematics. Some specialisations — graphics, cryptography, machine learning, scientific computing — are genuinely mathematical, but a great deal of professional software engineering is not. Confusing the two puts off students who would do well."
+    },
+    {
+      "belief": "Software engineers work alone.",
+      "reality": "Almost all professional software is built by teams. Code review, design discussion, and explaining technical constraints to non-technical colleagues are daily activities. Engineers who cannot communicate hit a ceiling early, regardless of technical ability."
+    },
+    {
+      "belief": "You must start coding as a child to be any good.",
+      "reality": "Starting early helps, as it does anywhere, but people enter this field successfully from other degrees and other careers in their twenties and thirties. What matters is sustained practice building real things, not the age at which it started."
+    },
+    {
+      "belief": "AI tools mean the career is disappearing.",
+      "reality": "These tools change what the day-to-day work looks like and raise the value of judgement — deciding what to build, whether a solution is correct, and how a system should be structured — relative to producing code by hand. That is a genuine shift and it is reasonable to weigh it. But it is a change in the work rather than an established disappearance of it, and anyone claiming to know the ten-year outcome, in either direction, is guessing."
+    },
+    {
+      "belief": "A computer science degree is required.",
+      "reality": "It is a common and useful route, and some employers do filter on it, but it is not legally required and many working engineers do not have one. Technical secondary schools, apprenticeships and demonstrated project work are all real routes in."
+    }
+  ],
+
+  "skills": [
+    {
+      "name": "Problem decomposition",
+      "importance": "very-high",
+      "why": "Breaking a large, vague problem into small solvable pieces is the skill that separates engineers who can handle scale from those who cannot."
+    },
+    {
+      "name": "Debugging",
+      "importance": "very-high",
+      "why": "Finding out why something does not work occupies more professional time than writing new code does."
+    },
+    {
+      "name": "Reading other people's code",
+      "importance": "very-high",
+      "why": "You spend far more time understanding existing systems than writing new ones, and this is the skill least practised at school."
+    },
+    {
+      "name": "Communication",
+      "importance": "high",
+      "why": "You must explain technical trade-offs to non-technical colleagues and write things down clearly enough for someone else to maintain."
+    },
+    {
+      "name": "Version control and collaboration tools",
+      "importance": "high",
+      "why": "Working in a team on shared code is impossible without them and they are assumed knowledge from the first day of any job."
+    },
+    {
+      "name": "Testing",
+      "importance": "high",
+      "why": "Knowing how to prove your code does what you think it does is what makes changing it later safe."
+    },
+    {
+      "name": "System design",
+      "importance": "moderate",
+      "why": "Becomes central as you become more senior: choosing how the parts fit together determines what is easy or impossible later."
+    },
+    {
+      "name": "English",
+      "importance": "high",
+      "why": "Documentation, error messages and most technical discussion are in English, and international teams are common in this field."
+    }
+  ],
+
+  "relatedCareers": [
+    {
+      "name": "Data scientist",
+      "howItDiffers": "Uses code to answer questions from data rather than to build systems. More statistics, more experiment design, and usually a stronger mathematical requirement."
+    },
+    {
+      "name": "Cybersecurity analyst",
+      "howItDiffers": "Focuses on finding and defending against weaknesses in systems rather than building features. Shares the technical base but the mindset is adversarial."
+    },
+    {
+      "name": "UX/UI designer",
+      "howItDiffers": "Decides how software should look and behave for the person using it. Works closely with engineers but the craft is design research and interaction, not code."
+    },
+    {
+      "name": "IT systems administrator",
+      "howItDiffers": "Keeps existing infrastructure and services running rather than building new software. Often entered through certifications rather than a degree."
+    },
+    {
+      "name": "Product manager",
+      "howItDiffers": "Decides what should be built and why, coordinating engineering, design and business. Frequently entered from engineering after some years."
+    },
+    {
+      "name": "Electronic engineer",
+      "howItDiffers": "Works on physical hardware. Overlaps with software in embedded systems, but is a regulated engineering path with its own qualification route."
+    }
+  ],
+
+  "countryProfiles": [
+    {
+      "countryCode": "IT",
+
+      "pathway": [
+        {
+          "stepNumber": 1,
+          "stage": "Upper secondary school",
+          "stageLabel": "Ages 14–19",
+          "title": "Finish upper secondary school",
+          "description": "A technical institute specialising in IT gives the most direct preparation and can lead straight to employment or to further study. A scientific upper secondary school is also a common route, particularly for students heading to university. Neither is required, and students from other schools do enter the field.",
+          "requirement": "usually-expected",
+          "estimatedDuration": "5 years"
+        },
+        {
+          "stepNumber": 2,
+          "stage": "Building evidence",
+          "stageLabel": "From around age 15",
+          "title": "Build things and keep them where they can be seen",
+          "description": "Because there is no licence, employers assess what you can demonstrate. A handful of finished projects that solve a real problem — published publicly with the code readable — is the closest thing this field has to a qualification, and it can be started years before any formal training ends.",
+          "requirement": "usually-expected",
+          "estimatedDuration": "Ongoing"
+        },
+        {
+          "stepNumber": 3,
+          "stage": "Post-secondary training",
+          "stageLabel": "Ages 19–22",
+          "title": "Choose a route: university, higher technical institute, or apprenticeship",
+          "description": "A university degree in computer science or computer engineering is the most common route and the one most likely to satisfy employer filters and to be recognised abroad. A higher technical institute offers a shorter, more practical alternative aimed directly at employment. Apprenticeships combine paid work with training. All three lead into the profession; they differ in length, cost, and how much theory they cover.",
+          "requirement": "usually-expected",
+          "estimatedDuration": "2–5 years"
+        },
+        {
+          "stepNumber": 4,
+          "stage": "First role",
+          "title": "Take a junior position or an internship",
+          "description": "Early roles are where you learn how professional software is actually built: working in a team, reviewing code, and maintaining systems you did not write. Selection typically involves technical interviews and practical exercises rather than credential checks.",
+          "requirement": "usually-expected",
+          "estimatedDuration": "1–3 years in the first role"
+        },
+        {
+          "stepNumber": 5,
+          "stage": "Specialisation",
+          "title": "Specialise and take on more responsibility",
+          "description": "After a few years most engineers develop a focus — backend, frontend, mobile, infrastructure, data, embedded — and take on design decisions and mentoring. Progression from here splits between deeper technical work and management, and both are normal.",
+          "requirement": "useful-but-optional",
+          "estimatedDuration": "Ongoing"
+        }
+      ],
+
+      "educationRoutes": [
+        {
+          "name": "University degree in computer science or computer engineering",
+          "requirement": "usually-expected",
+          "description": "The most common route. Covers the theory behind the practice, is the qualification most likely to pass employer screening and to be recognised in other countries, and is the usual prerequisite for research or specialised technical fields.",
+          "notes": "Computer engineering sits within the regulated engineering framework, which has its own professional register. That register is not needed to work as a software engineer, but it matters for some employers and for certain public-sector roles."
+        },
+        {
+          "name": "Technical secondary school specialising in IT",
+          "requirement": "alternative-route",
+          "description": "A five-year technical route that can lead directly into employment at nineteen or on to further study. Graduates enter the field with practical skills earlier than university graduates, and can add a degree later if they choose."
+        },
+        {
+          "name": "Higher technical institute programme",
+          "requirement": "alternative-route",
+          "description": "A short, employment-focused post-secondary programme run in partnership with companies. Cheaper and faster than a degree, with a strong practical emphasis, though it covers less theory."
+        },
+        {
+          "name": "Apprenticeship",
+          "requirement": "alternative-route",
+          "description": "Combines paid employment with structured training. Suits students who want to earn while learning and who learn better on real work than in classrooms."
+        },
+        {
+          "name": "Self-directed learning and a public portfolio",
+          "requirement": "alternative-route",
+          "description": "A genuine route into the profession, and one people do use successfully. It is harder than it is often portrayed: without a course you must supply your own structure, and without a degree the first job is the difficult one — after that, experience is what employers assess."
+        },
+        {
+          "name": "Vendor and cloud certifications",
+          "requirement": "useful-but-optional",
+          "description": "Certifications from cloud and software vendors can help demonstrate specific skills, particularly for infrastructure roles. They complement demonstrated work rather than replacing it, and they expire."
+        }
+      ],
+
+      "salary": {
+        "state": "not_researched",
+        "note": "Needs entry, mid and senior gross annual pay (RAL) for Italy specifically, from a source that separates them by region — the difference between the north and the south, and between an Italian employer and a remote contract with a foreign one, is large enough that a single national range would be actively misleading. If a salary-aggregator dataset is used, its limitations must be recorded on the source and shown to the student, and it should be corroborated against the national collective agreement for the sector."
+      },
+
+      "timeToEnter": {
+        "state": "unverified",
+        "value": {
+          "minYears": 0,
+          "maxYears": 5,
+          "notes": "The widest range of any career in this set, and the spread is the point rather than a defect. A technical institute graduate can be employed at nineteen, straight out of school. A university graduate typically starts at twenty-two or twenty-three. Someone entering through self-directed learning may take one to three years to reach a first job, depending heavily on what they can demonstrate."
+        },
+        "note": "Drafted from the structure of the available routes. Needs employment-outcome data for technical institute and university graduates in this field before publication, so the range rests on outcomes rather than on route lengths."
+      },
+
+      "educationSummary": {
+        "state": "unverified",
+        "value": "No qualification is legally required. A university degree in computer science or computer engineering is the most common and most portable route, but technical secondary schools, higher technical institute programmes and apprenticeships all lead into the profession, and demonstrated project work carries real weight with employers.",
+        "note": "The claim that employers accept non-degree routes is well supported anecdotally but needs a labour-market source showing the actual qualification mix of people working in the field in Italy."
+      },
+
+      "regulation": {
+        "state": "unverified",
+        "value": "Software engineering is not a regulated profession. There is no licence, no protected title, and no register you must join to write software professionally. This is a genuine difference from careers such as medicine or law, and it is why employers assess demonstrated skill directly. Note that 'engineer' in the formal, regulated sense is a protected professional title in Italy with its own register and state examination; that regulated status applies to the engineering profession, not to working as a software developer.",
+        "note": "The distinction between the regulated engineering profession and unregulated software work is the single most confusing point on this page for Italian students and must be verified with the professional engineering body before publication."
+      },
+
+      "competition": {
+        "state": "unverified",
+        "value": {
+          "level": "moderate",
+          "whatThisMeans": "Unlike medicine or the diplomatic service there is no fixed number of places, so this is not a ranked competition — you are assessed against a standard, not against other candidates for a set quota. Demand for experienced engineers has been consistently strong. Entry-level roles are the competitive part: there are more first-time candidates than junior positions, and this is where hiring contracts first in a downturn. Candidates who can show finished work tend to have a substantially easier time at that first step."
+        },
+        "note": "Needs labour-market data on vacancy rates and time-to-hire in the Italian IT sector, and specifically on entry-level competition, before the 'moderate' level is published as a finding rather than an impression."
+      },
+
+      "outlook": {
+        "state": "unverified",
+        "value": "Demand for software skills has been strong and is widely projected to remain so, with digitalisation continuing across sectors. The sector is cyclical, and AI coding tools are actively changing what junior work looks like — a real uncertainty that this page should state plainly rather than resolve.",
+        "note": "Needs a labour-market forecasting source. Any claim about the effect of AI on entry-level hiring must be sourced or removed entirely; it is the question students ask most and the one where an unsourced answer would do the most damage."
+      },
+
+      "workEnvironment": [
+        "Offices and co-working spaces",
+        "Remote and hybrid work, more common than in most fields",
+        "Startups, large companies, consultancies and public bodies",
+        "Occasional on-call responsibility outside working hours"
+      ],
+
+      "whatYouCanDoNow": [
+        {
+          "action": "Build and finish one small project, then publish the code publicly",
+          "why": "Finishing matters more than ambition. One completed, working thing that someone else can run tells an employer more than three abandoned ambitious ones, and it is the closest thing this field has to a credential.",
+          "whenApplicable": "From age 14"
+        },
+        {
+          "action": "Learn one language properly rather than five superficially",
+          "why": "The concepts transfer between languages; the confidence does not. Depth in one makes the second one quick and the third one trivial."
+        },
+        {
+          "action": "Learn version control early",
+          "why": "It is assumed knowledge from the first day of any job, it is rarely taught well at school, and it takes a weekend to learn the basics."
+        },
+        {
+          "action": "Try to fix a bug in someone else's open-source project",
+          "why": "It forces the skill the job is actually built on — understanding code you did not write — and it is the single most realistic simulation of professional work available to a student."
+        },
+        {
+          "action": "Work on your English",
+          "why": "Documentation, error messages and technical discussion are overwhelmingly in English, and it widens the range of employers open to you.",
+          "whenApplicable": "From age 14"
+        },
+        {
+          "action": "Explain something you built to someone who is not technical",
+          "why": "Communication is what determines how far a technically competent engineer gets, and it is the part students most often assume does not matter."
+        }
+      ],
+
+      "lastReviewedAt": "2026-08-04",
+      "reviewStatus": "in-progress"
+    }
+  ],
+
+  "sources": [],
+
+  "editorial": {
+    "lastReviewedAt": "2026-08-04",
+    "reviewedBy": "unreviewed — initial structural draft",
+    "openQuestions": [
+      "Verify with the professional engineering body how the protected title of 'engineer' relates to working as a software developer — this is the most confusing point on the page for Italian students.",
+      "Find a salary source that separates Italian IT pay by region and by seniority; a single national range would be misleading given north/south variation.",
+      "Attach the relevant national collective agreement for the IT sector as a corroborating salary source.",
+      "Find employment-outcome data for technical institute and university IT graduates to replace the estimated time-to-enter range.",
+      "Find labour-market data on entry-level competition in the Italian IT sector before publishing the 'moderate' competition level.",
+      "Source or remove the statement about AI tools affecting entry-level hiring — it is the question students ask most and the one most damaging to answer unsourced.",
+      "Confirm current higher technical institute programmes in IT and whether they should be named individually on the page."
+    ]
+  }
+}

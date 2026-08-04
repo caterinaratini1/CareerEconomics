@@ -1,0 +1,371 @@
+{
+  "slug": "diplomat",
+  "canonicalName": "Diplomat",
+  "category": "public-service",
+  "status": "draft",
+
+  "aliases": [
+    { "text": "diplomat", "language": "en" },
+    { "text": "diplomatic officer", "language": "en" },
+    { "text": "foreign service officer", "language": "en" },
+    { "text": "embassy official", "language": "en" },
+    { "text": "consular officer", "language": "en" },
+    { "text": "ambassador", "language": "en" },
+    { "text": "diplomatico", "language": "it" },
+    { "text": "funzionario diplomatico", "language": "it" },
+    { "text": "carriera diplomatica", "language": "it" },
+    { "text": "segretario di legazione", "language": "it" },
+    { "text": "ambasciatore", "language": "it" },
+    { "text": "console", "language": "it" },
+    { "text": "ministero degli esteri", "language": "it" }
+  ],
+
+  "oneSentence": "A diplomat represents their country's government abroad, negotiating with other states and helping citizens who run into trouble overseas.",
+
+  "plainLanguageSummary": "A diplomat is a government employee whose job is to manage their country's relationship with other countries. Most work for the foreign ministry, moving every few years between the ministry at home and embassies or consulates abroad. The work is closer to research, writing and negotiation than to the receptions people picture: a diplomat spends much of the week reading, meeting people, working out what a foreign government is likely to do next, and writing that up clearly for decision-makers back home. It is a permanent civil service career entered through a national competitive examination, not a job you apply to when a vacancy appears.",
+
+  "whatTheyDo": {
+    "overview": "Diplomats do four broad things. They report: they follow politics, economics and security in the country they are posted to, and explain to their own government what is happening and what it means. They negotiate: they represent their country's position in talks, ranging from a small technical agreement to a major treaty. They provide consular services: they help their own citizens abroad who have lost a passport, been arrested, been hospitalised, or been caught in a crisis, and they handle visas. And they promote: they support their country's businesses, universities and culture abroad. An individual diplomat rarely does all four at once. Postings are specialised, and the mix changes completely between a large embassy in a capital city and a small consulate in a regional one.",
+    "concreteExamples": [
+      "Writing a short analysis for the foreign ministry explaining why a foreign government just changed its position on an energy agreement, and what it is likely to do next.",
+      "Sitting in a multi-day negotiation over the wording of a single paragraph in an international agreement, because that wording determines what each country is obliged to do.",
+      "Helping the family of a citizen who has been hospitalised abroad understand the local medical and legal system, and connecting them with the right local authorities.",
+      "Organising a visit by a minister: agreeing the agenda with the host government, preparing briefing notes, and making sure the visitor knows the sensitivities before they speak.",
+      "Running consular operations during a crisis such as an earthquake or an evacuation, working out where citizens are and how to reach them."
+    ]
+  },
+
+  "typicalDay": {
+    "overview": "There is no standard day, and the honest version of this question is that the job has two modes. In the normal mode, the day is office work: reading overnight news and cables, meetings with local officials, journalists, businesses or other embassies, and writing. Diplomats write constantly, and the quality of that writing is much of how they are judged. In the crisis mode — an evacuation, a natural disaster, a sudden political rupture — the day is unpredictable, long, and driven by whatever is happening, often including nights and weekends.",
+    "commonTasks": [
+      "Reading incoming reports and news from the country you are posted to",
+      "Meeting contacts: local officials, journalists, academics, business people, other diplomats",
+      "Drafting reports and analysis for the foreign ministry",
+      "Preparing briefing notes for senior officials and visiting politicians",
+      "Attending or chairing meetings and negotiations",
+      "Handling consular cases involving your own citizens",
+      "Coordinating with colleagues in other embassies and at headquarters",
+      "Representing your country at public events"
+    ],
+    "howMuchItVaries": "The variation is larger than in most careers. The same person may spend three years in a large embassy doing nothing but trade policy, then three years in a small consulate where they personally handle every case that walks through the door. Time at headquarters is more predictable and more bureaucratic than time at a post. Some postings are in comfortable capital cities; others are in places with poor healthcare, restricted movement, or real security risk."
+  },
+
+  "suitability": {
+    "suitsYouIf": [
+      "You write clearly and quickly, and you can compress something complicated into one page",
+      "You are genuinely curious about how other countries work, not just about travelling to them",
+      "You learn languages without dreading it",
+      "You are comfortable being the most junior person in a room of senior people and still being useful",
+      "You can accept that your employer decides where you live"
+    ],
+    "mayNotSuitYouIf": [
+      "You want to choose which country you live in, and when you move",
+      "You want your work to be publicly credited to you by name",
+      "You need a stable local network of friends and family that does not reset every few years",
+      "You have a partner whose career cannot move, or caring responsibilities that make relocation hard",
+      "You want to advocate your own political views rather than represent a government position you may disagree with"
+    ]
+  },
+
+  "advantages": [
+    {
+      "title": "Serious responsibility early",
+      "detail": "Junior diplomats are given real files. It is normal to be the person who owns a policy area for an entire country within a few years of entry, which is unusual at that age in most sectors."
+    },
+    {
+      "title": "Job security and a structured career",
+      "detail": "It is a permanent civil service post with a defined progression and a state pension. Once you are in, you are not competing for your job every few years."
+    },
+    {
+      "title": "Genuine variety",
+      "detail": "The career is built around changing role and country every few years, so the work does not calcify in the way a single-employer career can."
+    },
+    {
+      "title": "You see how decisions are actually made",
+      "detail": "Diplomats sit close to real decisions on trade, security and migration, and understand the reasoning behind them rather than reading about it afterwards."
+    },
+    {
+      "title": "Languages and expertise compound",
+      "detail": "Each posting adds language ability and regional knowledge that stays useful for the rest of the career, and is valued outside government too."
+    }
+  ],
+
+  "disadvantages": [
+    {
+      "title": "Your employer decides where you live",
+      "detail": "You can express preferences, but postings are assigned according to the ministry's needs. Refusing them repeatedly damages a career. This affects partners, children and ageing parents, not only you."
+    },
+    {
+      "title": "The entry examination is a multi-year commitment",
+      "detail": "Candidates commonly prepare for one to three years and sit the examination more than once. That preparation has an opportunity cost, and there is no guarantee at the end of it."
+    },
+    {
+      "title": "You represent a position, not your own opinion",
+      "detail": "You will sometimes have to explain and defend a government policy you personally disagree with. People who need their work to match their convictions find this genuinely difficult."
+    },
+    {
+      "title": "Some postings are hard",
+      "detail": "Hardship posts can mean limited healthcare, restrictions on movement, separation from family, or security risk. These are part of the career, not an exception to it."
+    },
+    {
+      "title": "Slow, hierarchical institutions",
+      "detail": "Foreign ministries are large bureaucracies. Decisions take time, credit is collective, and individual initiative is constrained by procedure."
+    }
+  ],
+
+  "misconceptions": [
+    {
+      "belief": "Diplomats spend most of their time at receptions and formal dinners.",
+      "reality": "Events are a small part of the job and are usually work rather than leisure — they are where contacts are made and information is gathered. The bulk of the week is reading, meeting people in offices, analysing, and writing. Much of the rest is administration and consular casework."
+    },
+    {
+      "belief": "You need to study international relations or political science to become a diplomat.",
+      "reality": "Entry competitions typically accept a range of degree subjects, and law, economics and history are all common backgrounds. What the examination actually tests is a defined body of knowledge and writing ability, which you can build from more than one starting point. Check the current competition notice for which degrees qualify, because the list is set by regulation and changes."
+    },
+    {
+      "belief": "It is essentially a travel job.",
+      "reality": "You move country every few years, but you are working, not visiting — often in the same office for years, in a city you did not choose, with limited time to see the country. Repeated relocation is also one of the harder parts of the career for families."
+    },
+    {
+      "belief": "You need family connections or the right background to get in.",
+      "reality": "Entry is through an anonymous written competitive examination, which is designed precisely to remove that. The real barrier is different and less discussed: preparation takes years of unpaid study, which is easier for candidates who can afford to be supported during it."
+    }
+  ],
+
+  "skills": [
+    {
+      "name": "Written analysis",
+      "importance": "very-high",
+      "why": "The central deliverable of the job is short, clear, accurate writing that a busy senior official can act on."
+    },
+    {
+      "name": "Foreign languages",
+      "importance": "very-high",
+      "why": "Entry examinations test languages directly, and language ability determines which postings are open to you later."
+    },
+    {
+      "name": "Negotiation",
+      "importance": "high",
+      "why": "Much of the work is reaching agreement between parties whose interests genuinely differ."
+    },
+    {
+      "name": "Judgement under uncertainty",
+      "importance": "high",
+      "why": "You will regularly have to advise on what a foreign government will do next without complete information."
+    },
+    {
+      "name": "Discretion",
+      "importance": "high",
+      "why": "You will handle confidential material and conversations, and a single leak can damage a relationship between states."
+    },
+    {
+      "name": "Cultural literacy",
+      "importance": "high",
+      "why": "Reading a room correctly in an unfamiliar political culture is what separates a useful posting from an embarrassing one."
+    },
+    {
+      "name": "Resilience under pressure",
+      "importance": "moderate",
+      "why": "Crisis and consular work involves distressing cases and long hours with little notice."
+    }
+  ],
+
+  "relatedCareers": [
+    {
+      "name": "International organisation official",
+      "howItDiffers": "You work for an institution such as the UN or the EU rather than for one national government, so you are not representing a single country's position. Entry is usually by application and competition per post rather than one national examination."
+    },
+    {
+      "name": "Civil servant (domestic ministry)",
+      "howItDiffers": "Similar policy work and similar entry by competitive examination, but without compulsory relocation abroad. A common alternative for people who want public service without mobility."
+    },
+    {
+      "name": "Trade or development adviser",
+      "howItDiffers": "Focuses on economic or development work specifically, often for an agency or a bank, and can be entered mid-career from the private sector."
+    },
+    {
+      "name": "Foreign correspondent",
+      "howItDiffers": "Also involves living abroad and explaining a country to an audience at home, but you publish under your own name and you are independent of government rather than representing it."
+    },
+    {
+      "name": "International lawyer",
+      "howItDiffers": "Works on the legal instruments diplomats negotiate, but from a technical legal role, usually with a law degree and professional qualification rather than a diplomatic examination."
+    }
+  ],
+
+  "countryProfiles": [
+    {
+      "countryCode": "IT",
+
+      "pathway": [
+        {
+          "stepNumber": 1,
+          "stage": "Upper secondary school",
+          "stageLabel": "Ages 14–19",
+          "title": "Finish upper secondary school and start languages early",
+          "description": "Any upper secondary school leads to this career, so the choice of school does not close the door. What matters most at this stage is languages and writing: the entry examination tests foreign languages directly, and language ability takes years to build. Reading news about other countries seriously — not just headlines — is the other habit that pays off later.",
+          "requirement": "legally-required",
+          "estimatedDuration": "5 years"
+        },
+        {
+          "stepNumber": 2,
+          "stage": "University",
+          "stageLabel": "Ages 19–24",
+          "title": "Complete a university degree in a qualifying subject",
+          "description": "The competition notice lists which degree classes make you eligible. Law, political science, economics and international relations are the usual routes. Because the eligible list is set by regulation and can change, check the most recent notice before committing to a degree — this is the single most expensive mistake to make at this stage.",
+          "requirement": "legally-required",
+          "estimatedDuration": "5 years"
+        },
+        {
+          "stepNumber": 3,
+          "stage": "Preparation",
+          "stageLabel": "Typically after graduating",
+          "title": "Prepare for the entry examination",
+          "description": "The examination covers a wide, defined syllabus including international law, history, economics and languages. Candidates commonly prepare for one to three years, often alongside a job or a further qualification, and many sit it more than once. Preparation courses exist but are not required.",
+          "requirement": "usually-expected",
+          "estimatedDuration": "1–3 years"
+        },
+        {
+          "stepNumber": 4,
+          "stage": "Selection",
+          "title": "Sit the national competitive examination",
+          "description": "Entry is through a public competition run by the foreign ministry. It combines written papers, language testing and an oral examination, and it is the only ordinary route in. The number of places is fixed in advance by the notice, which is why the examination is competitive regardless of how well candidates perform in absolute terms.",
+          "requirement": "legally-required",
+          "estimatedDuration": "Around 1 year end to end"
+        },
+        {
+          "stepNumber": 5,
+          "stage": "Entry and training",
+          "title": "Enter as a trainee officer and complete initial training",
+          "description": "Successful candidates enter the diplomatic career at the most junior grade and complete a structured training period before taking on full responsibilities. Training covers the ministry's own procedures as well as the substantive areas of the work.",
+          "requirement": "legally-required",
+          "estimatedDuration": "Several months to around a year"
+        },
+        {
+          "stepNumber": 6,
+          "stage": "First assignments",
+          "title": "Work at the ministry, then take a first posting abroad",
+          "description": "New entrants normally serve at the ministry in Rome before being assigned abroad. From then on the career alternates between headquarters and overseas postings, each typically lasting a few years, with grade progression over time.",
+          "requirement": "legally-required",
+          "estimatedDuration": "Ongoing"
+        }
+      ],
+
+      "educationRoutes": [
+        {
+          "name": "University degree in a qualifying subject",
+          "requirement": "legally-required",
+          "description": "A university degree at the level and in one of the subject classes specified by the competition notice is a condition of admission to the examination. Without it the application is not accepted, regardless of other experience.",
+          "notes": "The list of qualifying degree classes is set by regulation. Always confirm against the most recent competition notice rather than relying on older guidance."
+        },
+        {
+          "name": "Law, political science, economics or international relations",
+          "requirement": "usually-expected",
+          "description": "These are the common degree backgrounds, largely because their content overlaps with the examination syllabus. They are not the only eligible subjects, but choosing one reduces how much you must learn separately for the examination."
+        },
+        {
+          "name": "Postgraduate study in international affairs or law",
+          "requirement": "useful-but-optional",
+          "description": "A master's degree can deepen knowledge that the examination tests and is common among successful candidates, but it is not a legal requirement and does not substitute for the examination."
+        },
+        {
+          "name": "Examination preparation courses",
+          "requirement": "useful-but-optional",
+          "description": "Private and university-run preparation courses exist for this examination. They can help with structure and past-paper practice, but the examination is anonymous and no course confers any advantage in the marking."
+        },
+        {
+          "name": "Related careers as an alternative entry point",
+          "requirement": "alternative-route",
+          "description": "There is no ordinary lateral entry into the diplomatic career from another job. People who want similar work without this examination more often enter another branch of the civil service, an international organisation, or a policy role, each of which has its own separate route."
+        }
+      ],
+
+      "salary": {
+        "state": "not_researched",
+        "note": "Must be taken from the official public-sector pay tables for the diplomatic career and stated as gross annual pay (RAL), separately for the entry grade and later grades. Overseas postings carry additional allowances that vary by country and change the real figure substantially; the profile must show base pay and allowances separately and say so explicitly. Do not use salary-aggregator sites for a regulated public-sector career whose pay is published."
+      },
+
+      "timeToEnter": {
+        "state": "unverified",
+        "value": {
+          "minYears": 6,
+          "maxYears": 10,
+          "notes": "Counted from the end of upper secondary school: around five years of university, then one to three years of examination preparation, then the examination process itself, which runs across roughly a year. Many successful candidates sit the examination more than once, which is why the upper end is realistic rather than pessimistic."
+        },
+        "note": "Drafted from the structure of the pathway rather than from published statistics. Needs the actual distribution of successful candidates' ages and attempts, if the ministry publishes it, plus confirmation of typical examination duration from recent competition notices."
+      },
+
+      "educationSummary": {
+        "state": "unverified",
+        "value": "A university degree in one of the subject classes listed in the competition notice is required to sit the examination. Law, political science, economics and international relations are the usual choices. Postgraduate study is common but not required.",
+        "note": "The specific qualifying degree classes and the required degree level must be quoted from the most recent official competition notice before this is published."
+      },
+
+      "regulation": {
+        "state": "unverified",
+        "value": "The diplomatic career is a regulated public-sector career entered only through a national public competition run by the foreign ministry. Admission requirements, including nationality, civil rights, degree class and any age limit, are fixed by the competition notice and the governing regulations, and there is no ordinary alternative route in.",
+        "note": "Must be sourced to the governing legislation and the current competition notice. Age limits and eligibility conditions in particular have changed over time and must not be stated from memory or from secondary reporting."
+      },
+
+      "competition": {
+        "state": "unverified",
+        "value": {
+          "level": "very-high",
+          "whatThisMeans": "The number of places is fixed in advance by the competition notice, so candidates are competing against each other for a set number of posts rather than against a pass mark. In practice this means a strong candidate can be unsuccessful in a year with few places and successful in a year with more. Sitting the examination more than once is normal rather than a sign of failure, and preparation is usually measured in years."
+        },
+        "note": "The level is inferred from how the competition is structured. Before publication this needs the actual number of places and number of applicants from recent competition notices and results, so students see real figures instead of an adjective."
+      },
+
+      "workEnvironment": [
+        "Foreign ministry offices in the capital",
+        "Embassies and consulates abroad",
+        "International conferences and negotiations",
+        "Frequent relocation between countries"
+      ],
+
+      "whatYouCanDoNow": [
+        {
+          "action": "Get seriously good at one foreign language, and start a second",
+          "why": "Languages are tested directly at entry and decide which postings you can take later. They also take longer to build than anything else on this list, so starting early is the one genuinely irreversible advantage.",
+          "whenApplicable": "From age 14"
+        },
+        {
+          "action": "Practise writing one page that explains something complicated",
+          "why": "The core skill of the job is compressing a complex situation into something a busy person can act on. Summarising a news story in 250 words, regularly, builds exactly that."
+        },
+        {
+          "action": "Follow one other country's politics closely for a year",
+          "why": "Depth beats breadth. Understanding one country well teaches you how to read a political system, which transfers to the next one."
+        },
+        {
+          "action": "Read a recent competition notice from the foreign ministry",
+          "why": "It is a public document that states the real requirements — degrees, subjects, examination structure. Reading one is more informative than any summary, including this page.",
+          "whenApplicable": "Final years of school"
+        },
+        {
+          "action": "Try debating, Model United Nations, or student representation",
+          "why": "These give practice at arguing a position that is assigned to you rather than one you chose, which is a real part of the job. They are useful, not required, and their absence does not disadvantage a candidate at the examination.",
+          "whenApplicable": "Any point in school"
+        }
+      ],
+
+      "lastReviewedAt": "2026-08-04",
+      "reviewStatus": "in-progress"
+    }
+  ],
+
+  "sources": [],
+
+  "editorial": {
+    "lastReviewedAt": "2026-08-04",
+    "reviewedBy": "unreviewed — initial structural draft",
+    "openQuestions": [
+      "Attach the current MAECI competition notice (bando di concorso) as the primary source for eligibility, degree classes, any age limit, and examination structure.",
+      "Attach the governing legislation for the diplomatic career as the source for the regulation claim.",
+      "Find the official public-sector pay tables for the diplomatic career and record entry and senior gross annual pay, with overseas allowances shown separately.",
+      "Record the number of places and number of applicants from the last three competitions so the competition section shows figures rather than an adjective.",
+      "Confirm whether the ministry publishes the typical age or number of attempts of successful candidates; if not, say so on the page rather than estimating.",
+      "Decide whether this profile ships in Italian for the Italian pilot — see docs/DECISIONS.md ADR-0005."
+    ]
+  }
+}
