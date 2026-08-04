@@ -2,6 +2,11 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Columns3, NotebookPen, Search } from 'lucide-react';
 import { getSession } from '@/lib/session/session';
+import {
+  getStudentWork,
+  hasSavedComparison,
+  hasSubmittedReflection,
+} from '@/lib/student-work/state';
 
 export const metadata: Metadata = {
   title: 'La tua attività',
@@ -16,6 +21,7 @@ export const metadata: Metadata = {
  */
 export default async function StudentDashboardPage() {
   const session = await getSession();
+  const work = await getStudentWork();
   const nickname = session?.nickname ?? '';
 
   const actions = [
@@ -25,6 +31,7 @@ export default async function StudentDashboardPage() {
       title: 'Esplora le professioni',
       description:
         'Cerca o sfoglia le professioni e scopri quanto si guadagna, quanto tempo ci vuole e quanto è competitiva.',
+      status: work.comparedSlugs.length > 0 ? 'Iniziato' : 'Da fare',
     },
     {
       href: '/student/compare',
@@ -32,6 +39,7 @@ export default async function StudentDashboardPage() {
       title: 'Confronta fino a 3 percorsi',
       description:
         'Metti a confronto le professioni che ti interessano di più: tempi, costi, stipendi e livello di competizione.',
+      status: hasSavedComparison(work) ? 'Salvato' : 'Da fare',
     },
     {
       href: '/student/reflection',
@@ -39,6 +47,7 @@ export default async function StudentDashboardPage() {
       title: 'Scrivi la tua riflessione',
       description:
         'Rispondi a qualche domanda guidata su cosa hai scoperto e su cosa ti serve ancora capire.',
+      status: hasSubmittedReflection(work) ? 'Consegnata' : 'Da fare',
     },
   ];
 
@@ -51,17 +60,28 @@ export default async function StudentDashboardPage() {
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {actions.map(({ href, icon: Icon, title, description }) => (
+        {actions.map(({ href, icon: Icon, title, description, status }) => (
           <Link
             key={href}
             href={href}
             className="border-border bg-surface hover:border-primary shadow-soft rounded-card block border p-5 transition-colors"
           >
-            <div
-              aria-hidden="true"
-              className="bg-primary-soft text-primary flex h-10 w-10 items-center justify-center rounded-full"
-            >
-              <Icon className="h-5 w-5" strokeWidth={1.75} />
+            <div className="flex items-start justify-between gap-3">
+              <div
+                aria-hidden="true"
+                className="bg-primary-soft text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+              >
+                <Icon className="h-5 w-5" strokeWidth={1.75} />
+              </div>
+              <span
+                className={
+                  status === 'Da fare'
+                    ? 'border-border text-ink-muted rounded-pill border px-2 py-0.5 text-xs font-medium'
+                    : 'bg-success rounded-pill px-2 py-0.5 text-xs font-medium text-white'
+                }
+              >
+                {status}
+              </span>
             </div>
             <h2 className="mt-4 font-semibold">{title}</h2>
             <p className="text-ink-muted mt-1.5 text-sm">{description}</p>

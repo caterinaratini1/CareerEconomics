@@ -21,6 +21,8 @@ import {
 } from '@/lib/content/repository';
 import type { CareerProfile, CountryProfile } from '@/lib/content/schema';
 import { CATEGORY_LABELS, LEVEL_LABELS, SITE } from '@/lib/site';
+import { addCareerToComparison } from '@/lib/student-work/actions';
+import { getStudentWork } from '@/lib/student-work/state';
 
 /**
  * The career page — §10's template, rendered from structured content, plus
@@ -75,6 +77,9 @@ export default async function CareerPage({
 
   const reading = estimateReading(career, DEFAULT_COUNTRY);
   const relatedSlugs = new Set(await careerRepository.listSlugs());
+  const work = await getStudentWork();
+  const alreadyCompared = work.comparedSlugs.includes(career.slug);
+  const compareFull = work.comparedSlugs.length >= 3 && !alreadyCompared;
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-10">
@@ -117,14 +122,31 @@ export default async function CareerPage({
           </p>
         )}
 
-        <button
-          type="button"
-          disabled
-          title="Il confronto arriva in una prossima versione"
-          className="border-border text-ink-muted rounded-control mt-4 cursor-not-allowed border px-4 py-2 text-sm"
-        >
-          Aggiungi al confronto (in arrivo)
-        </button>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <form action={addCareerToComparison.bind(null, career.slug)}>
+            <button
+              type="submit"
+              disabled={alreadyCompared || compareFull}
+              className={
+                alreadyCompared
+                  ? 'bg-success rounded-control inline-flex min-h-10 items-center px-4 py-2 text-sm font-medium text-white'
+                  : compareFull
+                    ? 'border-border text-ink-muted rounded-control inline-flex min-h-10 items-center border px-4 py-2 text-sm'
+                    : 'border-primary text-primary hover:bg-primary-soft rounded-control inline-flex min-h-10 items-center border px-4 py-2 text-sm font-medium'
+              }
+            >
+              {alreadyCompared ? 'Gia nel confronto' : 'Aggiungi al confronto'}
+            </button>
+          </form>
+          {work.comparedSlugs.length > 0 && (
+            <Link
+              href="/student/compare"
+              className="text-primary text-sm font-medium underline underline-offset-4"
+            >
+              Vai al confronto ({work.comparedSlugs.length}/3)
+            </Link>
+          )}
+        </div>
       </Section>
 
       <Section id="what" title="Che cosa fa davvero chi svolge questo lavoro?">

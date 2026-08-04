@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { Clock, Euro } from 'lucide-react';
+import { Clock, Columns3, Euro } from 'lucide-react';
 import { Badge } from '@/components/ui/primitives';
 import type { CareerSummary } from '@/lib/content/schema';
 import { CATEGORY_LABELS, LEVEL_LABELS, SITE } from '@/lib/site';
+import { addCareerToComparison } from '@/lib/student-work/actions';
 
 const COMPETITION_TONE: Record<string, 'verified' | 'draft' | 'risk'> = {
   low: 'verified',
@@ -32,9 +33,13 @@ function formatSalary(salary: CareerSummary['salaryEntry']): string | null {
 export function CareerLibraryCard({
   career,
   matchedOn,
+  selected = false,
+  compareDisabled = false,
 }: {
   career: CareerSummary;
   matchedOn?: string;
+  selected?: boolean;
+  compareDisabled?: boolean;
 }) {
   const showMatch =
     matchedOn &&
@@ -85,6 +90,31 @@ export function CareerLibraryCard({
           {salaryLabel ?? 'Stipendio non ancora verificato'}
         </li>
       </ul>
+
+      <div className="mt-5 flex flex-wrap items-center gap-2">
+        <form action={addCareerToComparison.bind(null, career.slug)}>
+          <button
+            type="submit"
+            disabled={selected || compareDisabled}
+            className={
+              selected
+                ? 'bg-success rounded-control inline-flex min-h-10 items-center gap-2 px-3 py-2 text-sm font-medium text-white'
+                : compareDisabled
+                  ? 'border-border text-ink-muted rounded-control inline-flex min-h-10 items-center gap-2 border px-3 py-2 text-sm'
+                  : 'border-primary text-primary hover:bg-primary-soft rounded-control inline-flex min-h-10 items-center gap-2 border px-3 py-2 text-sm font-medium'
+            }
+          >
+            <Columns3 aria-hidden="true" className="h-4 w-4" />
+            {selected ? 'Nel confronto' : 'Confronta'}
+          </button>
+        </form>
+        <Link
+          href={`/student/careers/${career.slug}`}
+          className="text-primary rounded-control inline-flex min-h-10 items-center px-3 py-2 text-sm font-medium underline-offset-4 hover:underline"
+        >
+          Apri
+        </Link>
+      </div>
     </li>
   );
 }

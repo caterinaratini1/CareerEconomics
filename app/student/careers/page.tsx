@@ -6,6 +6,7 @@ import { StepNav } from '@/components/student/StepNav';
 import { SearchForm } from '@/components/search/SearchForm';
 import { careerRepository } from '@/lib/content/repository';
 import { CATEGORY_LABELS } from '@/lib/site';
+import { getStudentWork } from '@/lib/student-work/state';
 
 export const metadata: Metadata = {
   title: 'Esplora le professioni',
@@ -27,6 +28,7 @@ export default async function CareerLibraryPage({
   const { q, category } = await searchParams;
   const query = q?.trim() ?? '';
   const isSearching = query.length > 0;
+  const work = await getStudentWork();
 
   const hits = isSearching ? await careerRepository.search(query) : [];
   const all = isSearching
@@ -48,9 +50,29 @@ export default async function CareerLibraryPage({
       {!isSearching && <CategoryFilter current={category} />}
 
       {isSearching ? (
-        <SearchResults query={query} hits={hits} />
+        <SearchResults
+          query={query}
+          hits={hits}
+          selectedSlugs={work.comparedSlugs}
+        />
       ) : (
-        <AllCareers careers={all} />
+        <AllCareers careers={all} selectedSlugs={work.comparedSlugs} />
+      )}
+
+      {work.comparedSlugs.length > 0 && (
+        <div className="border-border bg-surface sticky bottom-0 mt-8 border-t py-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-sm font-medium">
+              {work.comparedSlugs.length} di 3 selezionate per il confronto
+            </p>
+            <Link
+              href="/student/compare"
+              className="bg-primary rounded-control inline-flex min-h-10 items-center px-4 py-2 text-sm font-medium text-white"
+            >
+              Confronta
+            </Link>
+          </div>
+        </div>
       )}
     </div>
   );
@@ -101,9 +123,11 @@ function FilterPill({
 function SearchResults({
   query,
   hits,
+  selectedSlugs,
 }: {
   query: string;
   hits: Awaited<ReturnType<typeof careerRepository.search>>;
+  selectedSlugs: string[];
 }) {
   if (hits.length === 0) {
     return <NoResults query={query} />;
@@ -124,6 +148,11 @@ function SearchResults({
             key={hit.career.slug}
             career={hit.career}
             matchedOn={hit.matchedOn}
+            selected={selectedSlugs.includes(hit.career.slug)}
+            compareDisabled={
+              selectedSlugs.length >= 3 &&
+              !selectedSlugs.includes(hit.career.slug)
+            }
           />
         ))}
       </ul>
@@ -161,8 +190,10 @@ function NoResults({ query }: { query: string }) {
 
 function AllCareers({
   careers,
+  selectedSlugs,
 }: {
   careers: Awaited<ReturnType<typeof careerRepository.listSummaries>>;
+  selectedSlugs: string[];
 }) {
   if (careers.length === 0) {
     return (
@@ -181,7 +212,14 @@ function AllCareers({
       </p>
       <ul className="mt-4 grid gap-4 sm:grid-cols-2">
         {careers.map((career) => (
-          <CareerLibraryCard key={career.slug} career={career} />
+          <CareerLibraryCard
+            key={career.slug}
+            career={career}
+            selected={selectedSlugs.includes(career.slug)}
+            compareDisabled={
+              selectedSlugs.length >= 3 && !selectedSlugs.includes(career.slug)
+            }
+          />
         ))}
       </ul>
     </div>
