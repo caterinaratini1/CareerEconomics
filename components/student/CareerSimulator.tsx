@@ -72,7 +72,7 @@ export function CareerSimulator({
     }).format(n);
 
   return (
-    <div className="border-border bg-surface rounded-card border p-5 sm:p-6">
+    <div className="panel p-5 sm:p-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <fieldset>
           <legend className="text-sm font-medium">Dove studi</legend>
@@ -141,8 +141,9 @@ export function CareerSimulator({
         </label>
       </div>
 
-      <div className="border-border bg-surface-muted rounded-card mt-6 border p-4">
-        <p className="text-ink-muted text-xs">
+      <div className="data-rule bg-surface-muted mt-6 p-4">
+        <p className="page-kicker">Stima personale</p>
+        <p className="text-ink-muted mt-2 text-xs">
           Stima, non un dato verificato — cambia i controlli sopra per vedere
           come cambia il conto.
         </p>
@@ -189,8 +190,8 @@ function SegmentButton({
       aria-pressed={active}
       className={
         active
-          ? 'bg-primary rounded-pill px-3 py-1.5 text-sm font-medium text-white'
-          : 'border-border text-ink-muted hover:text-ink rounded-pill border px-3 py-1.5 text-sm'
+          ? 'bg-primary rounded-control px-3 py-1.5 text-sm font-medium text-white'
+          : 'border-border text-ink-muted hover:text-ink rounded-control border px-3 py-1.5 text-sm'
       }
     >
       {children}

@@ -45,21 +45,20 @@ export default async function TeacherPage({
   ).filter((career): career is CareerProfile => Boolean(career));
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <div className="app-shell max-w-7xl py-10 sm:py-14">
       <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
-        <aside className="lg:border-border lg:border-r lg:pr-6">
-          <p className="text-primary text-sm font-semibold uppercase">
-            Insegnanti
-          </p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight">
-            Dashboard classe
-          </h1>
-          <nav aria-label="Sezioni insegnante" className="mt-6 space-y-1">
+        <aside className="lg:border-border lg:border-r lg:pr-8">
+          <p className="page-kicker">Insegnanti</p>
+          <h1 className="editorial-title mt-2">Dashboard classe</h1>
+          <nav
+            aria-label="Sezioni insegnante"
+            className="mt-6 flex flex-col space-y-1"
+          >
             {['Classi', 'Progressi', 'Riflessioni', 'Insight'].map((label) => (
               <a
                 key={label}
                 href={`#${label.toLowerCase()}`}
-                className="text-ink-muted hover:text-ink rounded-control block px-3 py-2 text-sm font-medium"
+                className="text-ink-muted hover:text-primary hover:border-primary border-l-2 border-transparent px-3 py-2 text-sm font-medium"
               >
                 {label}
               </a>
@@ -93,7 +92,7 @@ export default async function TeacherPage({
               </div>
               <a
                 href="#nuova-classe"
-                className="bg-primary rounded-control inline-flex min-h-10 items-center gap-2 px-4 py-2 text-sm font-medium text-white"
+                className="button-primary rounded-control inline-flex min-h-10 items-center gap-2 px-4 py-2 text-sm font-medium"
               >
                 <Plus aria-hidden="true" className="h-4 w-4" />
                 Crea classe
@@ -104,7 +103,7 @@ export default async function TeacherPage({
               {classes.map((record) => (
                 <li
                   key={record.code}
-                  className="border-border bg-surface rounded-card border p-5"
+                  className="border-border bg-surface border-t-2 p-5"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
@@ -150,7 +149,7 @@ export default async function TeacherPage({
           <section
             id="nuova-classe"
             aria-labelledby="nuova-classe-heading"
-            className="border-border bg-surface rounded-card mt-10 border p-5"
+            className="panel mt-10 p-5"
           >
             <h2 id="nuova-classe-heading" className="text-2xl font-semibold">
               Crea una classe
@@ -205,7 +204,7 @@ export default async function TeacherPage({
               <div className="md:col-span-2">
                 <button
                   type="submit"
-                  className="bg-primary rounded-control inline-flex min-h-11 items-center px-5 py-2.5 font-medium text-white"
+                  className="button-primary rounded-control inline-flex min-h-11 items-center px-5 py-2.5 font-medium"
                 >
                   Crea classe
                 </button>
@@ -215,8 +214,8 @@ export default async function TeacherPage({
 
           <p className="text-ink-muted mt-8 text-sm">
             Questa dashboard MVP usa dati demo e la sessione studente aperta in
-            questo browser. La versione con Supabase rendera visibili piu
-            studenti e piu dispositivi.
+            questo browser. La versione con Supabase renderà visibili più
+            studenti e più dispositivi.
           </p>
         </main>
       </div>
@@ -250,7 +249,7 @@ function ClassDetail({
       aria-labelledby="progressi-heading"
       className="mt-10 scroll-mt-8"
     >
-      <div className="border-border bg-surface rounded-card border p-5">
+      <div className="panel border-t-ink border-t-2 p-5">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h2 id="progressi-heading" className="text-2xl font-semibold">
@@ -338,7 +337,7 @@ function ProgressTable({
                 'Esplorazione',
                 'Confronto',
                 'Riflessione',
-                'Ultima attivita',
+                'Ultima attività',
               ].map((heading) => (
                 <th key={heading} className="border-border border-b py-2 pr-4">
                   {heading}

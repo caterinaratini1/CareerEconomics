@@ -17,23 +17,18 @@ export function StepNav({
   current: (typeof STEPS)[number]['key'];
 }) {
   return (
-    <ol className="flex flex-wrap items-center gap-2 text-sm">
-      {STEPS.map((step, index) => {
+    <ol className="student-step-nav border-border flex overflow-x-auto border-b text-sm">
+      {STEPS.map((step) => {
         const isCurrent = step.key === current;
         return (
-          <li key={step.key} className="flex items-center gap-2">
-            {index > 0 && (
-              <span aria-hidden="true" className="text-ink-muted">
-                →
-              </span>
-            )}
+          <li key={step.key} className="shrink-0">
             <Link
               href={step.href}
               aria-current={isCurrent ? 'step' : undefined}
               className={
                 isCurrent
-                  ? 'bg-primary-soft text-primary rounded-pill px-3 py-1 font-medium'
-                  : 'text-ink-muted hover:text-ink px-3 py-1 underline-offset-4 hover:underline'
+                  ? 'border-primary text-primary -mb-px block border-b-2 px-4 py-3 font-semibold'
+                  : 'text-ink-muted hover:text-ink block border-b-2 border-transparent px-4 py-3 font-medium'
               }
             >
               {step.label}

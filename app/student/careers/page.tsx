@@ -3,7 +3,6 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { CareerLibraryCard } from '@/components/student/CareerLibraryCard';
 import { StepNav } from '@/components/student/StepNav';
-import { SearchForm } from '@/components/search/SearchForm';
 import { careerRepository } from '@/lib/content/repository';
 import { CATEGORY_LABELS } from '@/lib/site';
 import { getStudentWork } from '@/lib/student-work/state';
@@ -36,15 +35,14 @@ export default async function CareerLibraryPage({
     : await careerRepository.listSummaries({ category: category || undefined });
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="app-shell max-w-6xl py-8 sm:py-10">
       <StepNav current="explore" />
 
-      <h1 className="mt-4 text-3xl font-bold tracking-tight">
-        {isSearching ? `Risultati per “${query}”` : 'Esplora le professioni'}
-      </h1>
-
-      <div className="mt-6 max-w-2xl">
-        <SearchForm defaultValue={query} autoFocus={!isSearching} />
+      <div className="mt-7">
+        <p className="page-kicker">Archivio professioni</p>
+        <h1 className="editorial-title mt-2 text-4xl">
+          {isSearching ? `Risultati per “${query}”` : 'Esplora le professioni'}
+        </h1>
       </div>
 
       {!isSearching && <CategoryFilter current={category} />}
@@ -60,14 +58,14 @@ export default async function CareerLibraryPage({
       )}
 
       {work.comparedSlugs.length > 0 && (
-        <div className="border-border bg-surface sticky bottom-0 mt-8 border-t py-3">
+        <div className="border-border bg-surface/95 sticky bottom-0 z-20 mt-8 border-t py-3 backdrop-blur-sm">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm font-medium">
               {work.comparedSlugs.length} di 3 selezionate per il confronto
             </p>
             <Link
               href="/student/compare"
-              className="bg-primary rounded-control inline-flex min-h-10 items-center px-4 py-2 text-sm font-medium text-white"
+              className="button-primary rounded-control inline-flex min-h-10 items-center px-4 py-2 text-sm font-medium"
             >
               Confronta
             </Link>
@@ -111,8 +109,8 @@ function FilterPill({
       href={href}
       className={
         active
-          ? 'bg-primary rounded-pill px-3 py-1.5 text-sm font-medium text-white'
-          : 'border-border text-ink-muted hover:text-ink rounded-pill border px-3 py-1.5 text-sm'
+          ? 'bg-primary rounded-control px-3 py-1.5 text-sm font-medium text-white'
+          : 'border-border text-ink-muted hover:text-primary rounded-control border px-3 py-1.5 text-sm'
       }
     >
       {children}
@@ -142,7 +140,7 @@ function SearchResults({
           ? '1 professione trovata.'
           : `${hits.length} professioni trovate.`}
       </p>
-      <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {hits.map((hit) => (
           <CareerLibraryCard
             key={hit.career.slug}
@@ -210,7 +208,7 @@ function AllCareers({
           ? '1 professione.'
           : `${careers.length} professioni.`}
       </p>
-      <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {careers.map((career) => (
           <CareerLibraryCard
             key={career.slug}

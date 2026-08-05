@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { isPreviewMode } from '@/lib/content/repository';
-import { SITE } from '@/lib/site';
 
 /**
  * Deliberately minimal: no marketing nav here. `/student/*` routes render
@@ -13,14 +12,31 @@ export function SiteHeader() {
   return (
     <>
       {isPreviewMode() && <PreviewBanner />}
-      <header className="border-border border-b">
-        <div className="mx-auto flex max-w-5xl items-center px-4 py-4">
+      <header className="border-border bg-background/95 sticky top-0 z-30 border-b backdrop-blur-sm">
+        <div className="app-shell flex min-h-16 items-center justify-between gap-5">
           <Link
             href="/"
-            className="text-ink text-base font-semibold no-underline"
+            className="text-ink inline-flex items-baseline gap-2 no-underline"
           >
-            {SITE.name}
+            <span className="editorial-title text-xl">Career Economics</span>
+            <span className="text-ink-muted hidden text-[10px] font-bold tracking-[.16em] uppercase sm:inline">
+              Lab
+            </span>
           </Link>
+          <nav
+            aria-label="Navigazione principale"
+            className="flex items-center gap-4 text-sm font-medium"
+          >
+            <Link
+              href="/student/careers"
+              className="text-ink-muted hover:text-primary"
+            >
+              Esplora
+            </Link>
+            <Link href="/teacher" className="text-ink-muted hover:text-primary">
+              Docenti
+            </Link>
+          </nav>
         </div>
       </header>
     </>

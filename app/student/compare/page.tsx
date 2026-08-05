@@ -54,19 +54,20 @@ export default async function ComparePage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
+    <div className="app-shell max-w-6xl py-10 sm:py-14">
       <StepNav current="compare" />
-      <h1 className="mt-4 text-3xl font-bold tracking-tight">
-        Confronta le professioni
-      </h1>
+      <div className="data-rule mt-7 pt-4">
+        <p className="page-kicker">Decision desk</p>
+        <h1 className="editorial-title mt-2">Confronta le professioni</h1>
+      </div>
 
       {compared.length < 2 ? (
         <EmptyState count={compared.length} />
       ) : (
         <>
           <p className="text-ink-muted mt-3 max-w-prose">
-            Guarda i compromessi, non una classifica. Il percorso piu realistico
-            puo essere quello con tempi, costi e incertezza piu sostenibili per
+            Guarda i compromessi, non una classifica. Il percorso più realistico
+            può essere quello con tempi, costi e incertezza più sostenibili per
             te.
           </p>
           <form action={saveComparison} className="mt-8">
@@ -74,9 +75,9 @@ export default async function ComparePage() {
               compared={compared}
               realisticSlug={work.realisticSlug}
             />
-            <fieldset className="border-border bg-surface rounded-card mt-8 border p-5">
+            <fieldset className="panel mt-8 p-5">
               <legend className="px-1 text-base font-semibold">
-                Percorso piu realistico per me
+                Percorso più realistico per me
               </legend>
               <div className="mt-3 grid gap-2 sm:grid-cols-3">
                 {compared.map(({ career }) => (
@@ -100,7 +101,7 @@ export default async function ComparePage() {
             <div className="mt-6 flex flex-wrap gap-3">
               <button
                 type="submit"
-                className="bg-primary rounded-control inline-flex min-h-11 items-center px-5 py-2.5 font-medium text-white"
+                className="button-primary rounded-control inline-flex min-h-11 items-center px-5 py-2.5 font-medium"
               >
                 Salva confronto
               </button>
@@ -120,7 +121,7 @@ export default async function ComparePage() {
 
 function EmptyState({ count }: { count: number }) {
   return (
-    <section className="border-border bg-surface-muted rounded-card mt-8 border p-6">
+    <section className="panel-muted mt-8 p-6">
       <h2 className="text-xl font-semibold">Aggiungi almeno due professioni</h2>
       <p className="text-ink-muted mt-2 max-w-prose">
         Hai selezionato {count} professioni. Scegline almeno due, fino a tre,
@@ -129,7 +130,7 @@ function EmptyState({ count }: { count: number }) {
       </p>
       <Link
         href="/student/careers"
-        className="bg-primary rounded-control mt-5 inline-flex min-h-11 items-center px-5 py-2.5 font-medium text-white"
+        className="button-primary rounded-control mt-5 inline-flex min-h-11 items-center px-5 py-2.5 font-medium"
       >
         Esplora professioni
       </Link>
@@ -147,7 +148,7 @@ function ComparisonGrid({
   return (
     <div className="overflow-x-auto pb-2">
       <div
-        className="rounded-card border-border bg-border grid min-w-[720px] gap-px overflow-hidden border"
+        className="border-border bg-border border-t-ink grid min-w-[720px] gap-px overflow-hidden border border-t-2"
         style={{
           gridTemplateColumns: `12rem repeat(${compared.length}, minmax(12rem, 1fr))`,
         }}

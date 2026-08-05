@@ -36,14 +36,15 @@ export default async function ReflectionPage({
   const isSubmitted = hasSubmittedReflection(work) || submitted === '1';
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="app-shell max-w-4xl py-10 sm:py-14">
       <StepNav current="reflect" />
-      <h1 className="mt-4 text-3xl font-bold tracking-tight">
-        La tua riflessione
-      </h1>
+      <div className="data-rule mt-7 pt-4">
+        <p className="page-kicker">Sintesi personale</p>
+        <h1 className="editorial-title mt-2">La tua riflessione</h1>
+      </div>
       <p className="text-ink-muted mt-3 max-w-prose">
         Trasforma il confronto in una prossima domanda concreta. Il tuo
-        insegnante vedra la consegna quando premi &quot;Invia riflessione&quot;.
+        insegnante vedrà la consegna quando premi &quot;Invia riflessione&quot;.
       </p>
 
       {isSubmitted && (
@@ -76,7 +77,7 @@ export default async function ReflectionPage({
         <div className="border-border bg-surface-muted rounded-card mt-6 border p-4">
           <p className="text-sm">
             Non hai ancora salvato un percorso realistico nel confronto. Puoi
-            compilare comunque la riflessione, ma prima e meglio confrontare
+            compilare comunque la riflessione, ma prima è meglio confrontare
             almeno due professioni.
           </p>
           <Link
@@ -96,20 +97,20 @@ export default async function ReflectionPage({
         }))}
       />
 
-      <form className="border-border bg-surface rounded-card mt-8 border p-5 sm:p-6">
+      <form className="panel mt-8 p-5 sm:p-7">
         <ReflectionTextarea
           id="surprised"
-          label="Che cosa ti ha sorpreso di piu?"
+          label="Che cosa ti ha sorpreso di più?"
           defaultValue={reflection.surprised}
         />
         <ReflectionTextarea
           id="realisticPath"
-          label="Quale percorso ti sembra piu realistico adesso?"
+          label="Quale percorso ti sembra più realistico adesso?"
           defaultValue={reflection.realisticPath}
         />
         <ReflectionTextarea
           id="hardestTradeoff"
-          label="Quale compromesso sarebbe piu difficile per te?"
+          label="Quale compromesso sarebbe più difficile per te?"
           defaultValue={reflection.hardestTradeoff}
         />
         <ReflectionTextarea
@@ -120,7 +121,7 @@ export default async function ReflectionPage({
 
         <fieldset className="mt-6">
           <legend className="font-medium">
-            Quanto ti e chiaro il prossimo passo?
+            Quanto ti è chiaro il prossimo passo?
           </legend>
           <div className="mt-3 grid grid-cols-5 gap-2">
             {[1, 2, 3, 4, 5].map((value) => (
@@ -166,7 +167,7 @@ export default async function ReflectionPage({
           </button>
           <button
             formAction={submitReflection}
-            className="bg-primary rounded-control inline-flex min-h-11 items-center px-5 py-2.5 font-medium text-white"
+            className="button-primary rounded-control inline-flex min-h-11 items-center px-5 py-2.5 font-medium"
           >
             Invia riflessione
           </button>

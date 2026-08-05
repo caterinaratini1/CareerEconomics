@@ -14,10 +14,10 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section aria-labelledby={`${id}-heading`} className="mt-12 scroll-mt-8">
+    <section aria-labelledby={`${id}-heading`} className="mt-14 scroll-mt-8">
       <h2
         id={`${id}-heading`}
-        className="border-border border-b pb-2 text-2xl font-semibold"
+        className="border-ink border-b-2 pb-3 text-2xl font-semibold"
       >
         {title}
       </h2>
@@ -45,7 +45,7 @@ export function Disclosure({
   children: ReactNode;
 }) {
   return (
-    <details className="border-border rounded-card group mt-4 border">
+    <details className="border-border group border-l-primary mt-4 border border-l-2">
       <summary className="hover:bg-surface-muted flex items-center gap-3 px-4 py-3 font-medium">
         <span
           aria-hidden="true"
@@ -82,7 +82,7 @@ export function Badge({
 
   return (
     <span
-      className={`rounded-pill inline-block px-2 py-0.5 text-xs font-medium ${tones[tone]}`}
+      className={`rounded-control inline-block px-2 py-0.5 text-[11px] font-bold tracking-wide uppercase ${tones[tone]}`}
     >
       {children}
     </span>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { Columns3, NotebookPen, Search } from 'lucide-react';
+import { ArrowRight, Columns3, NotebookPen, Search } from 'lucide-react';
 import { getSession } from '@/lib/session/session';
 import {
   getStudentWork,
@@ -50,43 +50,113 @@ export default async function StudentDashboardPage() {
       status: hasSubmittedReflection(work) ? 'Consegnata' : 'Da fare',
     },
   ];
+  const nextAction =
+    actions.find(({ status }) => status === 'Da fare') ?? actions[2]!;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
-      <h1 className="text-3xl font-bold tracking-tight">Ciao, {nickname}</h1>
+    <div className="app-shell max-w-6xl py-8 sm:py-10">
+      <div>
+        <p className="page-kicker">La tua attività</p>
+        <h1 className="editorial-title mt-2 text-4xl">Ciao, {nickname}</h1>
+      </div>
       <p className="text-ink-muted mt-2 max-w-prose">
         Questa attività ha tre parti. Puoi farle in ordine o tornare qui in
         qualsiasi momento.
       </p>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {actions.map(({ href, icon: Icon, title, description, status }) => (
-          <Link
-            key={href}
-            href={href}
-            className="border-border bg-surface hover:border-primary shadow-soft rounded-card block border p-5 transition-colors"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div
-                aria-hidden="true"
-                className="bg-primary-soft text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
-              >
-                <Icon className="h-5 w-5" strokeWidth={1.75} />
-              </div>
-              <span
-                className={
-                  status === 'Da fare'
-                    ? 'border-border text-ink-muted rounded-pill border px-2 py-0.5 text-xs font-medium'
-                    : 'bg-success rounded-pill px-2 py-0.5 text-xs font-medium text-white'
-                }
-              >
-                {status}
+      <div className="student-dashboard-grid">
+        <div className="min-w-0">
+          <section className="student-dashboard-hero">
+            <div className="student-hero-scene" aria-hidden="true">
+              <span className="student-hero-grid" />
+              <span className="student-hero-orbit student-hero-orbit-one">
+                <span />
+              </span>
+              <span className="student-hero-orbit student-hero-orbit-two">
+                <span />
               </span>
             </div>
-            <h2 className="mt-4 font-semibold">{title}</h2>
-            <p className="text-ink-muted mt-1.5 text-sm">{description}</p>
-          </Link>
-        ))}
+
+            <div className="student-hero-content">
+              <p className="student-hero-label">Percorso guidato</p>
+              <h2 className="mt-5 max-w-lg text-3xl font-semibold text-white sm:text-4xl">
+                Parti dalla professione che ti incuriosisce.
+              </h2>
+              <p className="mt-3 max-w-xl text-sm text-white/70 sm:text-base">
+                Cerca informazioni concrete, confronta le alternative e annota
+                quello che vuoi approfondire.
+              </p>
+              <Link href={nextAction.href} className="student-hero-action">
+                {nextAction.status === 'Da fare' ? 'Inizia' : 'Continua'}
+                <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+            </div>
+          </section>
+
+          <section aria-labelledby="activities-heading" className="mt-8">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <p className="page-kicker">Attività</p>
+                <h2
+                  id="activities-heading"
+                  className="mt-1 text-2xl font-semibold"
+                >
+                  I tuoi tre passaggi
+                </h2>
+              </div>
+            </div>
+            <div className="student-action-grid">
+              {actions.map(
+                ({ href, icon: Icon, title, description, status }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="student-action-card group"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="student-action-icon" aria-hidden="true">
+                        <Icon className="h-5 w-5" strokeWidth={1.75} />
+                      </span>
+                      <span className="student-status-label">{status}</span>
+                    </div>
+                    <h3 className="mt-5 text-xl font-semibold">{title}</h3>
+                    <p className="text-ink-muted mt-2 text-sm">{description}</p>
+                    <span className="text-primary mt-5 inline-flex items-center gap-1.5 text-sm font-semibold">
+                      Apri <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                    </span>
+                  </Link>
+                ),
+              )}
+            </div>
+          </section>
+        </div>
+
+        <aside
+          className="student-progress-panel"
+          aria-labelledby="progress-heading"
+        >
+          <p className="page-kicker">Panoramica</p>
+          <h2 id="progress-heading" className="mt-2 text-2xl font-semibold">
+            Il tuo percorso
+          </h2>
+          <ol className="mt-5">
+            {actions.map(({ title, status }, index) => (
+              <li key={title} className="student-progress-row">
+                <span className="student-progress-number">{index + 1}</span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-semibold">{title}</span>
+                  <span className="text-ink-muted mt-0.5 block text-xs">
+                    {status}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ol>
+          <div className="border-border mt-6 border-t pt-5">
+            <p className="text-ink-muted text-xs">Classe attiva</p>
+            <p className="mt-1 text-sm font-semibold">{session?.classCode}</p>
+          </div>
+        </aside>
       </div>
     </div>
   );

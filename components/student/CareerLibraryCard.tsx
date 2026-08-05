@@ -48,7 +48,7 @@ export function CareerLibraryCard({
   const salaryLabel = formatSalary(career.salaryEntry);
 
   return (
-    <li className="border-border bg-surface hover:border-primary shadow-soft rounded-card block border p-5 transition-colors">
+    <li className="career-library-card border-border bg-surface hover:border-primary rounded-card border p-5 transition-colors">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap gap-2">
           <Badge>{CATEGORY_LABELS[career.category] ?? career.category}</Badge>
@@ -61,7 +61,7 @@ export function CareerLibraryCard({
         )}
       </div>
 
-      <h3 className="mt-3 text-lg font-semibold">
+      <h3 className="editorial-title mt-4 text-2xl">
         <Link
           href={`/student/careers/${career.slug}`}
           className="text-ink hover:text-primary underline-offset-4 hover:underline"

@@ -82,380 +82,407 @@ export default async function CareerPage({
   const compareFull = work.comparedSlugs.length >= 3 && !alreadyCompared;
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-10">
+    <article className="app-shell max-w-6xl py-8 sm:py-10">
       <StepNav current="explore" />
 
-      <div className="mt-4">
-        <Header
-          career={career}
-          profile={profile}
-          minutes={reading.coreMinutes}
-        />
-      </div>
-
-      <EvidenceNotice career={career} profile={profile} />
-
-      <div className="mt-8">
-        <QuickFacts profile={profile} />
-      </div>
-
-      <Section
-        id="simulator"
-        title="Simula il tuo percorso"
-        lead="Cambia le ipotesi qui sotto per vedere come cambiano costi e rientro. Sono stime che puoi regolare, non dati verificati su questa professione."
-      >
-        {hasValue(profile.salary) && hasValue(profile.timeToEnter) ? (
-          <CareerSimulator
-            yearsToQualify={
-              (profile.timeToEnter.value.minYears +
-                profile.timeToEnter.value.maxYears) /
-              2
-            }
-            entrySalaryMin={profile.salary.value.entry.min}
-            entrySalaryMax={profile.salary.value.entry.max}
-            currency={profile.salary.value.currency}
-          />
-        ) : (
-          <p className="text-ink-muted border-border bg-surface-muted rounded-card border p-4 text-sm">
-            Il simulatore ha bisogno dello stipendio e del tempo per entrarci, e
-            per questa professione non sono ancora stati verificati.
-          </p>
-        )}
-
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <form action={addCareerToComparison.bind(null, career.slug)}>
-            <button
-              type="submit"
-              disabled={alreadyCompared || compareFull}
-              className={
-                alreadyCompared
-                  ? 'bg-success rounded-control inline-flex min-h-10 items-center px-4 py-2 text-sm font-medium text-white'
-                  : compareFull
-                    ? 'border-border text-ink-muted rounded-control inline-flex min-h-10 items-center border px-4 py-2 text-sm'
-                    : 'border-primary text-primary hover:bg-primary-soft rounded-control inline-flex min-h-10 items-center border px-4 py-2 text-sm font-medium'
-              }
-            >
-              {alreadyCompared ? 'Gia nel confronto' : 'Aggiungi al confronto'}
-            </button>
-          </form>
-          {work.comparedSlugs.length > 0 && (
-            <Link
-              href="/student/compare"
-              className="text-primary text-sm font-medium underline underline-offset-4"
-            >
-              Vai al confronto ({work.comparedSlugs.length}/3)
-            </Link>
-          )}
-        </div>
-      </Section>
-
-      <Section id="what" title="Che cosa fa davvero chi svolge questo lavoro?">
-        <Prose>
-          <p>{career.plainLanguageSummary}</p>
-          <p>{career.whatTheyDo.overview}</p>
-          <h3 className="pt-2 font-semibold">Per esempio</h3>
-          <ul className="list-disc space-y-2 pl-5">
-            {career.whatTheyDo.concreteExamples.map((example) => (
-              <li key={example}>{example}</li>
-            ))}
-          </ul>
-        </Prose>
-      </Section>
-
-      <Section id="day" title="Com’è una giornata tipo?">
-        <Prose>
-          <p>{career.typicalDay.overview}</p>
-          <h3 className="pt-2 font-semibold">Cosa si fa più spesso</h3>
-          <ul className="list-disc space-y-1 pl-5">
-            {career.typicalDay.commonTasks.map((task) => (
-              <li key={task}>{task}</li>
-            ))}
-          </ul>
-          <h3 className="pt-2 font-semibold">Quanto cambia da caso a caso</h3>
-          <p>{career.typicalDay.howMuchItVaries}</p>
-        </Prose>
-      </Section>
-
-      <Section
-        id="how"
-        title="Come si diventa?"
-        lead={`Il percorso più comune in ${SITE.country.name}. Per ogni passo trovi scritto quanto è davvero obbligatorio.`}
-      >
-        <PathwaySteps profile={profile} />
-
-        <Disclosure
-          summary="I percorsi di studio, e quali servono davvero"
-          hint={`${profile.educationRoutes.length} percorsi`}
-        >
-          <ul className="space-y-5">
-            {profile.educationRoutes.map((route) => (
-              <li key={route.name}>
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <h4 className="font-semibold">{route.name}</h4>
-                  <RequirementBadge requirement={route.requirement} />
-                </div>
-                <p className="mt-1 max-w-prose">{route.description}</p>
-                {route.notes && (
-                  <p className="text-ink-muted mt-1 max-w-prose text-sm">
-                    {route.notes}
-                  </p>
-                )}
-              </li>
-            ))}
-          </ul>
-        </Disclosure>
-      </Section>
-
-      <Section id="requirements" title="Studi e requisiti di legge">
-        <div className="space-y-6">
-          <div>
-            <h3 className="mb-2 font-semibold">Titoli di studio</h3>
-            <ClaimValue
-              claim={profile.educationSummary}
-              sources={career.sources}
-              label="i titoli di studio richiesti"
-            >
-              {(value) => <p className="max-w-prose">{value}</p>}
-            </ClaimValue>
+      <div className="career-detail-layout">
+        <div className="career-detail-main">
+          <div className="career-detail-header-panel">
+            <Header
+              career={career}
+              profile={profile}
+              minutes={reading.coreMinutes}
+            />
           </div>
 
-          <div>
-            <h3 className="mb-2 font-semibold">
-              Abilitazioni e regole di legge
-            </h3>
-            <ClaimValue
-              claim={profile.regulation}
-              sources={career.sources}
-              label="le regole di legge di questa professione"
-            >
-              {(value) => <p className="max-w-prose">{value}</p>}
-            </ClaimValue>
-          </div>
+          <EvidenceNotice career={career} profile={profile} />
 
-          <div>
-            <h3 className="mb-2 font-semibold">Quanto tempo ci vuole</h3>
+          <Section
+            id="simulator"
+            title="Simula il tuo percorso"
+            lead="Cambia le ipotesi qui sotto per vedere come cambiano costi e rientro. Sono stime che puoi regolare, non dati verificati su questa professione."
+          >
+            {hasValue(profile.salary) && hasValue(profile.timeToEnter) ? (
+              <CareerSimulator
+                yearsToQualify={
+                  (profile.timeToEnter.value.minYears +
+                    profile.timeToEnter.value.maxYears) /
+                  2
+                }
+                entrySalaryMin={profile.salary.value.entry.min}
+                entrySalaryMax={profile.salary.value.entry.max}
+                currency={profile.salary.value.currency}
+              />
+            ) : (
+              <p className="text-ink-muted border-border bg-surface-muted rounded-card border p-4 text-sm">
+                Il simulatore ha bisogno dello stipendio e del tempo per
+                entrarci, e per questa professione non sono ancora stati
+                verificati.
+              </p>
+            )}
+
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <form action={addCareerToComparison.bind(null, career.slug)}>
+                <button
+                  type="submit"
+                  disabled={alreadyCompared || compareFull}
+                  className={
+                    alreadyCompared
+                      ? 'bg-success rounded-control inline-flex min-h-10 items-center px-4 py-2 text-sm font-medium text-white'
+                      : compareFull
+                        ? 'border-border text-ink-muted rounded-control inline-flex min-h-10 items-center border px-4 py-2 text-sm'
+                        : 'border-primary text-primary hover:bg-primary-soft rounded-control inline-flex min-h-10 items-center border px-4 py-2 text-sm font-medium'
+                  }
+                >
+                  {alreadyCompared
+                    ? 'Gia nel confronto'
+                    : 'Aggiungi al confronto'}
+                </button>
+              </form>
+              {work.comparedSlugs.length > 0 && (
+                <Link
+                  href="/student/compare"
+                  className="text-primary text-sm font-medium underline underline-offset-4"
+                >
+                  Vai al confronto ({work.comparedSlugs.length}/3)
+                </Link>
+              )}
+            </div>
+          </Section>
+
+          <Section
+            id="what"
+            title="Che cosa fa davvero chi svolge questo lavoro?"
+          >
+            <Prose>
+              <p>{career.plainLanguageSummary}</p>
+              <p>{career.whatTheyDo.overview}</p>
+              <h3 className="pt-2 font-semibold">Per esempio</h3>
+              <ul className="list-disc space-y-2 pl-5">
+                {career.whatTheyDo.concreteExamples.map((example) => (
+                  <li key={example}>{example}</li>
+                ))}
+              </ul>
+            </Prose>
+          </Section>
+
+          <Section id="day" title="Com’è una giornata tipo?">
+            <Prose>
+              <p>{career.typicalDay.overview}</p>
+              <h3 className="pt-2 font-semibold">Cosa si fa più spesso</h3>
+              <ul className="list-disc space-y-1 pl-5">
+                {career.typicalDay.commonTasks.map((task) => (
+                  <li key={task}>{task}</li>
+                ))}
+              </ul>
+              <h3 className="pt-2 font-semibold">
+                Quanto cambia da caso a caso
+              </h3>
+              <p>{career.typicalDay.howMuchItVaries}</p>
+            </Prose>
+          </Section>
+
+          <Section
+            id="how"
+            title="Come si diventa?"
+            lead={`Il percorso più comune in ${SITE.country.name}. Per ogni passo trovi scritto quanto è davvero obbligatorio.`}
+          >
+            <PathwaySteps profile={profile} />
+
+            <Disclosure
+              summary="I percorsi di studio, e quali servono davvero"
+              hint={`${profile.educationRoutes.length} percorsi`}
+            >
+              <ul className="space-y-5">
+                {profile.educationRoutes.map((route) => (
+                  <li key={route.name}>
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <h4 className="font-semibold">{route.name}</h4>
+                      <RequirementBadge requirement={route.requirement} />
+                    </div>
+                    <p className="mt-1 max-w-prose">{route.description}</p>
+                    {route.notes && (
+                      <p className="text-ink-muted mt-1 max-w-prose text-sm">
+                        {route.notes}
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </Disclosure>
+          </Section>
+
+          <Section id="requirements" title="Studi e requisiti di legge">
+            <div className="space-y-6">
+              <div>
+                <h3 className="mb-2 font-semibold">Titoli di studio</h3>
+                <ClaimValue
+                  claim={profile.educationSummary}
+                  sources={career.sources}
+                  label="i titoli di studio richiesti"
+                >
+                  {(value) => <p className="max-w-prose">{value}</p>}
+                </ClaimValue>
+              </div>
+
+              <div>
+                <h3 className="mb-2 font-semibold">
+                  Abilitazioni e regole di legge
+                </h3>
+                <ClaimValue
+                  claim={profile.regulation}
+                  sources={career.sources}
+                  label="le regole di legge di questa professione"
+                >
+                  {(value) => <p className="max-w-prose">{value}</p>}
+                </ClaimValue>
+              </div>
+
+              <div>
+                <h3 className="mb-2 font-semibold">Quanto tempo ci vuole</h3>
+                <ClaimValue
+                  claim={profile.timeToEnter}
+                  sources={career.sources}
+                  label="quanto tempo ci vuole"
+                >
+                  {(value) => (
+                    <div className="max-w-prose">
+                      <p className="font-medium">
+                        {value.minYears === value.maxYears
+                          ? `Circa ${value.minYears} anni`
+                          : `Circa ${value.minYears}–${value.maxYears} anni`}{' '}
+                        dalla fine della scuola superiore
+                      </p>
+                      <p className="mt-1">{value.notes}</p>
+                    </div>
+                  )}
+                </ClaimValue>
+              </div>
+            </div>
+          </Section>
+
+          <Section
+            id="pay"
+            title="Quanto si guadagna?"
+            lead="Lo stipendio è indicato come intervallo, perché dipende da dove lavori, per chi lavori e da quanti anni fai questo mestiere."
+          >
             <ClaimValue
-              claim={profile.timeToEnter}
+              claim={profile.salary}
               sources={career.sources}
-              label="quanto tempo ci vuole"
+              label="gli stipendi di questa professione"
+            >
+              {(salary) => <SalaryDetail salary={salary} />}
+            </ClaimValue>
+          </Section>
+
+          <Section id="competition" title="Quanto è competitivo?">
+            <ClaimValue
+              claim={profile.competition}
+              sources={career.sources}
+              label="quanto è competitiva questa professione"
             >
               {(value) => (
                 <div className="max-w-prose">
                   <p className="font-medium">
-                    {value.minYears === value.maxYears
-                      ? `Circa ${value.minYears} anni`
-                      : `Circa ${value.minYears}–${value.maxYears} anni`}{' '}
-                    dalla fine della scuola superiore
+                    Competizione: {LEVEL_LABELS[value.level] ?? value.level}
                   </p>
-                  <p className="mt-1">{value.notes}</p>
+                  <p className="mt-2">{value.whatThisMeans}</p>
                 </div>
               )}
             </ClaimValue>
-          </div>
-        </div>
-      </Section>
+          </Section>
 
-      <Section
-        id="pay"
-        title="Quanto si guadagna?"
-        lead="Lo stipendio è indicato come intervallo, perché dipende da dove lavori, per chi lavori e da quanti anni fai questo mestiere."
-      >
-        <ClaimValue
-          claim={profile.salary}
-          sources={career.sources}
-          label="gli stipendi di questa professione"
-        >
-          {(salary) => <SalaryDetail salary={salary} />}
-        </ClaimValue>
-      </Section>
-
-      <Section id="competition" title="Quanto è competitivo?">
-        <ClaimValue
-          claim={profile.competition}
-          sources={career.sources}
-          label="quanto è competitiva questa professione"
-        >
-          {(value) => (
-            <div className="max-w-prose">
-              <p className="font-medium">
-                Competizione: {LEVEL_LABELS[value.level] ?? value.level}
-              </p>
-              <p className="mt-2">{value.whatThisMeans}</p>
+          <Section
+            id="tradeoffs"
+            title="Vantaggi e svantaggi"
+            lead="Qui sotto trovi i titoli. Apri quelli che ti interessano per leggere i dettagli."
+          >
+            <div className="grid gap-8 md:grid-cols-2">
+              <TradeoffColumn
+                heading="Vantaggi"
+                items={career.advantages}
+                tone="verified"
+              />
+              <TradeoffColumn
+                heading="Svantaggi"
+                items={career.disadvantages}
+                tone="draft"
+              />
             </div>
-          )}
-        </ClaimValue>
-      </Section>
+          </Section>
 
-      <Section
-        id="tradeoffs"
-        title="Vantaggi e svantaggi"
-        lead="Qui sotto trovi i titoli. Apri quelli che ti interessano per leggere i dettagli."
-      >
-        <div className="grid gap-8 md:grid-cols-2">
-          <TradeoffColumn
-            heading="Vantaggi"
-            items={career.advantages}
-            tone="verified"
-          />
-          <TradeoffColumn
-            heading="Svantaggi"
-            items={career.disadvantages}
-            tone="draft"
-          />
-        </div>
-      </Section>
-
-      <Section
-        id="misconceptions"
-        title="Idee sbagliate più diffuse"
-        lead="Cose che si danno per scontate su questa professione e che invece non sono proprio così."
-      >
-        <ul className="space-y-6">
-          {career.misconceptions.map((item) => (
-            <li key={item.belief} className="max-w-prose">
-              <p className="text-ink-muted">
-                <span className="sr-only">Idea diffusa: </span>
-                <span aria-hidden="true" className="font-semibold">
-                  Si dice che:{' '}
-                </span>
-                {item.belief}
-              </p>
-              <p className="border-primary mt-2 border-l-2 pl-3">
-                <span className="sr-only">In realtà: </span>
-                <span aria-hidden="true" className="font-semibold">
-                  In realtà:{' '}
-                </span>
-                {item.reality}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section
-        id="now"
-        title="Cosa puoi fare fin da ora"
-        lead="Cose concrete che aiutano. Nessuna è obbligatoria e nessuno viene escluso per non averle fatte."
-      >
-        <ul className="space-y-5">
-          {profile.whatYouCanDoNow.map((item) => (
-            <li key={item.action} className="max-w-prose">
-              <h3 className="font-semibold">{item.action}</h3>
-              {item.whenApplicable && (
-                <p className="text-ink-muted mt-0.5 text-sm">
-                  {item.whenApplicable}
-                </p>
-              )}
-              <p className="mt-1">{item.why}</p>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section id="more" title="Altro su questa professione">
-        <Disclosure summary="A chi può piacere questo lavoro, e a chi no">
-          <div className="grid gap-6 md:grid-cols-2">
-            <div>
-              <h4 className="font-semibold">Potrebbe fare per te se</h4>
-              <ul className="mt-2 list-disc space-y-1 pl-5">
-                {career.suitability.suitsYouIf.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold">Potrebbe non fare per te se</h4>
-              <ul className="mt-2 list-disc space-y-1 pl-5">
-                {career.suitability.mayNotSuitYouIf.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </Disclosure>
-
-        <Disclosure
-          summary="Le capacità che contano"
-          hint={`${career.skills.length} capacità`}
-        >
-          <ul className="space-y-3">
-            {career.skills.map((skill) => (
-              <li key={skill.name} className="max-w-prose">
-                <span className="font-semibold">{skill.name}</span>{' '}
-                <Badge>
-                  {LEVEL_LABELS[skill.importance] ?? skill.importance}
-                </Badge>
-                <p className="text-ink-muted mt-0.5">{skill.why}</p>
-              </li>
-            ))}
-          </ul>
-        </Disclosure>
-
-        {profile.outlook && (
-          <Disclosure summary="Come sono le prospettive">
-            <ClaimValue
-              claim={profile.outlook}
-              sources={career.sources}
-              label="le prospettive di questa professione"
-            >
-              {(value) => <p className="max-w-prose">{value}</p>}
-            </ClaimValue>
-          </Disclosure>
-        )}
-
-        <Disclosure
-          summary="Professioni simili"
-          hint={`${career.relatedCareers.length} professioni`}
-        >
-          <ul className="space-y-4">
-            {career.relatedCareers.map((related) => {
-              const linkable = related.slug && relatedSlugs.has(related.slug);
-              return (
-                <li key={related.name} className="max-w-prose">
-                  <h4 className="font-semibold">
-                    {linkable ? (
-                      <Link
-                        href={`/student/careers/${related.slug}`}
-                        className="text-primary underline underline-offset-4"
-                      >
-                        {related.name}
-                      </Link>
-                    ) : (
-                      related.name
-                    )}
-                  </h4>
-                  <p className="text-ink-muted mt-0.5">
-                    {related.howItDiffers}
+          <Section
+            id="misconceptions"
+            title="Idee sbagliate più diffuse"
+            lead="Cose che si danno per scontate su questa professione e che invece non sono proprio così."
+          >
+            <ul className="space-y-6">
+              {career.misconceptions.map((item) => (
+                <li key={item.belief} className="max-w-prose">
+                  <p className="text-ink-muted">
+                    <span className="sr-only">Idea diffusa: </span>
+                    <span aria-hidden="true" className="font-semibold">
+                      Si dice che:{' '}
+                    </span>
+                    {item.belief}
+                  </p>
+                  <p className="border-primary mt-2 border-l-2 pl-3">
+                    <span className="sr-only">In realtà: </span>
+                    <span aria-hidden="true" className="font-semibold">
+                      In realtà:{' '}
+                    </span>
+                    {item.reality}
                   </p>
                 </li>
-              );
-            })}
-          </ul>
-        </Disclosure>
-      </Section>
+              ))}
+            </ul>
+          </Section>
 
-      <Section
-        id="sources"
-        title="Fonti"
-        lead="Da dove vengono le informazioni di questa pagina e quando le abbiamo controllate l’ultima volta."
-      >
-        <SourceList career={career} />
-      </Section>
-
-      <footer className="border-border mt-12 border-t pt-6">
-        <p className="text-ink-muted text-sm">
-          Questa pagina riguarda l’{SITE.country.name}. In altri paesi
-          requisiti, stipendi e livello di competizione sono diversi.
-        </p>
-        <p className="mt-4">
-          <Link
-            href="/student/careers"
-            className="text-primary underline underline-offset-4"
+          <Section
+            id="now"
+            title="Cosa puoi fare fin da ora"
+            lead="Cose concrete che aiutano. Nessuna è obbligatoria e nessuno viene escluso per non averle fatte."
           >
-            Torna a tutte le professioni
-          </Link>
-        </p>
-      </footer>
+            <ul className="space-y-5">
+              {profile.whatYouCanDoNow.map((item) => (
+                <li key={item.action} className="max-w-prose">
+                  <h3 className="font-semibold">{item.action}</h3>
+                  {item.whenApplicable && (
+                    <p className="text-ink-muted mt-0.5 text-sm">
+                      {item.whenApplicable}
+                    </p>
+                  )}
+                  <p className="mt-1">{item.why}</p>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section id="more" title="Altro su questa professione">
+            <Disclosure summary="A chi può piacere questo lavoro, e a chi no">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <h4 className="font-semibold">Potrebbe fare per te se</h4>
+                  <ul className="mt-2 list-disc space-y-1 pl-5">
+                    {career.suitability.suitsYouIf.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold">Potrebbe non fare per te se</h4>
+                  <ul className="mt-2 list-disc space-y-1 pl-5">
+                    {career.suitability.mayNotSuitYouIf.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Disclosure>
+
+            <Disclosure
+              summary="Le capacità che contano"
+              hint={`${career.skills.length} capacità`}
+            >
+              <ul className="space-y-3">
+                {career.skills.map((skill) => (
+                  <li key={skill.name} className="max-w-prose">
+                    <span className="font-semibold">{skill.name}</span>{' '}
+                    <Badge>
+                      {LEVEL_LABELS[skill.importance] ?? skill.importance}
+                    </Badge>
+                    <p className="text-ink-muted mt-0.5">{skill.why}</p>
+                  </li>
+                ))}
+              </ul>
+            </Disclosure>
+
+            {profile.outlook && (
+              <Disclosure summary="Come sono le prospettive">
+                <ClaimValue
+                  claim={profile.outlook}
+                  sources={career.sources}
+                  label="le prospettive di questa professione"
+                >
+                  {(value) => <p className="max-w-prose">{value}</p>}
+                </ClaimValue>
+              </Disclosure>
+            )}
+
+            <Disclosure
+              summary="Professioni simili"
+              hint={`${career.relatedCareers.length} professioni`}
+            >
+              <ul className="space-y-4">
+                {career.relatedCareers.map((related) => {
+                  const linkable =
+                    related.slug && relatedSlugs.has(related.slug);
+                  return (
+                    <li key={related.name} className="max-w-prose">
+                      <h4 className="font-semibold">
+                        {linkable ? (
+                          <Link
+                            href={`/student/careers/${related.slug}`}
+                            className="text-primary underline underline-offset-4"
+                          >
+                            {related.name}
+                          </Link>
+                        ) : (
+                          related.name
+                        )}
+                      </h4>
+                      <p className="text-ink-muted mt-0.5">
+                        {related.howItDiffers}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Disclosure>
+          </Section>
+
+          <Section
+            id="sources"
+            title="Fonti"
+            lead="Da dove vengono le informazioni di questa pagina e quando le abbiamo controllate l’ultima volta."
+          >
+            <SourceList career={career} />
+          </Section>
+
+          <footer className="border-border mt-12 border-t pt-6">
+            <p className="text-ink-muted text-sm">
+              Questa pagina riguarda l’{SITE.country.name}. In altri paesi
+              requisiti, stipendi e livello di competizione sono diversi.
+            </p>
+            <p className="mt-4">
+              <Link
+                href="/student/careers"
+                className="text-primary underline underline-offset-4"
+              >
+                Torna a tutte le professioni
+              </Link>
+            </p>
+          </footer>
+        </div>
+
+        <aside
+          className="career-detail-aside"
+          aria-labelledby="quick-facts-heading"
+        >
+          <div className="career-detail-facts">
+            <p className="page-kicker">In sintesi</p>
+            <h2
+              id="quick-facts-heading"
+              className="mt-2 text-2xl font-semibold"
+            >
+              A colpo d’occhio
+            </h2>
+            <div className="mt-4">
+              <QuickFacts profile={profile} />
+            </div>
+          </div>
+        </aside>
+      </div>
     </article>
   );
 }
@@ -484,9 +511,7 @@ function Header({
         {CATEGORY_LABELS[career.category] ?? career.category}
       </p>
 
-      <h1 className="mt-2 text-4xl font-bold tracking-tight">
-        {career.canonicalName}
-      </h1>
+      <h1 className="editorial-title mt-2">{career.canonicalName}</h1>
       <p className="text-ink-muted mt-3 max-w-prose text-lg">
         {career.oneSentence}
       </p>
