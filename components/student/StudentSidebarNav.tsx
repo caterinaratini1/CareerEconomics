@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Columns3, Home, NotebookPen, Search } from 'lucide-react';
+import { Columns3, Home, Network, NotebookPen, Search } from 'lucide-react';
 
 const links = [
   { href: '/student', icon: Home, label: 'Panoramica', exact: true },
   { href: '/student/careers', icon: Search, label: 'Esplora professioni' },
+  { href: '/student/map', icon: Network, label: 'Mappa opportunità' },
   { href: '/student/compare', icon: Columns3, label: 'Confronta' },
   { href: '/student/reflection', icon: NotebookPen, label: 'Riflessione' },
 ] as const;

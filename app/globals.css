@@ -581,6 +581,943 @@
     padding-top: 1.25rem;
   }
 
+  /* Opportunity Map: the canvas stays visually quiet so the relationships,
+     rather than interface chrome, remain the dominant layer. */
+  .opportunity-page {
+    min-width: 0;
+    padding: 1.5rem 1rem 1rem;
+  }
+  .opportunity-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 96rem;
+    margin-inline: auto;
+  }
+  .opportunity-toolbar {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .opportunity-search {
+    display: flex;
+    min-width: min(100%, 15rem);
+    flex: 1 1 18rem;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 2.65rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-surface);
+    color: var(--color-ink-muted);
+    padding-inline: 0.75rem;
+  }
+  .opportunity-search:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(14, 92, 82, 0.13);
+  }
+  .opportunity-search input {
+    min-width: 0;
+    flex: 1;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    font-size: 0.82rem;
+  }
+  .opportunity-search input:focus {
+    box-shadow: none;
+  }
+  .opportunity-tool-button,
+  .opportunity-map-toggle {
+    display: inline-flex;
+    min-height: 2.65rem;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-surface);
+    color: var(--color-ink-muted);
+    padding: 0.55rem 0.75rem;
+    font-size: 0.76rem;
+    font-weight: 650;
+  }
+  .opportunity-tool-button:hover,
+  .opportunity-map-toggle:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  .opportunity-map-toggle {
+    cursor: pointer;
+  }
+  .opportunity-map-toggle input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+  }
+  .opportunity-map-toggle > span {
+    position: relative;
+    width: 1.9rem;
+    height: 1.05rem;
+    border-radius: var(--radius-pill);
+    background: #c8ceca;
+    transition: background 160ms ease;
+  }
+  .opportunity-map-toggle > span::after {
+    position: absolute;
+    top: 0.15rem;
+    left: 0.15rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: white;
+    content: '';
+    transition: transform 160ms ease;
+  }
+  .opportunity-map-toggle input:checked + span {
+    background: var(--color-primary);
+  }
+  .opportunity-map-toggle input:checked + span::after {
+    transform: translateX(0.85rem);
+  }
+  .opportunity-map-toggle:has(input:focus-visible) {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  .opportunity-workspace {
+    display: grid;
+    max-width: 96rem;
+    gap: 0.75rem;
+    margin: 1.25rem auto 0;
+  }
+  .opportunity-canvas {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 0.6rem;
+    background: #f8f8f5;
+  }
+  .opportunity-canvas-heading {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    pointer-events: none;
+  }
+  .opportunity-eyebrow {
+    color: var(--color-primary);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .opportunity-graph {
+    height: clamp(31rem, 63dvh, 46rem);
+    min-height: 31rem;
+    background-color: #f8f8f5;
+    background-image: radial-gradient(#cbd3ce 0.65px, transparent 0.65px);
+    background-size: 16px 16px;
+  }
+  .opportunity-graph canvas {
+    display: block;
+  }
+  .opportunity-map-loading {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    color: var(--color-ink-muted);
+    font-size: 0.82rem;
+  }
+  .opportunity-canvas-note {
+    position: absolute;
+    z-index: 3;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    display: flex;
+    width: fit-content;
+    max-width: calc(100% - 1.5rem);
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(14, 92, 82, 0.16);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-primary-dark);
+    padding: 0.4rem 0.7rem;
+    box-shadow: 0 3px 12px rgba(27, 36, 34, 0.08);
+    font-size: 0.68rem;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+  }
+  .opportunity-detail {
+    min-width: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 0.6rem;
+    background: var(--color-surface);
+    padding: 1.25rem;
+  }
+  .opportunity-detail-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .opportunity-type,
+  .opportunity-count {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.55rem;
+    border-radius: var(--radius-pill);
+    padding: 0.15rem 0.55rem;
+    font-size: 0.64rem;
+    font-weight: 750;
+  }
+  .opportunity-type {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+  }
+  .opportunity-type.is-career {
+    background: var(--color-accent-soft);
+    color: #76501c;
+  }
+  .opportunity-type.is-skill {
+    background: #e5eff5;
+    color: #245776;
+  }
+  .opportunity-type.is-industry,
+  .opportunity-type.is-study_path {
+    background: var(--color-surface-muted);
+    color: var(--color-ink-muted);
+  }
+  .opportunity-count {
+    border: 1px solid var(--color-border);
+    color: var(--color-ink-muted);
+  }
+  .opportunity-insight {
+    display: grid;
+    grid-template-columns: 1rem minmax(0, 1fr);
+    gap: 0.6rem;
+    margin-top: 1rem;
+    border-left: 2px solid var(--color-accent);
+    background: #fbf7ed;
+    color: #5f481f;
+    padding: 0.75rem;
+    font-size: 0.76rem;
+    line-height: 1.5;
+  }
+  .opportunity-insight svg {
+    margin-top: 0.1rem;
+  }
+  .opportunity-radius {
+    display: grid;
+    grid-template-columns: 3.4rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    border-block: 1px solid var(--color-border);
+    padding-block: 0.9rem;
+  }
+  .opportunity-radius-ring {
+    display: grid;
+    width: 3.25rem;
+    height: 3.25rem;
+    place-items: center;
+    border-radius: 50%;
+  }
+  .opportunity-radius-ring::before {
+    grid-area: 1 / 1;
+    width: 2.45rem;
+    height: 2.45rem;
+    border-radius: 50%;
+    background: var(--color-surface);
+    content: '';
+  }
+  .opportunity-radius-ring > span {
+    z-index: 1;
+    grid-area: 1 / 1;
+    color: var(--color-primary-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+  .opportunity-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    margin-top: 1rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-border);
+  }
+  .opportunity-metrics > div {
+    min-width: 0;
+    background: #fafbf9;
+    padding: 0.65rem;
+  }
+  .opportunity-metrics dt {
+    color: var(--color-ink-muted);
+    font-size: 0.59rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .opportunity-metrics dd {
+    margin-top: 0.15rem;
+    font-size: 0.76rem;
+    font-weight: 750;
+  }
+  .opportunity-actions {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .opportunity-secondary-action,
+  .opportunity-text-action {
+    display: flex;
+    width: 100%;
+    min-height: 2.6rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-control);
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+  .opportunity-secondary-action {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-primary);
+  }
+  .opportunity-secondary-action:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+  }
+  .opportunity-text-action {
+    min-height: 2.2rem;
+    color: var(--color-primary);
+  }
+  .opportunity-text-action:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+  .opportunity-doors {
+    margin-top: 1.15rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+  }
+  .opportunity-door {
+    display: flex;
+    width: 100%;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-radius: var(--radius-control);
+    padding: 0.45rem 0.55rem;
+    text-align: left;
+  }
+  .opportunity-door:hover {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+  }
+  .opportunity-trail {
+    display: flex;
+    max-width: 96rem;
+    min-width: 0;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0.75rem auto 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: rgba(255, 255, 255, 0.92);
+    padding: 0.65rem 0.75rem;
+    box-shadow: 0 4px 16px rgba(27, 36, 34, 0.04);
+  }
+  .opportunity-trail-label {
+    flex: 0 0 auto;
+    color: var(--color-ink-muted);
+    font-size: 0.64rem;
+    font-weight: 750;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .opportunity-trail ol {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    gap: 0.25rem;
+    overflow-x: auto;
+  }
+  .opportunity-trail li {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-ink-muted);
+  }
+  .opportunity-trail button {
+    border-radius: var(--radius-pill);
+    padding: 0.22rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 650;
+    white-space: nowrap;
+  }
+  .opportunity-trail button[aria-current='location'] {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+  }
+  .opportunity-compare-link {
+    display: none;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-primary);
+    font-size: 0.72rem;
+    font-weight: 750;
+  }
+
+  /* Focused opportunity lens. The deterministic orbit is the primary student
+     experience; the force graph remains available as a secondary overview. */
+  .opportunity-lens-page {
+    min-width: 0;
+    max-width: 96rem;
+    margin-inline: auto;
+    padding: 1.5rem 1rem 1rem;
+  }
+  .opportunity-lens-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .opportunity-lens-controls {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .opportunity-lens-search {
+    display: flex;
+    min-height: 2.65rem;
+    min-width: min(100%, 16rem);
+    flex: 1 1 20rem;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: var(--color-surface);
+    color: var(--color-ink-muted);
+    padding-inline: 0.75rem;
+  }
+  .opportunity-lens-search:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(14, 92, 82, 0.13);
+  }
+  .opportunity-lens-search input {
+    min-width: 0;
+    flex: 1;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    font-size: 0.82rem;
+  }
+  .opportunity-lens-search input:focus {
+    box-shadow: none;
+  }
+  .opportunity-quiet-control {
+    display: inline-flex;
+    min-height: 2.65rem;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: var(--radius-control);
+    color: var(--color-ink-muted);
+    padding: 0.55rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 650;
+  }
+  .opportunity-quiet-control:hover,
+  .opportunity-quiet-control[aria-pressed='true'] {
+    background: var(--color-surface-muted);
+    color: var(--color-primary-dark);
+  }
+  .opportunity-lens-workspace {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+  .opportunity-lens-main,
+  .opportunity-lens-detail {
+    min-width: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 0.65rem;
+    background: var(--color-surface);
+  }
+  .opportunity-lens-main {
+    overflow: hidden;
+  }
+  .opportunity-lens-view-heading {
+    display: flex;
+    min-height: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+  }
+  .opportunity-lens-view-heading h2 {
+    margin-top: 0.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .opportunity-lens-eyebrow {
+    color: var(--color-primary);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .opportunity-previous-step {
+    display: inline-flex;
+    min-height: 2rem;
+    max-width: 14rem;
+    align-items: center;
+    gap: 0.4rem;
+    overflow: hidden;
+    border-radius: var(--radius-pill);
+    color: var(--color-ink-muted);
+    padding: 0.25rem 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 650;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .opportunity-previous-step:hover {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+  }
+  .opportunity-orbit {
+    position: relative;
+    isolation: isolate;
+    height: clamp(34rem, 65dvh, 43rem);
+    min-height: 34rem;
+    overflow: hidden;
+    background-color: #fbfcfa;
+    background-image: radial-gradient(#d9dfda 0.55px, transparent 0.55px);
+    background-size: 20px 20px;
+    animation: opportunity-lens-enter 320ms ease-out;
+  }
+  .opportunity-orbit::before {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: min(76%, 34rem);
+    aspect-ratio: 1;
+    border: 1px solid rgba(14, 92, 82, 0.08);
+    border-radius: 50%;
+    content: '';
+    transform: translate(-50%, -50%);
+  }
+  .opportunity-orbit-paths {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .opportunity-orbit-paths path {
+    fill: none;
+    stroke: rgba(14, 92, 82, 0.28);
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    stroke-linecap: round;
+    stroke-width: 0.42;
+    vector-effect: non-scaling-stroke;
+    animation: opportunity-path-draw 420ms ease-out forwards;
+  }
+  .opportunity-focus-wrap {
+    position: absolute;
+    z-index: 2;
+    top: 51%;
+    left: 50%;
+    width: min(15rem, 40%);
+    transform: translate(-50%, -50%);
+  }
+  .opportunity-focus-halo {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: 145%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: conic-gradient(
+      rgba(14, 92, 82, 0.2) var(--opportunity-radius),
+      rgba(14, 92, 82, 0.035) 0
+    );
+    opacity: 0.75;
+    mask: radial-gradient(
+      transparent 59%,
+      black 60%,
+      black 64%,
+      transparent 65%
+    );
+    transform: translate(-50%, -50%);
+    animation: opportunity-halo-in 520ms ease-out;
+  }
+  .opportunity-focus-card {
+    border: 1px solid var(--color-primary-dark);
+    border-radius: 0.8rem;
+    background: var(--color-primary);
+    color: white;
+    padding: 1.15rem;
+    box-shadow: 0 14px 34px rgba(14, 92, 82, 0.2);
+    text-align: center;
+  }
+  .opportunity-focus-card > span {
+    display: block;
+    color: #a8ded5;
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .opportunity-focus-card h3 {
+    margin-top: 0.35rem;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    line-height: 1.05;
+  }
+  .opportunity-focus-card p {
+    margin-top: 0.4rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.7rem;
+    line-height: 1.35;
+  }
+  .opportunity-focus-card strong {
+    display: inline-flex;
+    margin-top: 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.55rem;
+    font-size: 0.66rem;
+  }
+  .opportunity-door-card {
+    position: absolute;
+    z-index: 2;
+    top: var(--door-y);
+    left: var(--door-x);
+    display: grid;
+    width: clamp(8.5rem, 18%, 10.5rem);
+    min-height: 6.2rem;
+    grid-template-rows: auto 1fr auto;
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    border-radius: 0.55rem;
+    background: rgba(255, 255, 255, 0.97);
+    padding: 0.7rem;
+    box-shadow: 0 7px 20px rgba(27, 36, 34, 0.07);
+    text-align: left;
+    transform: translate(-50%, -50%);
+    animation: opportunity-door-in 300ms ease-out var(--door-delay) both;
+  }
+  .opportunity-door-card:hover {
+    border-color: var(--color-primary);
+    background: white;
+    box-shadow: 0 11px 26px rgba(27, 36, 34, 0.12);
+    transform: translate(-50%, calc(-50% - 3px));
+  }
+  .opportunity-door-card.is-career {
+    border-top-color: var(--color-accent);
+  }
+  .opportunity-door-card.is-skill {
+    border-top-color: var(--color-info);
+  }
+  .opportunity-door-card.is-industry {
+    border-top-color: #876234;
+  }
+  .opportunity-door-card.is-study_path {
+    border-top-color: #675286;
+  }
+  .opportunity-door-type {
+    color: var(--color-ink-muted);
+    font-size: 0.56rem;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .opportunity-door-card > strong {
+    align-self: center;
+    margin-block: 0.35rem;
+    font-family: var(--font-display);
+    font-size: 0.96rem;
+    line-height: 1.1;
+  }
+  .opportunity-door-metric {
+    color: var(--color-primary);
+    font-size: 0.65rem;
+    font-weight: 750;
+  }
+  .opportunity-door-arrow {
+    position: absolute;
+    right: 0.55rem;
+    bottom: 0.65rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    color: var(--color-ink-muted);
+  }
+  .opportunity-more-button {
+    position: absolute;
+    z-index: 3;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    display: inline-flex;
+    min-height: 2.4rem;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--color-primary-dark);
+    padding: 0.4rem 0.7rem;
+    box-shadow: 0 4px 14px rgba(27, 36, 34, 0.06);
+    font-size: 0.68rem;
+    font-weight: 750;
+  }
+  .opportunity-more-button:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+  }
+  .opportunity-network-canvas {
+    height: clamp(34rem, 65dvh, 43rem);
+    min-height: 34rem;
+    background-color: #fbfcfa;
+    background-image: radial-gradient(#d9dfda 0.55px, transparent 0.55px);
+    background-size: 20px 20px;
+  }
+  .opportunity-network-canvas canvas {
+    display: block;
+  }
+  .opportunity-network-loading {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--color-ink-muted);
+    font-size: 0.78rem;
+  }
+  .opportunity-lens-detail {
+    padding: 1.25rem;
+  }
+  .opportunity-detail-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--color-accent);
+  }
+  .opportunity-lens-detail > h2 {
+    margin-top: 0.8rem;
+    font-size: 1.8rem;
+  }
+  .opportunity-lens-detail > p {
+    margin-top: 0.65rem;
+    color: var(--color-ink-muted);
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+  .opportunity-key-insights {
+    display: grid;
+    margin-top: 1.15rem;
+    border-block: 1px solid var(--color-border);
+  }
+  .opportunity-key-insights > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 0.75rem;
+    padding-block: 0.65rem;
+  }
+  .opportunity-key-insights > div + div {
+    border-top: 1px solid #e8ebe7;
+  }
+  .opportunity-key-insights dt {
+    color: var(--color-ink-muted);
+    font-size: 0.68rem;
+  }
+  .opportunity-key-insights dd {
+    font-size: 0.72rem;
+    font-weight: 750;
+    text-align: right;
+  }
+  .opportunity-more-list {
+    margin-top: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    background: #fafbf9;
+    padding: 0.65rem;
+  }
+  .opportunity-more-list h3 {
+    padding: 0.2rem 0.35rem 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0;
+  }
+  .opportunity-more-list button {
+    display: flex;
+    width: 100%;
+    min-height: 2.8rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-radius: var(--radius-control);
+    padding: 0.35rem;
+    text-align: left;
+  }
+  .opportunity-more-list button:hover {
+    background: var(--color-primary-soft);
+  }
+  .opportunity-more-list strong,
+  .opportunity-more-list small {
+    display: block;
+  }
+  .opportunity-more-list strong {
+    font-size: 0.72rem;
+  }
+  .opportunity-more-list small {
+    color: var(--color-ink-muted);
+    font-size: 0.62rem;
+  }
+  .opportunity-lens-actions {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 1.15rem;
+  }
+  .opportunity-lens-actions .button-primary,
+  .opportunity-panel-action,
+  .opportunity-panel-back {
+    display: inline-flex;
+    width: 100%;
+    min-height: 2.65rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: var(--radius-control);
+    padding: 0.55rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+  .opportunity-panel-action {
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+  }
+  .opportunity-panel-action:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+  }
+  .opportunity-panel-back {
+    color: var(--color-ink-muted);
+  }
+  .opportunity-panel-back:hover {
+    color: var(--color-primary-dark);
+  }
+  .opportunity-journey {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 0.65rem;
+    padding-inline: 0.2rem;
+  }
+  .opportunity-journey > span {
+    flex: 0 0 auto;
+    color: var(--color-ink-muted);
+    font-size: 0.6rem;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .opportunity-journey ol {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    gap: 0.2rem;
+    overflow-x: auto;
+  }
+  .opportunity-journey li {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--color-ink-muted);
+  }
+  .opportunity-journey li > svg {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+  .opportunity-journey button {
+    border-radius: var(--radius-pill);
+    padding: 0.2rem 0.48rem;
+    font-size: 0.67rem;
+    font-weight: 650;
+    white-space: nowrap;
+  }
+  .opportunity-journey button[aria-current='location'] {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+  }
+  .opportunity-journey > a {
+    display: none;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-primary);
+    font-size: 0.68rem;
+    font-weight: 750;
+  }
+
+  @keyframes opportunity-lens-enter {
+    from {
+      opacity: 0.65;
+    }
+  }
+  @keyframes opportunity-path-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes opportunity-door-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, calc(-50% + 7px)) scale(0.97);
+    }
+  }
+  @keyframes opportunity-halo-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+  }
+
   .landing-workspace {
     display: grid;
     overflow: hidden;
@@ -630,6 +1567,90 @@
     color: var(--color-ink-muted);
     font-size: 0.72rem;
     font-weight: 650;
+  }
+
+  @media (max-width: 699px) {
+    .opportunity-lens-page {
+      padding-inline: 0.75rem;
+    }
+    .opportunity-lens-controls {
+      align-items: stretch;
+    }
+    .opportunity-quiet-control {
+      flex: 1 1 auto;
+      justify-content: center;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .opportunity-orbit {
+      display: grid;
+      height: auto;
+      min-height: 0;
+      gap: 0.65rem;
+      padding: 1rem;
+    }
+    .opportunity-orbit::before,
+    .opportunity-orbit-paths {
+      display: none;
+    }
+    .opportunity-focus-wrap,
+    .opportunity-door-card,
+    .opportunity-more-button {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      transform: none;
+    }
+    .opportunity-focus-wrap {
+      order: -1;
+    }
+    .opportunity-focus-halo {
+      display: none;
+    }
+    .opportunity-focus-card {
+      padding: 1.25rem;
+    }
+    .opportunity-door-card {
+      display: grid;
+      min-height: 5.25rem;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-rows: auto auto auto;
+      animation: opportunity-mobile-door-in 260ms ease-out var(--door-delay)
+        both;
+    }
+    .opportunity-door-card:hover {
+      transform: translateY(-2px);
+    }
+    .opportunity-door-type,
+    .opportunity-door-card > strong,
+    .opportunity-door-metric {
+      grid-column: 1;
+    }
+    .opportunity-door-arrow {
+      position: static;
+      grid-column: 2;
+      grid-row: 1 / 4;
+      align-self: center;
+    }
+    .opportunity-more-button {
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
+    .opportunity-lens-detail {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      box-shadow: 0 -10px 28px rgba(27, 36, 34, 0.06);
+    }
+    .opportunity-journey {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    @keyframes opportunity-mobile-door-in {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+    }
   }
 
   @media (min-width: 900px) {
@@ -685,6 +1706,62 @@
     }
     .landing-join {
       margin: clamp(1.5rem, 4vw, 3rem);
+    }
+    .opportunity-page {
+      padding: 1.5rem clamp(1.5rem, 2.6vw, 2.75rem) 1rem;
+    }
+    .opportunity-lens-page {
+      padding: 1.5rem clamp(1.5rem, 2.6vw, 2.75rem) 1rem;
+    }
+    .opportunity-lens-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .opportunity-lens-controls {
+      max-width: 48rem;
+      justify-content: flex-end;
+    }
+    .opportunity-lens-search {
+      min-width: 18rem;
+      flex-grow: 0;
+    }
+    .opportunity-lens-workspace {
+      grid-template-columns: minmax(0, 1fr) clamp(17.5rem, 24vw, 21rem);
+      align-items: stretch;
+    }
+    .opportunity-lens-detail {
+      max-height: calc(clamp(34rem, 65dvh, 43rem) + 4rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .opportunity-journey > a {
+      display: inline-flex;
+    }
+    .opportunity-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .opportunity-toolbar {
+      max-width: 48rem;
+      justify-content: flex-end;
+    }
+    .opportunity-search {
+      min-width: 16rem;
+      flex-grow: 0;
+    }
+    .opportunity-workspace {
+      grid-template-columns: minmax(0, 1fr) clamp(18.5rem, 26vw, 23rem);
+      align-items: stretch;
+    }
+    .opportunity-detail {
+      max-height: clamp(31rem, 63dvh, 46rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .opportunity-compare-link {
+      display: inline-flex;
     }
   }
 
